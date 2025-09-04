@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leadership — Venture Studio for Turnarounds</title>
+  <meta name="description" content="We place entrepreneurial operators into legacy companies to lead pragmatic turnarounds. Informational landing page." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#F9FAFB;            /* Off-white */
+      --ink:#0B1020;           /* Dark ink */
+      --primary:#1E3A8A;       /* Deep navy */
+      --accent:#64748B;        /* Cool grey */
+      --highlight:#2563EB;     /* Electric blue */
+      --cta:#10B981;           /* Emerald */
+      --radius:16px;
+      --e1:0 1px 2px rgba(0,0,0,.05),0 1px 1px rgba(0,0,0,.04);
+      --e2:0 8px 24px rgba(30,58,138,.08);
+      --container:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:var(--highlight); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+
+    /* --- Nav --- */
+    header{position:sticky; top:0; z-index:30; backdrop-filter:saturate(1.4) blur(8px); background:rgba(249,250,251,.8); border-bottom:1px solid rgba(2,6,23,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
+    .logo{width:28px;height:28px;border-radius:8px; background:var(--primary); display:grid; place-items:center; color:#fff; font-family:"Space Grotesk",system-ui; font-weight:700}
+    .nav a{margin-left:18px; color:var(--ink)}
+    .nav a:hover{color:var(--primary)}
+    .apply{margin-left:14px; border-radius:999px; border:1px solid var(--ink); padding:8px 14px; font-weight:700}
+
+    /* --- Hero --- */
+    main{padding:56px 0 24px}
+    .hero{padding:80px 0 24px}
+    .display{font-family:"Space Grotesk", Inter, system-ui; font-weight:700; letter-spacing:-0.02em}
+    .hero h1{font-size: clamp(40px, 7.2vw, 88px); line-height:1.02; margin:0 0 12px; color:var(--ink)}
+    .hero .sub{font-size: clamp(16px, 2.4vw, 22px); color:var(--accent); margin:0; max-width: 900px}
+
+    /* --- Sections --- */
+    section{padding:42px 0}
+    .title{font-size:18px; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:.12em; margin:0 0 12px}
+    .card{background:#fff; border:1px solid rgba(2,6,23,.06); border-radius:var(--radius); padding:20px; box-shadow:var(--e1)}
+    .stack{display:grid; gap:16px}
+
+    /* --- Two column --- */
+    .cols{display:grid; gap:18px}
+    @media(min-width:920px){ .cols{grid-template-columns: 1.2fr 1fr} }
+
+    /* --- List pills --- */
+    .pill{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; border:1px solid rgba(2,6,23,.08); background:#fff; box-shadow:var(--e1)}
+
+    /* --- Grid for themes/opportunities --- */
+    .grid{display:grid; gap:14px}
+    @media(min-width:820px){ .grid.cols-3{grid-template-columns: repeat(3, 1fr)} }
+    .tile{background:#fff; border:1px dashed rgba(2,6,23,.1); border-radius:16px; padding:16px; transition:transform .18s ease, box-shadow .18s ease}
+    .tile:hover{transform:translateY(-2px); box-shadow:var(--e2)}
+    .tile h3{margin:2px 0 4px; font-size:18px}
+    .muted{color:var(--accent)}
+
+    /* --- Sticky CTA --- */
+    .cta-bar{position:sticky; bottom:12px; z-index:40}
+    .cta-inner{max-width:720px; margin:0 auto; background:#fff; border:1px solid rgba(2,6,23,.08); border-radius:999px; display:flex; align-items:center; gap:12px; padding:10px 12px; box-shadow:var(--e1)}
+    .btn{display:inline-flex; align-items:center; gap:10px; border-radius:999px; padding:12px 18px; font-weight:700; border:1px solid transparent; cursor:pointer}
+    .btn.cta{background:var(--cta); color:#fff}
+
+    footer{padding:36px 0; font-size:14px; color:var(--accent)}
+
+    /* roomy spacing like the reference */
+    .roomy{padding:8vh 0}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><div class="logo">LL</div>Leadership</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#how">How it works</a>
+        <a href="#themes">Themes</a>
+        <a href="#faq">FAQ</a>
+        <a class="apply" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero roomy" id="top">
+      <h1 class="display">Put entrepreneurial operators inside legacy companies to lead turnarounds.</h1>
+      <p class="sub">We’re building a pragmatic institute + venture studio that embeds vetted operators into real‑world businesses. Industry‑agnostic, execution‑first, and biased toward cash discipline, throughput, and shipping.</p>
+    </section>
+
+    <section id="about" class="roomy">
+      <h2 class="title">What we're building</h2>
+      <div class="cols">
+        <div class="card stack">
+          <p>We partner with owners, investors, and hands‑on builders to revive healthy but stuck companies. We focus the first 120 days on operational diagnostics, cash clarity, team momentum, and a simple plan that actually gets done.</p>
+          <ul class="muted" style="margin:0 0 0 18px">
+            <li><strong>Operator cohort (3 months):</strong> sprint prep for the on‑site embed — tooling, playbooks, case reviews, and rep‑heavy practice.</li>
+            <li><strong>On‑site embed:</strong> the operator parachutes in with a 30‑60‑90 and a sponsor network. Tight advisory cadence, weekly metrics, monthly resets.</li>
+            <li><strong>Outcomes:</strong> stabilized cash, simplified ops, renewed shipping culture, and a path to durable profitability.</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <div class="tile">
+            <h3>Who we’re looking for</h3>
+            <p class="muted">Entrepreneurial operators, process nerds, product ops leaders, GM‑types who like messy problems and measurable wins.</p>
+          </div>
+          <div class="tile">
+            <h3>Who should collaborate</h3>
+            <p class="muted">PE/SMB investors, family businesses, founders with legacy assets, and domain experts who want to co‑build the program.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="roomy">
+      <h2 class="title">How it works</h2>
+      <div class="grid cols-3">
+        <div class="tile">
+          <h3>Vet & match</h3>
+          <p class="muted">Curated operator pool. Transparent skills map and references. Match to a company with clear authority and mandate.</p>
+        </div>
+        <div class="tile">
+          <h3>Prep & plan</h3>
+          <p class="muted">3‑month cohort focused on first‑principles diagnostics, cash discipline, shipment cadence, and stakeholder alignment.</p>
+        </div>
+        <div class="tile">
+          <h3>Embed & ship</h3>
+          <p class="muted">90‑day on‑site play: 30‑60‑90, weekly metrics, ruthless scope cuts, and visible wins that rebuild confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="themes" class="roomy">
+      <h2 class="title">Themes</h2>
+      <div class="grid cols-3">
+        <div class="tile"><h3>Factory & field ops</h3><p class="muted">Throughput, downtime, yield, quality escapes.</p></div>
+        <div class="tile"><h3>Services & trades</h3><p class="muted">Scheduling, margins, crew utilization, upsell paths.</p></div>
+        <div class="tile"><h3>Retail & e‑com</h3><p class="muted">Assortment, inventory turns, working capital.</p></div>
+        <div class="tile"><h3>Software inside</h3><p class="muted">Internal tooling, data hygiene, light‑weight automation.</p></div>
+        <div class="tile"><h3>Product ops</h3><p class="muted">Roadmaps tied to cash & capacity, shipping culture.</p></div>
+        <div class="tile"><h3>People & cadence</h3><p class="muted">Standups that matter, scorecards, meeting debt.</p></div>
+      </div>
+    </section>
+
+    <section id="faq" class="roomy">
+      <h2 class="title">FAQ</h2>
+      <div class="stack">
+        <div class="card"><strong>Is this a product launch?</strong><br><span class="muted">No — this is an informational wrapper for collaborators. The operator CTA exists for interested candidates.</span></div>
+        <div class="card"><strong>Where?</strong><br><span class="muted">Europe‑centric with global reach. Remote‑first; on‑site for embeds.</span></div>
+        <div class="card"><strong>When?</strong><br><span class="muted">We’re assembling the founding cohort and partner network now.</span></div>
+      </div>
+    </section>
+
+    <div class="roomy" aria-hidden="true"></div>
+  </main>
+
+  <div class="cta-bar">
+    <div class="cta-inner">
+      <span class="muted">Operators:</span>
+      <a class="btn cta" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to join our operator cohort</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container"><small>© <span id="y"></span> Leadership</small></div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
