@@ -3,20 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leadership — Operators for Legacy Turnarounds</title>
-  <meta name="description" content="Entrepreneurial operators embedded in legacy companies to drive turnarounds. Cohort-based, execution-first." />
+  <title>Turnaround — Entrepreneurial Operators for Legacy Companies</title>
+  <meta name="description" content="Turnaround embeds vetted operators into stalled companies to lead pragmatic, employee-centered turnarounds." />
+
+  <!-- Favicon (place turnaround-favicon.png in the same /site/ folder) -->
+  <link rel="icon" href="turnaround-favicon.png" type="image/png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #F9FAFB;
-      --ink: #0B1020;
-      --primary: #1E3A8A;
-      --accent: #64748B;
-      --highlight: #2563EB;
-      --cta: #10B981;
+      --bg: #F9FAFB;          /* Off-white */
+      --ink: #0B1020;         /* Dark ink */
+      --primary: #1E3A8A;     /* Deep navy */
+      --accent: #64748B;      /* Cool grey */
+      --highlight: #2563EB;   /* Electric blue */
+      --cta: #10B981;         /* Emerald */
       --radius: 16px;
       --container: 1100px;
     }
@@ -46,12 +49,9 @@
 
     /* Noise overlay */
     .noise {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      position: fixed; inset: 0;
       background-image: url("https://grainy-gradients.vercel.app/noise.png");
-      opacity: 0.07;
-      pointer-events: none;
-      z-index: -1;
+      opacity: 0.07; pointer-events: none; z-index: -1;
     }
 
     .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
@@ -66,19 +66,17 @@
     h1 { font-size: clamp(40px, 7vw, 88px); line-height: 1.05; }
     p { margin: 0 0 12px; }
 
-    .sub { font-size: clamp(16px, 2.5vw, 22px); color: var(--accent); max-width: 800px; }
+    .sub { font-size: clamp(16px, 2.5vw, 22px); color: var(--accent); max-width: 880px; }
 
-    .pill { display: inline-block; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(2,6,23,.1); background: white; margin: 6px 8px 0 0; font-weight: 500; }
+    .pill-list { display: grid; gap: 10px; margin-top: 8px; }
+    .pill { display: inline-block; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(2,6,23,.1); background: white; font-weight: 600; }
 
     .grid { display: grid; gap: 20px; }
-    @media(min-width: 800px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+    @media(min-width: 900px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
 
     .tile { background: white; border: 1px solid rgba(2,6,23,.1); border-radius: 16px; padding: 20px; transition: transform .2s, box-shadow .2s; }
     .tile:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.08); }
     .tile h3 { margin: 0 0 8px; }
-
-    .faq-item { margin-bottom: 20px; }
-    .faq-item strong { display: block; margin-bottom: 6px; }
 
     /* Sticky CTA */
     .cta-bar {
@@ -97,6 +95,7 @@
       padding: 12px 20px; font-weight: 700;
       cursor: pointer; text-decoration: none;
     }
+
     footer { text-align: center; padding: 60px 0 30px; color: var(--accent); font-size: 14px; }
   </style>
 </head>
@@ -108,12 +107,11 @@
   <div class="noise"></div>
 
   <header class="container">
-    <div class="brand">Leadership</div>
+    <div class="brand">Turnaround</div>
     <nav>
-      <a href="#about">About</a>
-      <a href="#how">How</a>
-      <a href="#themes">Themes</a>
-      <a href="#faq">FAQ</a>
+      <a href="#about">What we do</a>
+      <a href="#principles">Our Principles</a>
+      <a href="#details">Details</a>
     </nav>
   </header>
 
@@ -121,62 +119,49 @@
     <!-- Hero -->
     <section id="top">
       <h1>Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
-      <p class="sub">Industry-agnostic. Execution-first. A venture studio for messy businesses that need momentum.</p>
+      <p class="sub">Supporting the backbone of the local economy. Improving jobs. Making better managers.</p>
     </section>
 
-    <!-- About -->
+    <!-- What we do -->
     <section id="about">
       <h2>What we do</h2>
-      <p>We embed vetted operators into stalled companies. Three months of prep. Ninety days on-site. The result: cash clarity, throughput, shipping discipline.</p>
-      <div>
-        <span class="pill">Cash discipline</span>
-        <span class="pill">Team momentum</span>
-        <span class="pill">Shipping culture</span>
+      <p>We embed vetted, trained operators into stalled companies. We set them up for success with carefully crafted guardrails to reduce risk to both the business and the operator. Our purpose is intentional and laser focused, and our program is designed in the same way.</p>
+      <p><strong>The result:</strong> An interim CEO who has 1 year to turn the business around. And a mandate to translate that cash flow right back to the employees.</p>
+    </section>
+
+    <!-- Principles -->
+    <section id="principles">
+      <h2>Our Principles</h2>
+      <div class="pill-list">
+        <span class="pill">Pass profit back to employees</span>
+        <span class="pill">Repeatable and de-risked programmatic approach</span>
+        <span class="pill">Industry agnostic</span>
+        <span class="pill">Laser focus with data tools and training</span>
+        <span class="pill">Cash flow positive is north star</span>
+        <span class="pill">Incentives aligned — We are a 501C3 Non Profit</span>
       </div>
     </section>
 
-    <!-- How it works -->
-    <section id="how">
-      <h2>How it works</h2>
+    <!-- Three detail tiles -->
+    <section id="details">
       <div class="grid cols-3">
-        <div class="tile"><h3>1. Vet & match</h3><p>Curated operator pool matched to companies with clear authority and mandate.</p></div>
-        <div class="tile"><h3>2. Prep & plan</h3><p>3-month cohort focused on diagnostics, cash discipline, and execution cadence.</p></div>
-        <div class="tile"><h3>3. Embed & ship</h3><p>90-day on-site play: metrics, scope cuts, and visible wins that rebuild confidence.</p></div>
-      </div>
-    </section>
-
-    <!-- Themes -->
-    <section id="themes">
-      <h2>Themes</h2>
-      <div class="grid cols-3">
-        <div class="tile"><h3>Factory & field ops</h3><p>Throughput, downtime, yield.</p></div>
-        <div class="tile"><h3>Services & trades</h3><p>Scheduling, crew utilization.</p></div>
-        <div class="tile"><h3>Retail & e-com</h3><p>Inventory turns, working capital.</p></div>
-        <div class="tile"><h3>Software inside</h3><p>Lightweight automation.</p></div>
-        <div class="tile"><h3>Product ops</h3><p>Roadmaps tied to cash.</p></div>
-        <div class="tile"><h3>People & cadence</h3><p>Scorecards, meeting debt.</p></div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-      <h2>FAQ</h2>
-      <div class="faq-item">
-        <strong>Is this a product launch?</strong>
-        <span>No — this is an informational wrapper for collaborators. The operator CTA exists for interested candidates.</span>
-      </div>
-      <div class="faq-item">
-        <strong>Where?</strong>
-        <span>Europe-centric with global reach. Remote-first; on-site for embeds.</span>
-      </div>
-      <div class="faq-item">
-        <strong>When?</strong>
-        <span>We’re assembling the founding cohort and partner network now.</span>
+        <a class="tile" href="#owner" aria-label="No risk to the business owner (details to come)">
+          <h3>No risk to the business owner</h3>
+          <p>[Placeholder text block where I'll be able to click into a more detailed page]</p>
+        </a>
+        <a class="tile" href="#operator" aria-label="Why would the operator do it (details to come)">
+          <h3>Why would the operator do it</h3>
+          <p>[Placeholder text block where I'll be able to click into a more detailed page]</p>
+        </a>
+        <a class="tile" href="#success" aria-label="Setting them up for success (details to come)">
+          <h3>Setting them up for success</h3>
+          <p>[Placeholder text block where I'll be able to click into a more detailed page]</p>
+        </a>
       </div>
     </section>
   </main>
 
-  <!-- Sticky CTA -->
+  <!-- Sticky CTA (kept minimal) -->
   <div class="cta-bar">
     <div class="cta-inner">
       <span>Operators:</span>
@@ -185,7 +170,7 @@
   </div>
 
   <footer>
-    © <span id="y"></span> Leadership
+    © <span id="y"></span> Turnaround
   </footer>
 
   <script>
