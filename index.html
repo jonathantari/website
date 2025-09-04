@@ -3,186 +3,142 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Landing Page</title>
-  <meta name="description" content="Simple, clean Material 3‑style landing page." />
+  <title>Leadership — Operators for Legacy Turnarounds</title>
+  <meta name="description" content="Informational landing page for a venture putting skilled entrepreneurial operators into legacy companies to lead turnarounds." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Rounded:FILL@1" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Material+Symbols+Rounded:FILL@1" rel="stylesheet">
   <style>
-    /* ===== Material 3-ish Design Tokens (minimal) ===== */
+    /* ===== Design tokens (your palette) ===== */
     :root {
-      --md-sys-color-primary: #6750A4;
-      --md-sys-color-on-primary: #FFFFFF;
-      --md-sys-color-secondary: #625B71;
-      --md-sys-color-surface: #FFFBFE;
-      --md-sys-color-on-surface: #1C1B1F;
-      --md-sys-color-outline: #79747E;
+      --bg: #F9FAFB;            /* Off-white */
+      --primary: #1E3A8A;       /* Deep navy */
+      --accent: #64748B;        /* Cool grey */
+      --highlight: #2563EB;     /* Electric blue */
+      --cta: #10B981;           /* Emerald */
+      --on-bg: #0B1020;         /* Very dark ink */
       --radius: 16px;
-      --elev-1: 0 1px 2px rgba(0,0,0,.08), 0 1px 1px rgba(0,0,0,.06);
-      --elev-2: 0 4px 8px rgba(0,0,0,.10), 0 2px 3px rgba(0,0,0,.08);
+      --e1: 0 1px 2px rgba(0,0,0,.06), 0 1px 1px rgba(0,0,0,.04);
       --container: 1080px;
     }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --md-sys-color-primary:#D0BCFF;
-        --md-sys-color-on-primary:#371E73;
-        --md-sys-color-secondary:#CCC2DC;
-        --md-sys-color-surface:#1C1B1F;
-        --md-sys-color-on-surface:#E6E1E5;
-        --md-sys-color-outline:#938F99;
-      }
-    }
 
-    *{box-sizing:border-box}
-    html,body{margin:0}
-    body{
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color:var(--md-sys-color-on-surface);
-      background:radial-gradient(1200px 600px at 50% -200px, rgba(103,80,164,.08), transparent 60%), var(--md-sys-color-surface);
-      line-height:1.55;
+      color: var(--on-bg);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    a{color:var(--md-sys-color-primary); text-decoration:none}
-    a:hover{text-decoration:underline}
+    a { color: var(--highlight); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    /* Layout */
-    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
-    header{
-      position:sticky; top:0; z-index:10; backdrop-filter:saturate(1.8) blur(8px);
-      background:color-mix(in srgb, var(--md-sys-color-surface) 86%, transparent);
-      border-bottom:1px solid color-mix(in srgb, var(--md-sys-color-outline) 16%, transparent);
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .nav .brand{display:flex; align-items:center; gap:10px; font-weight:700}
-    .chip{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--md-sys-color-outline); font-size:14px}
-    .nav a{margin-left:18px}
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(1.6) blur(8px);
+             background: rgba(249,250,251,0.8); border-bottom: 1px solid rgba(2,6,23,.06); }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
+    .brand { display:flex; align-items:center; gap:10px; font-weight: 800; letter-spacing: .2px; }
+    .brand span.logo { width:28px; height:28px; display:inline-grid; place-items:center; border-radius:8px; background: var(--primary); color: white; box-shadow: var(--e1); font-size:18px }
 
-    .hero{padding:72px 0 36px}
-    .hero h1{font-size: clamp(32px, 6vw, 56px); line-height:1.05; margin:0 0 12px}
-    .hero p{font-size: clamp(16px, 2.5vw, 20px); color: color-mix(in srgb, var(--md-sys-color-on-surface) 80%, transparent)}
-    .actions{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    main { padding: 56px 0 24px; }
+    .hero { padding: 56px 0 12px; }
+    .hero h1 { font-size: clamp(36px, 7vw, 72px); line-height: 1.05; margin: 0 0 12px; font-weight: 800; color: var(--primary); }
+    .hero p { font-size: clamp(16px, 2.4vw, 22px); color: var(--accent); margin: 0; }
 
-    .btn{display:inline-flex; align-items:center; gap:10px; border-radius:999px; padding:12px 18px; font-weight:600; cursor:pointer; border:1px solid transparent}
-    .btn.primary{background:var(--md-sys-color-primary); color:var(--md-sys-color-on-primary); box-shadow:var(--elev-2)}
-    .btn.outline{border-color:var(--md-sys-color-outline); color:var(--md-sys-color-on-surface); background:transparent}
+    section { padding: 24px 0; }
+    .section-title { font-size: 20px; margin: 0 0 10px; color: var(--primary); font-weight: 700; }
+    .muted { color: var(--accent); }
 
-    .grid{display:grid; gap:20px}
-    @media(min-width:800px){ .grid.cols-3{grid-template-columns: repeat(3, 1fr)} }
+    .pill { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px; border:1px solid rgba(2,6,23,.08); background:white; box-shadow: var(--e1); }
 
-    .card{background:color-mix(in srgb, var(--md-sys-color-surface) 96%, transparent); border:1px solid color-mix(in srgb, var(--md-sys-color-outline) 18%, transparent); border-radius:var(--radius); padding:18px; box-shadow:var(--elev-1)}
-    .card h3{margin:0 0 6px}
-    .card p{margin:0; color: color-mix(in srgb, var(--md-sys-color-on-surface) 80%, transparent)}
+    .card { background:white; border:1px solid rgba(2,6,23,.06); border-radius: var(--radius); padding:18px; box-shadow: var(--e1); }
 
-    section{padding:36px 0}
-    .section-title{font-size:22px; margin:0 0 14px}
+    .stack { display:grid; gap:14px; }
 
-    .surface{background:color-mix(in srgb, var(--md-sys-color-primary) 6%, var(--md-sys-color-surface)); border-top:1px solid color-mix(in srgb, var(--md-sys-color-outline) 16%, transparent)}
+    .spacer-xl { height: 72px; }
 
-    footer{padding:36px 0; font-size:14px; color: color-mix(in srgb, var(--md-sys-color-on-surface) 70%, transparent)}
+    .cta-bar { position: sticky; bottom: 10px; z-index: 20; }
+    .cta-inner { max-width: 680px; margin: 0 auto; background: white; border: 1px solid rgba(2,6,23,.08); border-radius: 999px; display:flex; align-items:center; gap:12px; padding: 10px 12px; box-shadow: var(--e1); }
+    .btn { display:inline-flex; align-items:center; gap:10px; border-radius: 999px; padding: 12px 18px; font-weight: 700; border: 1px solid transparent; cursor: pointer; }
+    .btn.cta { background: var(--cta); color: white; }
 
-    /* Utilities */
-    .row{display:flex; gap:12px; align-items:center}
-    .spacer{flex:1}
-    .hide-mobile{display:none}
-    @media(min-width:700px){ .hide-mobile{display:initial} }
+    footer { padding: 36px 0; font-size: 14px; color: var(--accent); }
 
-    /* Smooth scroll */
-    html{scroll-behavior:smooth}
+    /* keep the page intentionally spacious */
+    .roomy { padding: 8vh 0; }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
       <div class="brand">
-        <span class="material-symbols-rounded" aria-hidden="true">widgets</span>
-        <span>My Project</span>
+        <span class="logo">L</span>
+        Leadership
       </div>
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <button class="btn outline hide-mobile" id="themeToggle" aria-label="Toggle theme">Toggle theme</button>
+      <nav class="muted">
+        <!-- Intentionally minimal: informational page only -->
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <section class="hero" id="top">
-      <span class="chip"><span class="material-symbols-rounded" aria-hidden="true">bolt</span>New: Launching soon</span>
-      <h1>Clean, minimal landing page</h1>
-      <p>Material‑3‑inspired styling, no build step, deploy in minutes on GitHub Pages.
-      </p>
-      <div class="actions">
-        <a class="btn primary" href="#contact"><span class="material-symbols-rounded" aria-hidden>rocket_launch</span>Get early access</a>
-        <a class="btn outline" href="#features"><span class="material-symbols-rounded" aria-hidden>visibility</span>See features</a>
+    <section class="hero roomy" id="top">
+      <h1>Put entrepreneurial operators inside legacy companies to lead turnarounds.</h1>
+      <p class="muted">Industry‑agnostic. Cohort‑based. Practical, operator‑first training.</p>
+    </section>
+
+    <section aria-labelledby="what">
+      <h2 id="what" class="section-title">What we're building</h2>
+      <div class="card stack">
+        <p>We place skilled, entrepreneurial operators into established companies that are stalled or underperforming, and we equip them to lead turnaround and growth. The focus is execution: operational diagnostics, cash discipline, and getting teams shipping again.</p>
+        <ul class="muted" style="margin:0 0 0 18px">
+          <li>Operators are vetted and join a focused 3‑month cohort to prep for the first 120 days on the ground.</li>
+          <li>Tooling, playbooks, and a tight advisory loop — not theory.</li>
+          <li>Global outlook with a European core; sector‑agnostic.</li>
+        </ul>
       </div>
     </section>
 
-    <section id="features">
-      <h2 class="section-title">Features</h2>
-      <div class="grid cols-3">
-        <article class="card">
-          <h3>No build tools</h3>
-          <p>Single <code>index.html</code>. Edit, commit, ship.</p>
-        </article>
-        <article class="card">
-          <h3>Accessible & responsive</h3>
-          <p>Semantic elements, large touch targets, fluid typography.</p>
-        </article>
-        <article class="card">
-          <h3>Dark mode</h3>
-          <p>Respects system preference with a manual toggle.</p>
-        </article>
+    <section aria-labelledby="lines">
+      <h2 id="lines" class="section-title">Guiding lines</h2>
+      <div class="card">
+        <div class="stack">
+          <div class="pill">Put skilled entrepreneurial operators inside these companies. Train them. Let them lead turnarounds.</div>
+          <div class="pill">Industry agnostic.</div>
+          <div class="pill">Profit discipline first; culture follows momentum.</div>
+        </div>
       </div>
     </section>
+
+    <section aria-labelledby="who">
+      <h2 id="who" class="section-title">Who this page is for</h2>
+      <div class="card stack">
+        <p><strong>Builders & collaborators:</strong> product ops folks, PE/SMB investors, seasoned operators, and domain experts who want to help shape a pragmatic institute for turnarounds.</p>
+        <p class="muted">If you have experience in operations, turnaround work, or training programs and want to co‑build, we should talk.</p>
+      </div>
+    </section>
+
+    <div class="spacer-xl" aria-hidden="true"></div>
   </main>
 
-  <section class="surface" id="about">
-    <div class="container">
-      <h2 class="section-title">About</h2>
-      <div class="card">
-        <p>Swap in your own copy here. You can also embed a video, image, or newsletter form.
-        </p>
-      </div>
+  <!-- Sticky CTA kept minimal, appears near the bottom -->
+  <div class="cta-bar">
+    <div class="cta-inner">
+      <span class="muted">Operators:</span>
+      <a class="btn cta" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to join our operator cohort</a>
     </div>
-  </section>
-
-  <main class="container">
-    <section id="contact">
-      <h2 class="section-title">Get in touch</h2>
-      <div class="card">
-        <form name="contact" onsubmit="event.preventDefault(); alert('Replace with form handling');">
-          <div class="row" style="flex-wrap:wrap">
-            <input aria-label="Name" required placeholder="Your name" style="flex:1; min-width:220px; padding:12px 14px; border-radius:12px; border:1px solid var(--md-sys-color-outline); background:transparent; color:inherit" />
-            <input aria-label="Email" required type="email" placeholder="you@email.com" style="flex:1; min-width:220px; padding:12px 14px; border-radius:12px; border:1px solid var(--md-sys-color-outline); background:transparent; color:inherit" />
-          </div>
-          <textarea aria-label="Message" placeholder="Say hello…" rows="5" style="width:100%; margin-top:12px; padding:12px 14px; border-radius:12px; border:1px solid var(--md-sys-color-outline); background:transparent; color:inherit"></textarea>
-          <div class="row" style="margin-top:12px">
-            <div class="spacer"></div>
-            <button class="btn primary" type="submit"><span class="material-symbols-rounded" aria-hidden>send</span>Send</button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
+  </div>
 
   <footer>
-    <div class="container row">
-      <small>© <span id="y"></span> My Project</small>
-      <div class="spacer"></div>
-      <a href="#top" class="row">Back to top<span class="material-symbols-rounded" aria-hidden>north</span></a>
+    <div class="container">
+      <small>© <span id="y"></span> Leadership</small>
     </div>
   </footer>
 
   <script>
-    // Year stamp
     document.getElementById('y').textContent = new Date().getFullYear();
-    // Theme toggle (simple)
-    const btn = document.getElementById('themeToggle');
-    let forcedDark = false;
-    btn?.addEventListener('click', () => {
-      forcedDark = !forcedDark;
-      document.documentElement.style.colorScheme = forcedDark ? 'dark' : 'light';
-    });
   </script>
 </body>
 </html>
