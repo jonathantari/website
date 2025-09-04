@@ -34,6 +34,7 @@
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     html, body { margin: 0; padding: 0; }
     body {
       font-family: Inter, system-ui, sans-serif;
@@ -46,29 +47,10 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Background blobs */
-    .blob {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: .5;
-      z-index: -2;
-    }
-    .blob.navy { background: var(--primary); width: 640px; height: 640px; top: -220px; left: -220px; }
-    .blob.green { background: var(--cta); width: 520px; height: 520px; bottom: -160px; right: -160px; }
-    .blob.blue { background: var(--highlight); width: 420px; height: 420px; top: 45%; left: 58%; }
-
-    /* Noise overlay */
-    .noise {
-      position: fixed; inset: 0;
-      background-image: url("https://grainy-gradients.vercel.app/noise.png");
-      opacity: 0.07; pointer-events: none; z-index: -1;
-    }
-
     .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
 
     /* Header */
-    header { padding: var(--space-4) 0; display: flex; justify-content: space-between; align-items: center; }
+    header { padding: var(--space-4) 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
     .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 20px; }
     nav a { margin-left: var(--space-4); text-decoration: none; color: var(--ink); font-weight: 500; }
     nav a:hover { color: var(--primary); }
@@ -77,7 +59,7 @@
     section { padding: clamp(72px, 12vh, 128px) 0; }
     h1, h2, h3 { font-family: "Space Grotesk", sans-serif; font-weight: 700; margin: 0 0 var(--space-3); }
     h1 { font-size: clamp(40px, 7vw, 88px); line-height: 1.05; letter-spacing: -0.02em; }
-    h2 { font-size: clamp(22px, 2.6vw, 32px); letter-spacing: .02em; color: var(--primary); text-transform: none; }
+    h2 { font-size: clamp(22px, 2.6vw, 32px); letter-spacing: .02em; color: var(--primary); }
     h3 { font-size: clamp(18px, 2.2vw, 22px); }
     p { margin: 0 0 var(--space-3); }
     .lede { font-size: clamp(16px, 2.4vw, 22px); color: var(--accent); max-width: 880px; }
@@ -86,7 +68,7 @@
     .what { max-width: 980px; }
     .what p + p { margin-top: var(--space-3); }
 
-    /* Principles (nicer chips in responsive grid) */
+    /* Principles chips */
     .principles { 
       display: grid; 
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
@@ -94,7 +76,7 @@
       margin-top: var(--space-4);
     }
     .chip {
-      display: flex; align-items: center;
+      display: flex; align-items: center; justify-content: center;
       gap: var(--space-2);
       padding: 12px 14px;
       border-radius: 999px;
@@ -103,19 +85,25 @@
       box-shadow: 0 1px 2px rgba(0,0,0,.04);
       font-weight: 600;
       color: var(--ink);
-      white-space: nowrap;
-      justify-content: center;
+      transition: transform .25s ease, box-shadow .25s ease;
+      will-change: transform, box-shadow;
     }
     .chip small { color: var(--accent); font-weight: 500; }
+    .chip:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
 
     /* How it works cards */
     .grid { display: grid; gap: var(--space-4); }
     @media(min-width: 900px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
-    .tile { background: #fff; border: 1px solid rgba(2,6,23,.10); border-radius: 16px; padding: var(--space-4); transition: transform .2s, box-shadow .2s; }
-    .tile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .tile { 
+      background: #fff; border: 1px solid rgba(2,6,23,.10); border-radius: 16px; 
+      padding: var(--space-4); 
+      transition: transform .25s ease, box-shadow .25s ease; 
+      will-change: transform, box-shadow;
+    }
+    .tile:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
     .kicker { color: var(--highlight); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 12px; margin-bottom: var(--space-2); display: block; }
 
-    /* The three deep-dive sections (scroll-to) */
+    /* The three deep-dive sections */
     .section-tight { padding-top: clamp(56px, 8vh, 96px); padding-bottom: clamp(56px, 8vh, 96px); }
     .section-tight h2 { margin-bottom: var(--space-2); }
     .section-tight p { color: var(--accent); }
@@ -127,10 +115,56 @@
       border-radius: 999px; padding: 12px 20px;
       display: flex; align-items: center; gap: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,.06);
+      transform: translateY(12px); opacity: 0; 
+      transition: transform .6s cubic-bezier(.2,.6,.2,1), opacity .6s ease;
     }
-    .btn { background: var(--cta); color: white; border: none; border-radius: 999px; padding: 12px 20px; font-weight: 700; cursor: pointer; text-decoration: none; }
+    .cta-inner.revealed { transform: translateY(0); opacity: 1; }
+    .btn { 
+      background: var(--cta); color: white; 
+      border: none; border-radius: 999px; 
+      padding: 12px 20px; font-weight: 700; cursor: pointer; text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16,185,129,.25); filter: brightness(1.02); }
 
     footer { text-align: center; padding: var(--space-8) 0 var(--space-5); color: var(--accent); font-size: 14px; }
+
+    /* Background blobs + noise (animated) */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: .5;
+      z-index: -2;
+      animation: float 22s ease-in-out infinite;
+    }
+    .blob.navy { background: var(--primary); width: 640px; height: 640px; top: -220px; left: -220px; animation-duration: 28s; }
+    .blob.green { background: var(--cta); width: 520px; height: 520px; bottom: -160px; right: -160px; animation-duration: 24s; animation-direction: reverse; }
+    .blob.blue { background: var(--highlight); width: 420px; height: 420px; top: 45%; left: 58%; animation-duration: 30s; }
+
+    @keyframes float {
+      0%   { transform: translate(0, 0) scale(1); }
+      25%  { transform: translate(20px, -10px) scale(1.03); }
+      50%  { transform: translate(-10px, 10px) scale(0.98); }
+      75%  { transform: translate(-18px, -6px) scale(1.02); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    .noise { position: fixed; inset: 0; background-image: url("https://grainy-gradients.vercel.app/noise.png"); opacity: 0.06; pointer-events: none; z-index: -1; animation: hiss 8s ease-in-out infinite; }
+    @keyframes hiss { 0%,100% { opacity: 0.05; } 50% { opacity: 0.075; } }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.6,.2,1); will-change: opacity, transform; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .blob, .noise, .reveal, .cta-inner { animation: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      .cta-inner { opacity: 1; transform: none; }
+      .chip, .tile, .btn { transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -140,7 +174,7 @@
   <div class="blob blue"></div>
   <div class="noise"></div>
 
-  <header class="container">
+  <header class="container reveal">
     <div class="brand">Turnaround</div>
     <nav>
       <a href="#about">What we do</a>
@@ -154,20 +188,20 @@
 
   <main class="container">
     <!-- Hero -->
-    <section id="top">
+    <section id="top" class="reveal">
       <h1>Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
       <p class="lede">Supporting the backbone of the local economy. Improving jobs. Making better managers.</p>
     </section>
 
     <!-- What we do -->
-    <section id="about" class="what">
+    <section id="about" class="what reveal">
       <h2>What we do</h2>
       <p>We embed vetted, trained operators into stalled companies. We set them up for success with carefully crafted guardrails to reduce risk to both the business and the operator. Our purpose is intentional and laser focused, and our program is designed in the same way.</p>
       <p><strong>The result:</strong> An interim CEO who has 1 year to turn the business around — with a mandate to translate that cash flow right back to the employees.</p>
     </section>
 
-    <!-- Principles (clean chip grid) -->
-    <section id="principles">
+    <!-- Principles -->
+    <section id="principles" class="reveal">
       <h2>Our Principles</h2>
       <div class="principles">
         <div class="chip">Pass profit back to employees</div>
@@ -179,40 +213,28 @@
       </div>
     </section>
 
-    <!-- How it works (intersperse original content for depth) -->
-    <section id="how">
+    <!-- How it works -->
+    <section id="how" class="reveal">
       <h2>How it works</h2>
       <div class="grid cols-3">
-        <div class="tile">
-          <span class="kicker">1 · Vet & Match</span>
-          <h3>Curate operators. Set mandate.</h3>
-          <p>We maintain a curated pool mapped by capability and references, then pair with companies that grant real authority and a clear turnaround mandate.</p>
-        </div>
-        <div class="tile">
-          <span class="kicker">2 · Prep & Plan</span>
-          <h3>3-month cohort. First 120 days.</h3>
-          <p>Focused prep on diagnostics, cash clarity, throughput, and stakeholder alignment — all aimed at the first 30-60-90 on site.</p>
-        </div>
-        <div class="tile">
-          <span class="kicker">3 · Embed & Ship</span>
-          <h3>Measured execution. Visible wins.</h3>
-          <p>Weekly metrics, ruthless scope cuts, and shipping cadence to rebuild confidence and stabilize the business.</p>
-        </div>
+        <div class="tile reveal"><span class="kicker">1 · Vet & Match</span><h3>Curate operators. Set mandate.</h3><p>We maintain a curated pool mapped by capability and references, then pair with companies that grant real authority and a clear turnaround mandate.</p></div>
+        <div class="tile reveal"><span class="kicker">2 · Prep & Plan</span><h3>3-month cohort. First 120 days.</h3><p>Focused prep on diagnostics, cash clarity, throughput, and stakeholder alignment — all aimed at the first 30-60-90 on site.</p></div>
+        <div class="tile reveal"><span class="kicker">3 · Embed & Ship</span><h3>Measured execution. Visible wins.</h3><p>Weekly metrics, ruthless scope cuts, and shipping cadence to rebuild confidence and stabilize the business.</p></div>
       </div>
     </section>
 
-    <!-- The three scroll-down sections (no placeholders) -->
-    <section id="owner" class="section-tight">
+    <!-- Deep-dive sections -->
+    <section id="owner" class="section-tight reveal">
       <h2>No risk to the business owner</h2>
       <p>Structured guardrails, aligned incentives, and an interim model designed to protect the core business while unlocking turnaround upside.</p>
     </section>
 
-    <section id="operator" class="section-tight">
+    <section id="operator" class="section-tight reveal">
       <h2>Why would the operator do it</h2>
       <p>Mission-driven work with real authority, a crisp 12-month mandate, and upside tied to durable cash flow and employee outcomes.</p>
     </section>
 
-    <section id="success" class="section-tight">
+    <section id="success" class="section-tight reveal">
       <h2>Setting them up for success</h2>
       <p>Cohort training, playbooks, advisor cadence, and lightweight tooling — all engineered to make the first 120 days count.</p>
     </section>
@@ -220,7 +242,7 @@
 
   <!-- Sticky CTA -->
   <div class="cta-bar">
-    <div class="cta-inner">
+    <div class="cta-inner" id="cta">
       <span>Operators:</span>
       <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to join our operator cohort</a>
     </div>
@@ -231,7 +253,35 @@
   </footer>
 
   <script>
+    // Year stamp
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Simple intersection observer for scroll reveals
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          // Unobserve once revealed to avoid repeated work
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Reveal sticky CTA after first scroll
+    const cta = document.getElementById('cta');
+    let ctaShown = false;
+    const showCta = () => {
+      if (!ctaShown) {
+        cta.classList.add('revealed');
+        ctaShown = true;
+        window.removeEventListener('scroll', showCta);
+      }
+    };
+    window.addEventListener('scroll', showCta, { passive: true });
+    // In case the page is already scrolled on load
+    if (window.scrollY > 20) showCta();
   </script>
 </body>
 </html>
