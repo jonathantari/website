@@ -6,7 +6,7 @@
   <title>Turnaround — Entrepreneurial Operators for Legacy Companies</title>
   <meta name="description" content="Turnaround embeds vetted operators into stalled companies to lead pragmatic, employee-centered turnarounds." />
 
-  <!-- Favicon (place turnaround-favicon.png in the same /site/ folder) -->
+  <!-- Favicon (place turnaround-favicon.png in /site/) -->
   <link rel="icon" href="turnaround-favicon.png" type="image/png">
 
   <!-- Fonts -->
@@ -22,6 +22,15 @@
       --cta: #10B981;         /* Emerald */
       --radius: 16px;
       --container: 1100px;
+
+      --space-1: 8px;
+      --space-2: 12px;
+      --space-3: 16px;
+      --space-4: 24px;
+      --space-5: 32px;
+      --space-6: 48px;
+      --space-7: 72px;
+      --space-8: 96px;
     }
 
     * { box-sizing: border-box; }
@@ -33,6 +42,8 @@
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* Background blobs */
@@ -40,12 +51,12 @@
       position: fixed;
       border-radius: 50%;
       filter: blur(120px);
-      opacity: 0.5;
+      opacity: .5;
       z-index: -2;
     }
-    .blob.navy { background: var(--primary); width: 600px; height: 600px; top: -200px; left: -200px; }
-    .blob.green { background: var(--cta); width: 500px; height: 500px; bottom: -150px; right: -150px; }
-    .blob.blue { background: var(--highlight); width: 400px; height: 400px; top: 40%; left: 60%; }
+    .blob.navy { background: var(--primary); width: 640px; height: 640px; top: -220px; left: -220px; }
+    .blob.green { background: var(--cta); width: 520px; height: 520px; bottom: -160px; right: -160px; }
+    .blob.blue { background: var(--highlight); width: 420px; height: 420px; top: 45%; left: 58%; }
 
     /* Noise overlay */
     .noise {
@@ -56,47 +67,70 @@
 
     .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
 
-    header { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+    /* Header */
+    header { padding: var(--space-4) 0; display: flex; justify-content: space-between; align-items: center; }
     .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 20px; }
-    nav a { margin-left: 18px; text-decoration: none; color: var(--ink); font-weight: 500; }
+    nav a { margin-left: var(--space-4); text-decoration: none; color: var(--ink); font-weight: 500; }
     nav a:hover { color: var(--primary); }
 
-    section { padding: 14vh 0; }
-    h1, h2, h3 { font-family: "Space Grotesk", sans-serif; font-weight: 700; margin: 0 0 16px; }
-    h1 { font-size: clamp(40px, 7vw, 88px); line-height: 1.05; }
-    p { margin: 0 0 12px; }
+    /* Sections & type */
+    section { padding: clamp(72px, 12vh, 128px) 0; }
+    h1, h2, h3 { font-family: "Space Grotesk", sans-serif; font-weight: 700; margin: 0 0 var(--space-3); }
+    h1 { font-size: clamp(40px, 7vw, 88px); line-height: 1.05; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(22px, 2.6vw, 32px); letter-spacing: .02em; color: var(--primary); text-transform: none; }
+    h3 { font-size: clamp(18px, 2.2vw, 22px); }
+    p { margin: 0 0 var(--space-3); }
+    .lede { font-size: clamp(16px, 2.4vw, 22px); color: var(--accent); max-width: 880px; }
 
-    .sub { font-size: clamp(16px, 2.5vw, 22px); color: var(--accent); max-width: 880px; }
+    /* “What we do” text block */
+    .what { max-width: 980px; }
+    .what p + p { margin-top: var(--space-3); }
 
-    .pill-list { display: grid; gap: 10px; margin-top: 8px; }
-    .pill { display: inline-block; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(2,6,23,.1); background: white; font-weight: 600; }
+    /* Principles (nicer chips in responsive grid) */
+    .principles { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      gap: var(--space-3); 
+      margin-top: var(--space-4);
+    }
+    .chip {
+      display: flex; align-items: center;
+      gap: var(--space-2);
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(2,6,23,.10);
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+      justify-content: center;
+    }
+    .chip small { color: var(--accent); font-weight: 500; }
 
-    .grid { display: grid; gap: 20px; }
+    /* How it works cards */
+    .grid { display: grid; gap: var(--space-4); }
     @media(min-width: 900px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+    .tile { background: #fff; border: 1px solid rgba(2,6,23,.10); border-radius: 16px; padding: var(--space-4); transition: transform .2s, box-shadow .2s; }
+    .tile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+    .kicker { color: var(--highlight); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 12px; margin-bottom: var(--space-2); display: block; }
 
-    .tile { background: white; border: 1px solid rgba(2,6,23,.1); border-radius: 16px; padding: 20px; transition: transform .2s, box-shadow .2s; }
-    .tile:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.08); }
-    .tile h3 { margin: 0 0 8px; }
+    /* The three deep-dive sections (scroll-to) */
+    .section-tight { padding-top: clamp(56px, 8vh, 96px); padding-bottom: clamp(56px, 8vh, 96px); }
+    .section-tight h2 { margin-bottom: var(--space-2); }
+    .section-tight p { color: var(--accent); }
 
     /* Sticky CTA */
-    .cta-bar {
-      position: sticky; bottom: 12px; z-index: 40;
-      display: flex; justify-content: center;
-    }
+    .cta-bar { position: sticky; bottom: 12px; z-index: 40; display: flex; justify-content: center; }
     .cta-inner {
       background: white; border: 1px solid rgba(2,6,23,.08);
       border-radius: 999px; padding: 12px 20px;
       display: flex; align-items: center; gap: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,.06);
     }
-    .btn {
-      background: var(--cta); color: white;
-      border: none; border-radius: 999px;
-      padding: 12px 20px; font-weight: 700;
-      cursor: pointer; text-decoration: none;
-    }
+    .btn { background: var(--cta); color: white; border: none; border-radius: 999px; padding: 12px 20px; font-weight: 700; cursor: pointer; text-decoration: none; }
 
-    footer { text-align: center; padding: 60px 0 30px; color: var(--accent); font-size: 14px; }
+    footer { text-align: center; padding: var(--space-8) 0 var(--space-5); color: var(--accent); font-size: 14px; }
   </style>
 </head>
 <body>
@@ -110,8 +144,11 @@
     <div class="brand">Turnaround</div>
     <nav>
       <a href="#about">What we do</a>
-      <a href="#principles">Our Principles</a>
-      <a href="#details">Details</a>
+      <a href="#principles">Principles</a>
+      <a href="#how">How</a>
+      <a href="#owner">Owner</a>
+      <a href="#operator">Operator</a>
+      <a href="#success">Success</a>
     </nav>
   </header>
 
@@ -119,49 +156,69 @@
     <!-- Hero -->
     <section id="top">
       <h1>Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
-      <p class="sub">Supporting the backbone of the local economy. Improving jobs. Making better managers.</p>
+      <p class="lede">Supporting the backbone of the local economy. Improving jobs. Making better managers.</p>
     </section>
 
     <!-- What we do -->
-    <section id="about">
+    <section id="about" class="what">
       <h2>What we do</h2>
       <p>We embed vetted, trained operators into stalled companies. We set them up for success with carefully crafted guardrails to reduce risk to both the business and the operator. Our purpose is intentional and laser focused, and our program is designed in the same way.</p>
-      <p><strong>The result:</strong> An interim CEO who has 1 year to turn the business around. And a mandate to translate that cash flow right back to the employees.</p>
+      <p><strong>The result:</strong> An interim CEO who has 1 year to turn the business around — with a mandate to translate that cash flow right back to the employees.</p>
     </section>
 
-    <!-- Principles -->
+    <!-- Principles (clean chip grid) -->
     <section id="principles">
       <h2>Our Principles</h2>
-      <div class="pill-list">
-        <span class="pill">Pass profit back to employees</span>
-        <span class="pill">Repeatable and de-risked programmatic approach</span>
-        <span class="pill">Industry agnostic</span>
-        <span class="pill">Laser focus with data tools and training</span>
-        <span class="pill">Cash flow positive is north star</span>
-        <span class="pill">Incentives aligned — We are a 501C3 Non Profit</span>
+      <div class="principles">
+        <div class="chip">Pass profit back to employees</div>
+        <div class="chip">Repeatable, de-risked program</div>
+        <div class="chip">Industry agnostic</div>
+        <div class="chip">Laser focus + data tooling</div>
+        <div class="chip">Cash-flow positive is north star</div>
+        <div class="chip">Aligned incentives — <small>501(c)(3)</small></div>
       </div>
     </section>
 
-    <!-- Three detail tiles -->
-    <section id="details">
+    <!-- How it works (intersperse original content for depth) -->
+    <section id="how">
+      <h2>How it works</h2>
       <div class="grid cols-3">
-        <a class="tile" href="#owner" aria-label="No risk to the business owner (details to come)">
-          <h3>No risk to the business owner</h3>
-          <p>[Placeholder text block where I'll be able to click into a more detailed page]</p>
-        </a>
-        <a class="tile" href="#operator" aria-label="Why would the operator do it (details to come)">
-          <h3>Why would the operator do it</h3>
-          <p>[Placeholder text block where I'll be able to click into a more detailed page]</p>
-        </a>
-        <a class="tile" href="#success" aria-label="Setting them up for success (details to come)">
-          <h3>Setting them up for success</h3>
-          <p>[Placeholder text block where I'll be able to click into a more detailed page]</p>
-        </a>
+        <div class="tile">
+          <span class="kicker">1 · Vet & Match</span>
+          <h3>Curate operators. Set mandate.</h3>
+          <p>We maintain a curated pool mapped by capability and references, then pair with companies that grant real authority and a clear turnaround mandate.</p>
+        </div>
+        <div class="tile">
+          <span class="kicker">2 · Prep & Plan</span>
+          <h3>3-month cohort. First 120 days.</h3>
+          <p>Focused prep on diagnostics, cash clarity, throughput, and stakeholder alignment — all aimed at the first 30-60-90 on site.</p>
+        </div>
+        <div class="tile">
+          <span class="kicker">3 · Embed & Ship</span>
+          <h3>Measured execution. Visible wins.</h3>
+          <p>Weekly metrics, ruthless scope cuts, and shipping cadence to rebuild confidence and stabilize the business.</p>
+        </div>
       </div>
+    </section>
+
+    <!-- The three scroll-down sections (no placeholders) -->
+    <section id="owner" class="section-tight">
+      <h2>No risk to the business owner</h2>
+      <p>Structured guardrails, aligned incentives, and an interim model designed to protect the core business while unlocking turnaround upside.</p>
+    </section>
+
+    <section id="operator" class="section-tight">
+      <h2>Why would the operator do it</h2>
+      <p>Mission-driven work with real authority, a crisp 12-month mandate, and upside tied to durable cash flow and employee outcomes.</p>
+    </section>
+
+    <section id="success" class="section-tight">
+      <h2>Setting them up for success</h2>
+      <p>Cohort training, playbooks, advisor cadence, and lightweight tooling — all engineered to make the first 120 days count.</p>
     </section>
   </main>
 
-  <!-- Sticky CTA (kept minimal) -->
+  <!-- Sticky CTA -->
   <div class="cta-bar">
     <div class="cta-inner">
       <span>Operators:</span>
