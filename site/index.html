@@ -1,287 +1,342 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Turnaround — Entrepreneurial Operators for Legacy Companies</title>
-  <meta name="description" content="Turnaround embeds vetted operators into stalled companies to lead pragmatic, employee-centered turnarounds." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Turnaround — Manifesto</title>
+<meta name="description" content="A manifesto for entrepreneurial operators: an alternative path to high-impact leadership and healthier local economies." />
+<link rel="icon" href="turnaround-favicon.png" type="image/png" />
 
-  <!-- Favicon (place turnaround-favicon.png in /site/) -->
-  <link rel="icon" href="turnaround-favicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* European Tech Optimism */
+    --bg:#F3F4F6;          /* Cool grey */
+    --ink:#0B1020;         /* Deep ink */
+    --primary:#0F766E;     /* Dark teal */
+    --secondary:#F59E0B;   /* Muted mustard */
+    --accent:#38BDF8;      /* Sky blue */
+    --cta:#7C3AED;         /* Rich violet */
 
-  <style>
-    :root {
-      --bg: #F9FAFB;          /* Off-white */
-      --ink: #0B1020;         /* Dark ink */
-      --primary: #1E3A8A;     /* Deep navy */
-      --accent: #64748B;      /* Cool grey */
-      --highlight: #2563EB;   /* Electric blue */
-      --cta: #10B981;         /* Emerald */
-      --radius: 16px;
-      --container: 1100px;
+    --container: 860px;
+    --maxwidth-wide: 1100px;
+    --radius: 14px;
 
-      --space-1: 8px;
-      --space-2: 12px;
-      --space-3: 16px;
-      --space-4: 24px;
-      --space-5: 32px;
-      --space-6: 48px;
-      --space-7: 72px;
-      --space-8: 96px;
-    }
+    --s1: 8px; --s2: 12px; --s3: 16px; --s4: 24px;
+    --s5: 32px; --s6: 48px; --s7: 72px; --s8: 96px;
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: Inter, system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    --shadow-1: 0 1px 2px rgba(0,0,0,.05), 0 1px 1px rgba(0,0,0,.04);
+    --shadow-2: 0 10px 30px rgba(0,0,0,.10);
+  }
 
-    .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html, body { margin:0; padding:0 }
+  body{
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color .5s ease;
+  }
 
-    /* Header */
-    header { padding: var(--space-4) 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
-    .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 20px; }
-    nav a { margin-left: var(--space-4); text-decoration: none; color: var(--ink); font-weight: 500; }
-    nav a:hover { color: var(--primary); }
+  .wrap { max-width: var(--maxwidth-wide); margin: 0 auto; padding: 0 20px; }
+  .container { max-width: var(--container); margin: 0 auto; }
 
-    /* Sections & type */
-    section { padding: clamp(72px, 12vh, 128px) 0; }
-    h1, h2, h3 { font-family: "Space Grotesk", sans-serif; font-weight: 700; margin: 0 0 var(--space-3); }
-    h1 { font-size: clamp(40px, 7vw, 88px); line-height: 1.05; letter-spacing: -0.02em; }
-    h2 { font-size: clamp(22px, 2.6vw, 32px); letter-spacing: .02em; color: var(--primary); }
-    h3 { font-size: clamp(18px, 2.2vw, 22px); }
-    p { margin: 0 0 var(--space-3); }
-    .lede { font-size: clamp(16px, 2.4vw, 22px); color: var(--accent); max-width: 880px; }
+  /* Progress bar */
+  .progress {
+    position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 50;
+    transform-origin: 0 50%; transform: scaleX(0);
+    background: linear-gradient(90deg, var(--accent), var(--cta));
+    box-shadow: 0 1px 8px rgba(124,58,237,.25);
+  }
 
-    /* “What we do” text block */
-    .what { max-width: 980px; }
-    .what p + p { margin-top: var(--space-3); }
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 40;
+    backdrop-filter: saturate(1.4) blur(8px);
+    background: rgba(243,244,246,.85);
+    border-bottom: 1px solid rgba(2,6,23,.06);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--s3) 0;
+  }
+  .brand {
+    display:flex; align-items:center; gap: 10px;
+    font-family: "Space Grotesk", Inter, system-ui;
+    font-weight: 700; letter-spacing: .2px; color: var(--primary);
+  }
+  .brand-mark {
+    width: 26px; height: 26px; display:grid; place-items:center;
+    border-radius: 8px; background: var(--primary); color: #fff;
+    box-shadow: var(--shadow-1);
+  }
+  .nav a { color: var(--ink); text-decoration: none; margin-left: var(--s4); font-weight: 500; }
+  .nav a:hover { color: var(--primary); }
 
-    /* Principles chips */
-    .principles { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-      gap: var(--space-3); 
-      margin-top: var(--space-4);
-    }
-    .chip {
-      display: flex; align-items: center; justify-content: center;
-      gap: var(--space-2);
-      padding: 12px 14px;
-      border-radius: 999px;
-      background: #fff;
-      border: 1px solid rgba(2,6,23,.10);
-      box-shadow: 0 1px 2px rgba(0,0,0,.04);
-      font-weight: 600;
-      color: var(--ink);
-      transition: transform .25s ease, box-shadow .25s ease;
-      will-change: transform, box-shadow;
-    }
-    .chip small { color: var(--accent); font-weight: 500; }
-    .chip:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+  /* Hero */
+  .hero {
+    padding: clamp(56px, 12vh, 120px) 0 var(--s6);
+  }
+  .kicker {
+    color: var(--secondary); text-transform: uppercase; font-weight: 700; letter-spacing: .12em;
+    font-size: 12px; margin-bottom: var(--s2);
+  }
+  h1 {
+    font-family: "Space Grotesk", Inter, system-ui;
+    font-size: clamp(36px, 7vw, 72px);
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 var(--s3);
+  }
+  .lede {
+    font-size: clamp(16px, 2.3vw, 22px);
+    color: #334155;
+    max-width: 720px;
+    margin-bottom: var(--s5);
+  }
 
-    /* How it works cards */
-    .grid { display: grid; gap: var(--space-4); }
-    @media(min-width: 900px) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
-    .tile { 
-      background: #fff; border: 1px solid rgba(2,6,23,.10); border-radius: 16px; 
-      padding: var(--space-4); 
-      transition: transform .25s ease, box-shadow .25s ease; 
-      will-change: transform, box-shadow;
-    }
-    .tile:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-    .kicker { color: var(--highlight); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 12px; margin-bottom: var(--space-2); display: block; }
+  /* Article */
+  article { padding: 0 0 var(--s8); }
+  article p { margin: 0 0 var(--s4); }
+  .section { margin: var(--s7) 0; }
 
-    /* The three deep-dive sections */
-    .section-tight { padding-top: clamp(56px, 8vh, 96px); padding-bottom: clamp(56px, 8vh, 96px); }
-    .section-tight h2 { margin-bottom: var(--space-2); }
-    .section-tight p { color: var(--accent); }
+  /* Pull quotes */
+  .pull {
+    position: relative;
+    margin: var(--s6) auto;
+    padding: var(--s4) var(--s5);
+    border-radius: var(--radius);
+    background: #ffffff;
+    border: 1px solid rgba(2,6,23,.06);
+    box-shadow: var(--shadow-1);
+  }
+  .pull q {
+    quotes: "“" "”" "‘" "’";
+    display: block;
+    font-family: "Space Grotesk", Inter, system-ui;
+    font-size: clamp(22px, 3.4vw, 34px);
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .pull q:before { content: open-quote; color: var(--accent); }
+  .pull q:after  { content: close-quote; color: var(--accent); }
+  .pull .meta {
+    margin-top: var(--s2);
+    color: #64748B; font-size: 13px;
+  }
 
-    /* Sticky CTA */
-    .cta-bar { position: sticky; bottom: 12px; z-index: 40; display: flex; justify-content: center; }
-    .cta-inner {
-      background: white; border: 1px solid rgba(2,6,23,.08);
-      border-radius: 999px; padding: 12px 20px;
-      display: flex; align-items: center; gap: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,.06);
-      transform: translateY(12px); opacity: 0; 
-      transition: transform .6s cubic-bezier(.2,.6,.2,1), opacity .6s ease;
-    }
-    .cta-inner.revealed { transform: translateY(0); opacity: 1; }
-    .btn { 
-      background: var(--cta); color: white; 
-      border: none; border-radius: 999px; 
-      padding: 12px 20px; font-weight: 700; cursor: pointer; text-decoration: none;
-      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
-    }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16,185,129,.25); filter: brightness(1.02); }
+  /* Emphasis bands */
+  .band {
+    background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.9));
+    border: 1px solid rgba(2,6,23,.06);
+    border-left: 6px solid var(--primary);
+    border-radius: 12px;
+    padding: var(--s4);
+    box-shadow: var(--shadow-1);
+    margin: var(--s6) 0;
+  }
 
-    footer { text-align: center; padding: var(--space-8) 0 var(--space-5); color: var(--accent); font-size: 14px; }
+  /* Footnote graphic */
+  .footnote {
+    margin: var(--s7) auto var(--s6);
+    padding: var(--s4);
+    background: #fff;
+    border: 1px solid rgba(2,6,23,.08);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-1);
+  }
+  .flow-graph {
+    display: grid; gap: var(--s3);
+  }
+  @media(min-width: 820px){
+    .flow-graph { grid-template-columns: repeat(4, 1fr); align-items: center; }
+  }
+  .flow-step {
+    text-align: center; padding: var(--s3);
+    border-radius: 12px; background: #FAFAFF;
+    border: 1px dashed rgba(2,6,23,.08);
+  }
+  .flow-step h4 { margin: 0 0 var(--s2); font-size: 14px; color: var(--primary) }
+  .arrow {
+    display: none; text-align: center; color: var(--cta); font-weight: 700;
+  }
+  @media(min-width: 820px){ .arrow { display: block; } }
 
-    /* Background blobs + noise (animated) */
-    .blob {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: .5;
-      z-index: -2;
-      animation: float 22s ease-in-out infinite;
-    }
-    .blob.navy { background: var(--primary); width: 640px; height: 640px; top: -220px; left: -220px; animation-duration: 28s; }
-    .blob.green { background: var(--cta); width: 520px; height: 520px; bottom: -160px; right: -160px; animation-duration: 24s; animation-direction: reverse; }
-    .blob.blue { background: var(--highlight); width: 420px; height: 420px; top: 45%; left: 58%; animation-duration: 30s; }
+  /* Progress & reveals */
+  .reveal { opacity: 0; transform: translateY(14px); }
+  .progress { will-change: transform; }
 
-    @keyframes float {
-      0%   { transform: translate(0, 0) scale(1); }
-      25%  { transform: translate(20px, -10px) scale(1.03); }
-      50%  { transform: translate(-10px, 10px) scale(0.98); }
-      75%  { transform: translate(-18px, -6px) scale(1.02); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
+  /* Parallax backdrop accents (soft blobs) */
+  .blob {
+    position: fixed; z-index: -1; border-radius: 50%;
+    filter: blur(100px); opacity: .4; will-change: transform;
+  }
+  .blob.teal  { background: var(--primary); width: 520px; height: 520px; top: -180px; left: -180px; }
+  .blob.violet{ background: var(--cta);     width: 440px; height: 440px; bottom: -140px; right: -140px; }
+  .blob.sky   { background: var(--accent);  width: 360px; height: 360px; top: 40%; left: 60%; }
 
-    .noise { position: fixed; inset: 0; background-image: url("https://grainy-gradients.vercel.app/noise.png"); opacity: 0.06; pointer-events: none; z-index: -1; animation: hiss 8s ease-in-out infinite; }
-    @keyframes hiss { 0%,100% { opacity: 0.05; } 50% { opacity: 0.075; } }
+  /* Footer */
+  footer { padding: var(--s6) 0 var(--s5); color: #667085; font-size: 14px; border-top: 1px solid rgba(2,6,23,.06); }
 
-    /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.6,.2,1); will-change: opacity, transform; }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-
-    /* Respect reduced motion */
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .blob, .noise, .reveal, .cta-inner { animation: none !important; }
-      .reveal { opacity: 1; transform: none; }
-      .cta-inner { opacity: 1; transform: none; }
-      .chip, .tile, .btn { transition: none; }
-    }
-  </style>
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1; transform:none}
+  }
+</style>
 </head>
 <body>
-  <!-- Background elements -->
-  <div class="blob navy"></div>
-  <div class="blob green"></div>
-  <div class="blob blue"></div>
-  <div class="noise"></div>
+  <!-- progress -->
+  <div class="progress" id="progress"></div>
 
-  <header class="container reveal">
-    <div class="brand">Turnaround</div>
-    <nav>
-      <a href="#about">What we do</a>
-      <a href="#principles">Principles</a>
-      <a href="#how">How</a>
-      <a href="#owner">Owner</a>
-      <a href="#operator">Operator</a>
-      <a href="#success">Success</a>
-    </nav>
+  <!-- backdrop blobs -->
+  <div class="blob teal"  data-depth="0.05"></div>
+  <div class="blob violet" data-depth="-0.04"></div>
+  <div class="blob sky"   data-depth="0.03"></div>
+
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <span class="brand-mark">TA</span> Turnaround
+      </div>
+      <nav>
+        <a href="../">Home</a>
+        <a href="#top">Manifesto</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="container">
-    <!-- Hero -->
-    <section id="top" class="reveal">
-      <h1>Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
-      <p class="lede">Supporting the backbone of the local economy. Improving jobs. Making better managers.</p>
+  <main id="top" class="wrap">
+    <section class="hero container reveal">
+      <div class="kicker">Manifesto</div>
+      <h1>Another path to big, human impact</h1>
+      <p class="lede">A narrative for ambitious operators who want to lead real companies, steward jobs, and modernize the economic backbone — without having to start from zero.</p>
     </section>
 
-    <!-- What we do -->
-    <section id="about" class="what reveal">
-      <h2>What we do</h2>
-      <p>We embed vetted, trained operators into stalled companies. We set them up for success with carefully crafted guardrails to reduce risk to both the business and the operator. Our purpose is intentional and laser focused, and our program is designed in the same way.</p>
-      <p><strong>The result:</strong> An interim CEO who has 1 year to turn the business around — with a mandate to translate that cash flow right back to the employees.</p>
-    </section>
+    <article class="container">
+      <!-- Pull quote 1 -->
+      <aside class="pull reveal">
+        <q>I think we can do better for these founders-to-be.</q>
+        <div class="meta">A prompt to rethink the only path we glorify.</div>
+      </aside>
 
-    <!-- Principles -->
-    <section id="principles" class="reveal">
-      <h2>Our Principles</h2>
-      <div class="principles">
-        <div class="chip">Pass profit back to employees</div>
-        <div class="chip">Repeatable, de-risked program</div>
-        <div class="chip">Industry agnostic</div>
-        <div class="chip">Laser focus + data tooling</div>
-        <div class="chip">Cash-flow positive is north star</div>
-        <div class="chip">Aligned incentives — <small>501(c)(3)</small></div>
-      </div>
-    </section>
+      <!-- Original text (word-for-word) -->
+      <section class="section reveal">
+        <p>There is this problem in the world. Ambitious people - entrepreneurs, founder-wannabes, people who are inspired to take the leap from their day jobs and become their own boss - those people's best option is to start a startup. That’s great, but should that be the only option? The path (coming up with a product, trying to be competitive in the market, and then ultimately building and leading the company around that venture) may not really be what they're excited about. It might be that they want to lead a company and drive enormous impact, but the successful startup is in the way of them getting there. Shouldn't they at least be able to consider an alternative? Don’t get me wrong - much of our innovation and many amazing products come from this path. But not every ambitious CEO-to-be needs to build a new product from scratch in order to have the impact that they want. And not every startup-to-be should exist in the world. It can be obvious when the product is a means to an end - simply a niche someone found which they want to build a business around. And there's nothing wrong with that - it is pretty easy to see how it happens. But I think we could do better.</p>
+      </section>
 
-    <!-- How it works -->
-    <section id="how" class="reveal">
-      <h2>How it works</h2>
-      <div class="grid cols-3">
-        <div class="tile reveal"><span class="kicker">1 · Vet & Match</span><h3>Curate operators. Set mandate.</h3><p>We maintain a curated pool mapped by capability and references, then pair with companies that grant real authority and a clear turnaround mandate.</p></div>
-        <div class="tile reveal"><span class="kicker">2 · Prep & Plan</span><h3>3-month cohort. First 120 days.</h3><p>Focused prep on diagnostics, cash clarity, throughput, and stakeholder alignment — all aimed at the first 30-60-90 on site.</p></div>
-        <div class="tile reveal"><span class="kicker">3 · Embed & Ship</span><h3>Measured execution. Visible wins.</h3><p>Weekly metrics, ruthless scope cuts, and shipping cadence to rebuild confidence and stabilize the business.</p></div>
-      </div>
-    </section>
+      <section class="section reveal">
+        <p>Imagine yourself in these shoes. Maybe you even have been in these shoes (I have). You're starting this startup journey from scratch: You make a Venn diagram with the following areas: Where you have any expertise or an “unfair advantage,” where there’s a marketable product to sell, and where the competition hasn’t already figured everything out. If you’re VC-backed, then you’re also looking for a market that can hockey-stick, where the TAM is large enough to sustain a high-growth unicorn-to-be. It makes sense that you may find yourself building a company around a niche you don't have much passion for other than the fact that you may have a company that can survive at all.</p>
+      </section>
 
-    <!-- Deep-dive sections -->
-    <section id="owner" class="section-tight reveal">
-      <h2>No risk to the business owner</h2>
-      <p>Structured guardrails, aligned incentives, and an interim model designed to protect the core business while unlocking turnaround upside.</p>
-    </section>
+      <!-- Emphasis band -->
+      <section class="band reveal">
+        <p>What if we offered them something different than the startup path? Bear with me for a minute with this thought experiment.</p>
+      </section>
 
-    <section id="operator" class="section-tight reveal">
-      <h2>Why would the operator do it</h2>
-      <p>Mission-driven work with real authority, a crisp 12-month mandate, and upside tied to durable cash flow and employee outcomes.</p>
-    </section>
+      <section class="section reveal">
+        <p>What if they skipped the part where they build a reasonably arbitrary product which doesn’t end up having wings, and they then pivot to a modernized-version-of-legacy-for-X business? What if they skipped the part where they try to take down the competition and win their customers over (though maybe slowly) through hard-won sales, by building everything from the ground up, and driving their competitors to keep up or die out?</p>
+      </section>
 
-    <section id="success" class="section-tight reveal">
-      <h2>Setting them up for success</h2>
-      <p>Cohort training, playbooks, advisor cadence, and lightweight tooling — all engineered to make the first 120 days count.</p>
-    </section>
+      <!-- Pull quote 2 -->
+      <aside class="pull reveal">
+        <q>What if they skipped that part and inserted themselves into the same legacy company in the first place, to save it from the competition that will inevitably come?</q>
+        <div class="meta">Use the existing backbone — and upgrade it.</div>
+      </aside>
+
+      <section class="section reveal">
+        <p>What if they skipped that part and inserted themselves into the same legacy company in the first place, to save it from the competition that will inevitably come? What if they could benefit from the legacy company's hidden gems and valuable assets, and replace all the parts that need to be fixed? What if they really put their mind to setting this company on a fast track path to profitability? Ruthlessly prioritizing and modernizing and optimizing in ways the original business owners weren't able to, and expanded on the business's success, while rebuilding and refocusing the losses? That kind of venture would be fast paced, super high impact, and might even look similar to the startup journey, fast forward a few years. Might be exactly what the ~founder~ leader-to-be is looking for.</p>
+      </section>
+
+      <section class="section reveal">
+        <p>Maybe this could even be good in the greater scheme of things? What if in doing so they cut out the inefficiency loss that comes with starting everything from scratch and building everything from the ground up? Incorporating a new business, building a new website, scrappy product testing, hiring people, training and onboarding, finding an office space - the list goes on and on. There is so much waste that goes into doing this over and over again (which is why PE firms love to buy up smaller companies and consolidate). On a macroeconomic scale, reducing this overhead translates into more effort and capital that can be deployed into making the company cash-flow positive. And by the way - they could still do those parts that they want to, they would just get to do it by choice (and if it’s valuable to the business), not just because it has to be done.</p>
+      </section>
+
+      <!-- Pull quote 3 -->
+      <aside class="pull reveal">
+        <q>What if someone trained that leader-to-be to actually be a really good people leader?</q>
+        <div class="meta">Cash flow is fuel. People leadership is the point.</div>
+      </aside>
+
+      <section class="section reveal">
+        <p>What if someone trained that leader-to-be to actually be a really good people leader? What if they prioritized "making great places to work" the end goal of this business succeeding? People in these jobs have likely been suffering if the company is not doing well. Translating the company’s success to the employees, and modernizing the workplace, working culture, people leadership, and benefits takes investment, but that could be *precisely* the purpose of becoming cash-flow positive. Now that sounds like a valiant goal for the new CEO of the company. It makes the entire mission feel a bit more human, doesn’t it? And because their incentives should be aligned, they would have a revenue share with the company’s profit. Huge payouts should be the goal too.</p>
+      </section>
+
+      <section class="section reveal">
+        <p>And the kicker: What if someone did this whole thing in a way that was repeatable? What if they did it in the same way that a venture studio makes their founder and investment process scalable? What if we (now is when we get to the we part) built an institution that consistently set up the leader-to-be for success - in any vertical, with a funnel of high-likelihood businesses to turn around, an engine for recruiting top talent and enticing them with great terms and a powerful mission, a partnership with the local municipality and innovation/economic funding to kick-start the flywheel and help drive impact? What if we could take this turnaround studio and drag and drop it into any local municipality that wants to infuse their local economy? Now that’s the level of impact I’m hoping for.</p>
+      </section>
+
+      <!-- Footnote graphic -->
+      <section class="footnote reveal">
+        <div class="flow-graph">
+          <div class="flow-step">
+            <h4>Reduce inefficiency in new company creation</h4>
+          </div>
+          <div class="arrow">→</div>
+          <div class="flow-step">
+            <h4>Drive the economic backbone of the local economy and save jobs</h4>
+          </div>
+          <div class="arrow">→</div>
+          <div class="flow-step">
+            <h4>Make people’s jobs even better and create a wave of incredible, thoughtful managers in our communities</h4>
+          </div>
+          <div class="arrow">→</div>
+          <div class="flow-step">
+            <h4>Do this at scale, in a drag-and-drop way in any city.</h4>
+          </div>
+        </div>
+      </section>
+    </article>
   </main>
 
-  <!-- Sticky CTA -->
-  <div class="cta-bar">
-    <div class="cta-inner" id="cta">
-      <span>Operators:</span>
-      <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to join our operator cohort</a>
-    </div>
-  </div>
-
   <footer>
-    © <span id="y"></span> Turnaround
+    <div class="wrap container">© <span id="y"></span> Turnaround — Manifesto</div>
   </footer>
 
-  <script>
-    // Year stamp
-    document.getElementById('y').textContent = new Date().getFullYear();
+<script>
+  // Year
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Simple intersection observer for scroll reveals
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          // Unobserve once revealed to avoid repeated work
-          io.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // Top reading progress
+  const progress = document.getElementById('progress');
+  function onProgress(){
+    const h = document.documentElement;
+    const sc = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    progress.style.transform = 'scaleX(' + sc + ')';
+  }
+  onProgress();
+  window.addEventListener('scroll', onProgress, { passive:true });
 
-    // Reveal sticky CTA after first scroll
-    const cta = document.getElementById('cta');
-    let ctaShown = false;
-    const showCta = () => {
-      if (!ctaShown) {
-        cta.classList.add('revealed');
-        ctaShown = true;
-        window.removeEventListener('scroll', showCta);
+  // Reveal on scroll (IntersectionObserver)
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.transition = reduceMotion ? 'none' : 'opacity .7s ease, transform .7s cubic-bezier(.2,.6,.2,1)';
+        e.target.style.opacity = 1;
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
       }
+    });
+  }, { threshold: .08, rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Parallax blobs (lightweight)
+  const blobs = [...document.querySelectorAll('.blob')].map(el=>({ el, depth: parseFloat(el.getAttribute('data-depth')||'0.04'), y:0 }));
+  if(!reduceMotion){
+    let lastY = window.scrollY;
+    const step = ()=>{
+      const y = window.scrollY, dy = y - lastY; lastY = y;
+      blobs.forEach(b=>{ b.y -= dy * b.depth; b.el.style.transform = `translateY(${b.y}px)`; });
+      requestAnimationFrame(step);
     };
-    window.addEventListener('scroll', showCta, { passive: true });
-    // In case the page is already scrolled on load
-    if (window.scrollY > 20) showCta();
-  </script>
+    requestAnimationFrame(step);
+  }
+</script>
 </body>
 </html>
