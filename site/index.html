@@ -86,7 +86,7 @@
 
   /* Hero */
   .hero {
-    padding: clamp(48px, 10vh, 100px) 0 var(--s6);
+    padding: clamp(36px, 8vh, 80px) 0 var(--s4); /* tighter bottom so P1 sits nicely */
   }
   .kicker {
     color: var(--highlight); text-transform: uppercase; font-weight: 700; letter-spacing: .12em;
@@ -96,23 +96,17 @@
     font-family: "Space Grotesk", Inter, system-ui;
     font-size: clamp(34px, 6.5vw, 68px);
     line-height: 1.08; letter-spacing: -0.02em;
-    margin: 0 0 var(--s3);
-  }
-  .lede {
-    font-size: clamp(18px, 2.4vw, 22px);
-    color: #374151; /* softened */
-    max-width: 760px;
-    margin-bottom: var(--s5);
+    margin: 0; /* no extra margin; we control spacing via .hero padding */
   }
 
   /* Article typography (bigger + comfy; mobile-first) */
-  article { padding: 0 0 var(--s8); }
+  article { padding: var(--s4) 0 var(--s8); } /* slight top padding for breathing room */
   article p {
     margin: 0 0 var(--s4);
     font-size: clamp(18px, 3.2vw, 20px);
     letter-spacing: .003em;
   }
-  .section { margin: var(--s7) 0; }
+  .section { margin: var(--s6) 0; } /* slightly tighter than before */
 
   /* TITLES (smaller than callouts, clearly different) */
   h2, h3 {
@@ -128,22 +122,24 @@
     padding-top: var(--s2);
     border-top: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
   }
+  /* FIX: underline style for h3 (no stray tiny line issues) */
   h3 {
     font-size: clamp(18px, 2.6vw, 24px);
     letter-spacing: .015em;
-    border-left: 3px solid color-mix(in srgb, var(--secondary) 60%, transparent);
-    padding-left: var(--s3);
+    padding-bottom: var(--s2);
+    border-bottom: 2px solid color-mix(in srgb, var(--secondary) 60%, transparent);
+    display: inline-block;
   }
 
   /* CALLOUTS (oversized emphasis blocks, no captions) */
   .callout {
     position: relative;
-    margin: var(--s6) auto;
+    margin: var(--s5) auto;
     padding: clamp(18px, 4vw, 28px) clamp(18px, 4vw, 28px);
     border-radius: 14px;
     background: #fff;
-    border: 1px solid rgba(17,24,39,.08);
-    box-shadow: var(--shadow-1);
+    border: 1px solid rgba(17,24,39,.10);             /* a touch stronger */
+    box-shadow: 0 8px 26px rgba(17,24,39,.06);        /* slightly bolder pop */
     font-family: "Space Grotesk", Inter, system-ui;
     font-weight: 700;
     color: var(--ink);
@@ -153,7 +149,7 @@
   .callout:before {
     content: "";
     position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
-    background: linear-gradient(180deg, var(--accent), var(--secondary));
+    background: linear-gradient(180deg, var(--secondary), var(--accent)); /* swapped per your 'yes' */
     border-top-left-radius: 14px; border-bottom-left-radius: 14px;
   }
 
@@ -167,6 +163,7 @@
   @media (max-width: 480px) {
     .nav a { margin-left: var(--s3); }
     .brand-mark { display:none; }
+    .section { margin: var(--s5) 0; }
   }
 
   /* Reduced motion */
@@ -196,7 +193,7 @@
     <section class="hero container reveal">
       <div class="kicker">Manifesto</div>
       <h1>Another path to big, human impact</h1>
-      <p class="lede">An institution that leverages ambitious entrepreneurs to make legacy businesses thrive. Repeatable and humble - revitalizing the local economy, making people's jobs better, and leaving a legacy, not an exit.</p>
+      <!-- lede removed per request -->
     </section>
 
     <article class="container">
@@ -204,7 +201,8 @@
       <section class="section reveal">
         <p>I’ve got a bone to pick with venture capitalists: They’ve done their jobs too well. Around the world, ambitious people - entrepreneurs, founder-wannabes, inspired creatives and operators who want to <strong>take the leap</strong> from their day jobs and become their own boss - those people's best option is to <strong>start a startup</strong>. There doesn’t seem to be any similarly ambitious way to use our brain cells to their fullest and get rewarded for making impact in the business world.</p>
 
-        <!-- Callout 1 appears exactly where the original sentence lived -->
+        <!-- Callout 1: show sentence above + callout block -->
+        <p>We’ve created so much startup folklore: founding a unicorn, inventing a cornerstone product, and making boatloads of money</p>
         <div class="callout">We’ve created so much startup folklore: founding a unicorn, inventing a cornerstone product, and making boatloads of money</div>
 
         <p>I’ve followed that path myself - I quit my job to sign up for more than one startup accelerator; I moved to Silicon Valley for Y Combinator and loved every moment of the founder journey. I don’t regret any of it for a second. Did I make it big? Not really. Did I learn a ton? Absolutely. So - I’m all for startups and accelerators, but I want there to be at least <em>one other</em> enticing path for ambitious entrepreneurs who are seeking impact.</p>
@@ -215,19 +213,23 @@
       <!-- Title 2 -->
       <h2 class="reveal">The world doesn’t need more bad bosses</h2>
 
-      <!-- Paragraph 1b with inline Callout 2 at the exact sentence location -->
+      <!-- Paragraph 1b with inline Callout 2 (text above + callout) -->
       <section class="section reveal">
         <p>I’ve seen (and had) a lot of bad managers in my career. I’ve also had a few great bosses, and I’ve tried to be a great boss myself, although I haven’t always heard that I’ve succeeded 😅 Importantly - I’ve seen how little the startup world prioritizes good people leadership, the proper empowerment and delegation and trust it requires in setting up teams for success. “The end justifies the means” when it comes to leading a team and building an org. In some ways bad management is even incentivized - valuation of the next round holds more weight than anything else, and getting there might require a tough working environment. Bad managers rewarded because the next round mattered more than the team’s health. It comes with the job, right? I’m not talking about long hours here, or high intensity, emotional decisions. I’m not even talking about low pay. <strong>I’m talking about not setting up teams for success - defining a team’s goal and enabling your direct report to flourish in their role because they know what they can do to move the needle.</strong> </p>
 
         <p>Sure, this might be reasonably straightforward when it’s a CEO and a few specialist direct reports. But when those people start to lead teams (and we hope that they do, or else there will be no hockey stick, right?) time and time again we see the lacking in leadership spreading like a virus. And my point is: <strong>this is normal</strong>. Good leadership is hard, and it takes prioritization. The VC’s goal is to get their returns, so effective leadership is a hopeful byproduct of a growing company, not the other way around.</p>
 
+        <p>So it’s no surprise that we don’t see growth-seeking, venture-backed startups systematically creating great workplaces.</p>
         <div class="callout">So it’s no surprise that we don’t see growth-seeking, venture-backed startups systematically creating great workplaces.</div>
       </section>
 
-      <!-- Inline Callout 3, then remainder of Paragraph 2 -->
-      <div class="callout reveal">We are doing these CEOs-to-be (and the world!) a disservice by not giving them any other option. </div>
+      <!-- This sentence is now NORMAL TEXT (not a callout) -->
+      <section class="section reveal" style="margin-top: var(--s4);">
+        <p>We are doing these CEOs-to-be (and the world!) a disservice by not giving them any other option. </p>
+      </section>
 
-      <section class="section reveal">
+      <!-- Rest of Paragraph 2 -->
+      <section class="section reveal" style="margin-top: calc(var(--s4) * -0.5);">
         <p>For those who want to take on the founder path - do it. Full steam ahead. We have so many institutions in place to help them (and profit from their success). The founder path (coming up with a product, trying to be competitive in the market, and then ultimately building and leading the company around that venture) however, may not really be what the entrepreneur-in-question is excited about. It might be that they want to <strong>lead a company they feel ownership over</strong> and drive enormous impact in the world. It might be that the founding of the startup is simply the path of them getting there. They should at least consider an alternative to the founder route that can get them there. Don’t get me wrong - so much of today’s innovation and amazing products have come from the founder route. But not every ambitious CEO-to-be needs to build a new product from scratch in order to have the impact that they are seeking. And - equally important - probably not every startup-to-be should exist in the world. For the CEO-to-be who wants to try her hand building something new, get at it. Power to you. But building within a VC-backed founder framework can be constraining, and seeking ambition and impact shouldn’t have to fall within those constraints.</p>
       </section>
 
@@ -244,41 +246,48 @@
         <p>What if you skipped the building part - where you build a reasonably arbitrary product which maybe doesn’t end up having wings, so you pivot to a product that is a modernized-version-of-legacy-for-X? What if you skipped the part where you try to take on the competition and win their customers over (slowly, arduously,) through hard-won sales, skipped the part where you build everything from the ground up, and driving your competitors to keep up or die out?</p>
       </section>
 
-      <!-- Callout 4 placed where the sentence occurs -->
-      <div class="callout reveal">What if you skipped the founder path and inserted yourself into that same legacy company you were trying to take down in the first place, and you instead tried to save it from the competition that will inevitably come?</div>
-
-      <!-- Paragraph 4 (part 2) with the repeated sentence removed -->
-      <section class="section reveal">
-        <p>What if you were offered something different than the founder path? and you instead tried to save it from the competition that will inevitably come? What if you could choose which parts of the legacy company’s hidden gems and valuable assets you want to take advantage of, and replace or fix all the parts that were a liability? What if you really put your mind to setting this company on a fast track path to profitability? Do you think that would be any less difficult than taking the founder path? Ruthlessly prioritizing and modernizing and optimizing in ways the original business owners weren't able to, and expanding on the business's success, finding out what worked well while rebuilding and refocusing the losses? Wouldn’t that kind of venture be fast paced, super high impact, and might even look similar to the startup journey, except fast forwarded a few years? <strong>Might this not be exactly what you were looking for when you quit your job?</strong></p>
+      <!-- Callout 4: show sentence above + callout block -->
+      <section class="section reveal" style="margin-top: var(--s4);">
+        <p>What if you skipped the founder path and inserted yourself into that same legacy company you were trying to take down in the first place, and you instead tried to save it from the competition that will inevitably come?</p>
+        <div class="callout">What if you skipped the founder path and inserted yourself into that same legacy company you were trying to take down in the first place, and you instead tried to save it from the competition that will inevitably come?</div>
       </section>
 
-      <!-- Paragraph 5 (with callouts 6 & 7 inline at exact locations) -->
+      <!-- Paragraph 4 (part 2) — fixed single sentence & no duplication -->
+      <section class="section reveal" style="margin-top: calc(var(--s4) * -0.25);">
+        <p>What if you were offered something different than the founder path — and instead tried to save it from the competition that will inevitably come? What if you could choose which parts of the legacy company’s hidden gems and valuable assets you want to take advantage of, and replace or fix all the parts that were a liability? What if you really put your mind to setting this company on a fast track path to profitability? Do you think that would be any less difficult than taking the founder path? Ruthlessly prioritizing and modernizing and optimizing in ways the original business owners weren't able to, and expanding on the business's success, finding out what worked well while rebuilding and refocusing the losses? Wouldn’t that kind of venture be fast paced, super high impact, and might even look similar to the startup journey, except fast forwarded a few years? <strong>Might this not be exactly what you were looking for when you quit your job?</strong></p>
+      </section>
+
+      <!-- Paragraph 5 (with callouts 6 & 7 in correct locations) -->
       <section class="section reveal">
+        <!-- Callout 6: text above + callout at start of section -->
+        <p>This is where we start to see the knock-on effects we get by injecting the same blood, sweat and tears into our legacy businesses that we do to startups today.</p>
         <div class="callout">This is where we start to see the knock-on effects we get by injecting the same blood, sweat and tears into our legacy businesses that we do to startups today.</div>
 
         <p>There is inefficiency loss that comes with founding a company, and starting everything from scratch, building everything from the ground up. Incorporating a new business, building a new website, scrappy product testing, hiring people, training and onboarding, finding an office space - the list goes on and on. There is so much effort that goes into doing this over and over again (which is why PE firms love to buy up smaller companies and consolidate with their economies of scale). The new business leader could still rebuild what they want from the ground up, they would just get to do it by choice (and if it’s valuable to the business), not just because it has to be done. </p>
 
-        <p>Imagine we make the simplifying assumption that the new company more or less replaces the old company - certainly modernized and now profitable, but also - it’s legacy jobs lost and startup jobs gained. Legacy office space lost and startup office space gained. On a macroeconomic scale, reductions in this overhead, this frictional cost of translating old to new, can be equated to additional capital and effort that we save, and could directly be deployed into making the legacy company cash-flow positive. Every time we skip the part where old is replaced with new, (yet old still performs as if new,) we open the door to more effective economic growth with fewer frictional losses. We don’t want fewer startups - we want to <em>additionally</em> see legacy businesses being turned around. Imagine they were deployed specifically to make the company an excellent place to work, in addition to being a profitable venture?</p>
+        <p>Imagine we make the simplifying assumption that the new company more or less replaces the old company - certainly modernized and now profitable, but also - it’s legacy jobs lost and startup jobs gained. Legacy office space lost and startup office space gained. On a macroeconomic scale, reductions in this overhead, this frictional cost of translating old to new, can be equated to additional capital and effort that we save, and could directly be deployed into making the legacy company cash-flow positive. Every time we skip the part where old is replaced with new, (yet old still performs as if new,) we open the door to more effective economic growth with fewer frictional losses. We don’t want fewer startups - we want to <em>additionally</em> see legacy businesses being turned around.</p>
 
+        <!-- Callout 7: moved BEFORE the last sentence; text above + callout -->
+        <p>These savings from reduced frictional losses could be used to make the old better than the new ever could be.</p>
         <div class="callout">These savings from reduced frictional losses could be used to make the old better than the new ever could be.</div>
+
+        <!-- Final sentence of the section follows after callout 7 -->
+        <p>Imagine they were deployed specifically to make the company an excellent place to work, in addition to being a profitable venture?</p>
       </section>
 
       <!-- Title 3 -->
       <h3 class="reveal">Good people leadership is the goal. Positive cash flow is the fuel. </h3>
 
-      <!-- Callout 8 inline -->
-      <div class="callout reveal">“What if someone trained that leader-to-be to actually be a really good people leader?” </div>
-
-      <!-- Paragraph 6 (with the first sentence replaced by callout above) -->
+      <!-- Paragraph 6 (callout 8 removed entirely) -->
       <section class="section reveal">
         <p>People working for these legacy businesses, especially if they have been struggling financially, have likely been suffering in their day to day. What if this new business leader - the entrepreneur-turnaround-leader - prioritized "making great places to work" as the end goal of this business succeeding? That means: translating the company’s success back to the employees, and modernizing the workplace, working culture, people leadership, and benefits, as examples. This all takes investment, but that could be <strong>precisely</strong> the purpose of becoming cash-flow positive. 
 Now <strong>that</strong> sounds like a valiant goal for the new CEO of the company. It makes the entire mission feel a bit more human, doesn’t it? 
 Footnote: Because their incentives should be aligned, they would have a revenue share with the company’s profit. Huge payouts should be the goal too.</p>
       </section>
 
-      <!-- Paragraph 7 (both parts) -->
+      <!-- Paragraph 7 (both parts; opener changed to 'Finally, the kicker:') -->
       <section class="section reveal">
-        <p>And the kicker: What if someone did this whole thing in a way that was repeatable? What if they did it in the same way that a venture studio makes their founder and investment process scalable? What if we (now is when we get to the we part) built an institution that consistently set up the leader-to-be for success - in any vertical, with a funnel of high-likelihood businesses to turn around, an engine for recruiting top talent and enticing them with great terms and a powerful mission, a partnership with the local municipality and innovation/economic funding to kick-start the flywheel and help drive impact? What if we could take this turnaround studio and drag and drop it into any local municipality that wants to infuse their local economy? Now that’s the level of impact I’m hoping for.</p>
+        <p>Finally, the kicker: What if someone did this whole thing in a way that was repeatable? What if they did it in the same way that a venture studio makes their founder and investment process scalable? What if we (now is when we get to the we part) built an institution that consistently set up the leader-to-be for success - in any vertical, with a funnel of high-likelihood businesses to turn around, an engine for recruiting top talent and enticing them with great terms and a powerful mission, a partnership with the local municipality and innovation/economic funding to kick-start the flywheel and help drive impact? What if we could take this turnaround studio and drag and drop it into any local municipality that wants to infuse their local economy? Now that’s the level of impact I’m hoping for.</p>
 
         <p>Really, <strong>I want to challenge the VCs</strong> who compete for talent to fill their accelerator cohorts. I want to give those ambitious entrepreneurs another route forward - another option - that doesn’t necessarily require making VCs a lot of money. And that’s why I’m proposing a new institution, rivaling that of early-stage venture capital. One that builds as much hype, operationalizes itself to scale, and drives as much impact as VC. Let’s be clear - I don’t think we should have fewer founders in the world. I simply want founder wannabes to have another option. One that prioritizes making the world better by turning struggling legacy businesses into amazing places to work with positive cash flow and really good bosses.</p>
       </section>
