@@ -4,29 +4,32 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Turnaround — Manifesto</title>
-<meta name="description" content="A manifesto for entrepreneurial operators: an alternative path to high-impact leadership and healthier local economies." />
+<meta name="description" content="A manifesto for ambitious operators: a second path to big, human impact that modernizes the real economy." />
 <link rel="icon" href="turnaround-favicon.png" type="image/png" />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    /* European Tech Optimism */
-    --bg:#F3F4F6;          /* Cool grey */
-    --ink:#0B1020;         /* Deep ink */
-    --primary:#0F766E;     /* Dark teal */
-    --secondary:#F59E0B;   /* Muted mustard */
-    --accent:#38BDF8;      /* Sky blue */
-    --cta:#7C3AED;         /* Rich violet */
+    /* === Your palette === */
+    --bg: #FAFAF9;          /* Warm white */
+    --ink: #111827;         /* Charcoal black */
+    --primary: #111827;     /* Using charcoal for headings/brand */
+    --accent: #A78BFA;      /* Soft lilac */
+    --highlight: #F87171;   /* Vivid coral */
+    --secondary: #3B82F6;   /* Slate blue */
+    --cta: #7C3AED;         /* Rich violet (kept for possible buttons/links) */
 
-    --container: 860px;
-    --maxwidth-wide: 1100px;
+    /* Layout / rhythm */
+    --container: 900px;
+    --maxwide: 1180px;
     --radius: 14px;
 
     --s1: 8px; --s2: 12px; --s3: 16px; --s4: 24px;
     --s5: 32px; --s6: 48px; --s7: 72px; --s8: 96px;
 
-    --shadow-1: 0 1px 2px rgba(0,0,0,.05), 0 1px 1px rgba(0,0,0,.04);
+    --shadow-1: 0 1px 2px rgba(0,0,0,.06), 0 1px 1px rgba(0,0,0,.04);
     --shadow-2: 0 10px 30px rgba(0,0,0,.10);
   }
 
@@ -34,32 +37,35 @@
   html{scroll-behavior:smooth}
   html, body { margin:0; padding:0 }
   body{
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-    background: var(--bg);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     color: var(--ink);
-    line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transition: background-color .5s ease;
+    line-height: 1.8;
+    /* Sleek, simple background gradient — warm white with a hint of lilac */
+    background:
+      radial-gradient(1200px 600px at 75% -10%, rgba(167,139,250,.12), transparent 60%),
+      radial-gradient(1000px 500px at 10% 110%, rgba(59,130,246,.10), transparent 60%),
+      linear-gradient(180deg, #FFFFFF 0%, var(--bg) 100%);
+    background-attachment: fixed, fixed, scroll;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
   }
 
-  .wrap { max-width: var(--maxwidth-wide); margin: 0 auto; padding: 0 20px; }
+  .wrap { max-width: var(--maxwide); margin: 0 auto; padding: 0 20px; }
   .container { max-width: var(--container); margin: 0 auto; }
 
-  /* Progress bar */
+  /* Top progress (subtle) */
   .progress {
     position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 50;
     transform-origin: 0 50%; transform: scaleX(0);
-    background: linear-gradient(90deg, var(--accent), var(--cta));
-    box-shadow: 0 1px 8px rgba(124,58,237,.25);
+    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    box-shadow: 0 1px 8px rgba(59,130,246,.22);
   }
 
   /* Header */
   header {
     position: sticky; top: 0; z-index: 40;
-    backdrop-filter: saturate(1.4) blur(8px);
-    background: rgba(243,244,246,.85);
-    border-bottom: 1px solid rgba(2,6,23,.06);
+    backdrop-filter: saturate(1.2) blur(8px);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    border-bottom: 1px solid rgba(17,24,39,.06);
   }
   .nav {
     display: flex; align-items: center; justify-content: space-between;
@@ -73,114 +79,82 @@
   .brand-mark {
     width: 26px; height: 26px; display:grid; place-items:center;
     border-radius: 8px; background: var(--primary); color: #fff;
-    box-shadow: var(--shadow-1);
+    box-shadow: var(--shadow-1); font-size: 12px;
   }
   .nav a { color: var(--ink); text-decoration: none; margin-left: var(--s4); font-weight: 500; }
-  .nav a:hover { color: var(--primary); }
+  .nav a:hover { color: var(--secondary); }
 
   /* Hero */
   .hero {
-    padding: clamp(56px, 12vh, 120px) 0 var(--s6);
+    padding: clamp(48px, 10vh, 100px) 0 var(--s6);
   }
   .kicker {
-    color: var(--secondary); text-transform: uppercase; font-weight: 700; letter-spacing: .12em;
+    color: var(--highlight); text-transform: uppercase; font-weight: 700; letter-spacing: .12em;
     font-size: 12px; margin-bottom: var(--s2);
   }
   h1 {
     font-family: "Space Grotesk", Inter, system-ui;
-    font-size: clamp(36px, 7vw, 72px);
-    line-height: 1.05; letter-spacing: -0.02em;
+    font-size: clamp(34px, 6.5vw, 68px);
+    line-height: 1.08; letter-spacing: -0.02em;
     margin: 0 0 var(--s3);
   }
   .lede {
-    font-size: clamp(16px, 2.3vw, 22px);
-    color: #334155;
-    max-width: 720px;
+    font-size: clamp(18px, 2.4vw, 22px);
+    color: #374151; /* slightly softer than body */
+    max-width: 760px;
     margin-bottom: var(--s5);
   }
 
-  /* Article */
+  /* Article typography (bigger + comfy) */
   article { padding: 0 0 var(--s8); }
-  article p { margin: 0 0 var(--s4); }
+  article p {
+    margin: 0 0 var(--s4);
+    font-size: clamp(18px, 2.8vw, 20px);
+    letter-spacing: .003em;
+  }
   .section { margin: var(--s7) 0; }
+  h2, h3 {
+    font-family: "Space Grotesk", Inter, system-ui;
+    margin: var(--s6) 0 var(--s3);
+    line-height: 1.2;
+  }
+  h2 { font-size: clamp(22px, 3.2vw, 34px); color: var(--primary); }
+  h3 { font-size: clamp(20px, 3vw, 28px); color: var(--primary); }
 
-  /* Pull quotes */
-  .pull {
+  /* Callouts (oversized emphasis blocks, no captions) */
+  .callout {
     position: relative;
     margin: var(--s6) auto;
-    padding: var(--s4) var(--s5);
-    border-radius: var(--radius);
-    background: #ffffff;
-    border: 1px solid rgba(2,6,23,.06);
-    box-shadow: var(--shadow-1);
-  }
-  .pull q {
-    quotes: "“" "”" "‘" "’";
-    display: block;
-    font-family: "Space Grotesk", Inter, system-ui;
-    font-size: clamp(22px, 3.4vw, 34px);
-    line-height: 1.2;
-    color: var(--ink);
-  }
-  .pull q:before { content: open-quote; color: var(--accent); }
-  .pull q:after  { content: close-quote; color: var(--accent); }
-  .pull .meta {
-    margin-top: var(--s2);
-    color: #64748B; font-size: 13px;
-  }
-
-  /* Emphasis bands */
-  .band {
-    background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.9));
-    border: 1px solid rgba(2,6,23,.06);
-    border-left: 6px solid var(--primary);
-    border-radius: 12px;
-    padding: var(--s4);
-    box-shadow: var(--shadow-1);
-    margin: var(--s6) 0;
-  }
-
-  /* Footnote graphic */
-  .footnote {
-    margin: var(--s7) auto var(--s6);
-    padding: var(--s4);
+    padding: clamp(18px, 4vw, 28px) clamp(18px, 4vw, 28px);
+    border-radius: 14px;
     background: #fff;
-    border: 1px solid rgba(2,6,23,.08);
-    border-radius: var(--radius);
+    border: 1px solid rgba(17,24,39,.08);
     box-shadow: var(--shadow-1);
+    font-family: "Space Grotesk", Inter, system-ui;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: clamp(22px, 3.4vw, 34px);
+    line-height: 1.25;
   }
-  .flow-graph {
-    display: grid; gap: var(--s3);
+  /* A slim accent bar to the left for extra polish */
+  .callout:before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+    background: linear-gradient(180deg, var(--accent), var(--secondary));
+    border-top-left-radius: 14px; border-bottom-left-radius: 14px;
   }
-  @media(min-width: 820px){
-    .flow-graph { grid-template-columns: repeat(4, 1fr); align-items: center; }
-  }
-  .flow-step {
-    text-align: center; padding: var(--s3);
-    border-radius: 12px; background: #FAFAFF;
-    border: 1px dashed rgba(2,6,23,.08);
-  }
-  .flow-step h4 { margin: 0 0 var(--s2); font-size: 14px; color: var(--primary) }
-  .arrow {
-    display: none; text-align: center; color: var(--cta); font-weight: 700;
-  }
-  @media(min-width: 820px){ .arrow { display: block; } }
 
-  /* Progress & reveals */
+  /* Reveal on scroll (light) */
   .reveal { opacity: 0; transform: translateY(14px); }
-  .progress { will-change: transform; }
-
-  /* Parallax backdrop accents (soft blobs) */
-  .blob {
-    position: fixed; z-index: -1; border-radius: 50%;
-    filter: blur(100px); opacity: .4; will-change: transform;
-  }
-  .blob.teal  { background: var(--primary); width: 520px; height: 520px; top: -180px; left: -180px; }
-  .blob.violet{ background: var(--cta);     width: 440px; height: 440px; bottom: -140px; right: -140px; }
-  .blob.sky   { background: var(--accent);  width: 360px; height: 360px; top: 40%; left: 60%; }
 
   /* Footer */
-  footer { padding: var(--s6) 0 var(--s5); color: #667085; font-size: 14px; border-top: 1px solid rgba(2,6,23,.06); }
+  footer { padding: var(--s6) 0 var(--s5); color: #6B7280; font-size: 14px; border-top: 1px solid rgba(17,24,39,.06); }
+
+  /* Mobile spacing touch-ups */
+  @media (max-width: 480px) {
+    .nav a { margin-left: var(--s3); }
+    .brand-mark { display:none; }
+  }
 
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce){
@@ -192,11 +166,6 @@
 <body>
   <!-- progress -->
   <div class="progress" id="progress"></div>
-
-  <!-- backdrop blobs -->
-  <div class="blob teal"  data-depth="0.05"></div>
-  <div class="blob violet" data-depth="-0.04"></div>
-  <div class="blob sky"   data-depth="0.03"></div>
 
   <header>
     <div class="wrap nav">
@@ -218,77 +187,93 @@
     </section>
 
     <article class="container">
-      <!-- Pull quote 1 -->
-      <aside class="pull reveal">
-        <q>I think we can do better for these founders-to-be.</q>
-        <div class="meta">A prompt to rethink the only path we glorify.</div>
-      </aside>
-
-      <!-- Original text (word-for-word) -->
+      <!-- P1 -->
       <section class="section reveal">
-        <p>There is this problem in the world. Ambitious people - entrepreneurs, founder-wannabes, people who are inspired to take the leap from their day jobs and become their own boss - those people's best option is to start a startup. That’s great, but should that be the only option? The path (coming up with a product, trying to be competitive in the market, and then ultimately building and leading the company around that venture) may not really be what they're excited about. It might be that they want to lead a company and drive enormous impact, but the successful startup is in the way of them getting there. Shouldn't they at least be able to consider an alternative? Don’t get me wrong - much of our innovation and many amazing products come from this path. But not every ambitious CEO-to-be needs to build a new product from scratch in order to have the impact that they want. And not every startup-to-be should exist in the world. It can be obvious when the product is a means to an end - simply a niche someone found which they want to build a business around. And there's nothing wrong with that - it is pretty easy to see how it happens. But I think we could do better.</p>
+        <p>I’ve got a bone to pick with venture capitalists: They’ve done their jobs too well. Around the world, ambitious people - entrepreneurs, founder-wannabes, inspired creatives and operators who want to take the leap from their day jobs and become their own boss - those people's best option is to start a startup. There doesn’t seem to be any similarly ambitious way to use our brain cells to their fullest and get rewarded for making impact in the business world.</p>
+
+        <p>We’ve created so much startup folklore: founding a unicorn, inventing a cornerstone product, and making boatloads of money is the path for ambitious entrepreneurs.
+I’ve followed that path myself - I quit my job to sign up for more than one startup accelerator; I moved to Silicon Valley for Y Combinator and loved every moment of the founder journey. I don’t regret any of it for a second. Did I make it big? Not really. Did I learn a ton? Absolutely. So - I’m all for startups and accelerators, but I want there to be at least one other enticing path for ambitious entrepreneurs who are seeking impact.</p>
+
+        <p>My issue is that we’ve created a single-minded system in our VC-fueled, hockey-stick-seeking mindset. It shouldn’t be “founder vs normie”, and I want to challenge the mindset that starting a company is fundamentally more impactful - or difficult - or sexy - than turning around an existing business and making it an incredibly awesome place to work.</p>
       </section>
 
+      <!-- Callout 1 -->
+      <div class="callout reveal">We’ve created so much startup folklore: founding a unicorn, inventing a cornerstone product, and making boatloads of money</div>
+
+      <!-- Title 2 -->
+      <h2 class="reveal">The world doesn’t need more bad bosses</h2>
+
+      <!-- Paragraph 1b -->
       <section class="section reveal">
-        <p>Imagine yourself in these shoes. Maybe you even have been in these shoes (I have). You're starting this startup journey from scratch: You make a Venn diagram with the following areas: Where you have any expertise or an “unfair advantage,” where there’s a marketable product to sell, and where the competition hasn’t already figured everything out. If you’re VC-backed, then you’re also looking for a market that can hockey-stick, where the TAM is large enough to sustain a high-growth unicorn-to-be. It makes sense that you may find yourself building a company around a niche you don't have much passion for other than the fact that you may have a company that can survive at all.</p>
+        <p>I’ve seen (and had) a lot of bad managers in my career. I’ve also had a few great bosses, and I’ve tried to be a great boss myself, although I haven’t always heard that I’ve succeeded 😅 Importantly - I’ve seen how little the startup world prioritizes good people leadership, the proper empowerment and delegation and trust it requires in setting up teams for success. “The end justifies the means” when it comes to leading a team and building an org. In some ways bad management is even incentivized - valuation of the next round holds more weight than anything else, and getting there might require a tough working environment. Bad managers rewarded because the next round mattered more than the team’s health. It comes with the job, right? I’m not talking about long hours here, or high intensity, emotional decisions. I’m not even talking about low pay. I’m talking about not setting up teams for success - defining a team’s goal and enabling your direct report to flourish in their role because they know what they can do to move the needle. </p>
+
+        <p>Sure, this might be reasonably straightforward when it’s a CEO and a few specialist direct reports. But when those people start to lead teams (and we hope that they do, or else there will be no hockey stick, right?) time and time again we see the lacking in leadership spreading like a virus. And my point is: this is normal. Good leadership is hard, and it takes prioritization. The VC’s goal is to get their returns, so effective leadership is a hopeful byproduct of a growing company, not the other way around. So it’s no surprise that we don’t see growth-seeking, venture-backed startups systematically creating great workplaces.</p>
       </section>
 
-      <!-- Emphasis band -->
-      <section class="band reveal">
-        <p>What if we offered them something different than the startup path? Bear with me for a minute with this thought experiment.</p>
-      </section>
+      <!-- Callout 2 -->
+      <div class="callout reveal">So it’s no surprise that we don’t see growth-seeking, venture-backed startups systematically creating great workplaces.</div>
 
+      <!-- Callout 3 -->
+      <div class="callout reveal">We are doing these CEOs-to-be (and the world!) a disservice by not giving them any other option. </div>
+
+      <!-- Paragraph 2 -->
       <section class="section reveal">
-        <p>What if they skipped the part where they build a reasonably arbitrary product which doesn’t end up having wings, and they then pivot to a modernized-version-of-legacy-for-X business? What if they skipped the part where they try to take down the competition and win their customers over (though maybe slowly) through hard-won sales, by building everything from the ground up, and driving their competitors to keep up or die out?</p>
+        <p>We are doing these CEOs-to-be (and the world!) a disservice by not giving them any other option. For those who want to take on the founder path - do it. Full steam ahead. We have so many institutions in place to help them (and profit from their success). The founder path (coming up with a product, trying to be competitive in the market, and then ultimately building and leading the company around that venture) however, may not really be what the entrepreneur-in-question is excited about. It might be that they want to lead a company they feel ownership over and drive enormous impact in the world. It might be that the founding of the startup is simply the path of them getting there. They should at least consider an alternative to the founder route that can get them there. Don’t get me wrong - so much of today’s innovation and amazing products have come from the founder route. But not every ambitious CEO-to-be needs to build a new product from scratch in order to have the impact that they are seeking. And - equally important - probably not every startup-to-be should exist in the world. For the CEO-to-be who wants to try her hand building something new, get at it. Power to you. But building within a VC-backed founder framework can be constraining, and seeking ambition and impact shouldn’t have to fall within those constraints.</p>
       </section>
 
-      <!-- Pull quote 2 -->
-      <aside class="pull reveal">
-        <q>What if they skipped that part and inserted themselves into the same legacy company in the first place, to save it from the competition that will inevitably come?</q>
-        <div class="meta">Use the existing backbone — and upgrade it.</div>
-      </aside>
+      <!-- Title 2 -->
+      <h2 class="reveal">An alternative to the founder path</h2>
 
+      <!-- Paragraph 3 -->
       <section class="section reveal">
-        <p>What if they skipped that part and inserted themselves into the same legacy company in the first place, to save it from the competition that will inevitably come? What if they could benefit from the legacy company's hidden gems and valuable assets, and replace all the parts that need to be fixed? What if they really put their mind to setting this company on a fast track path to profitability? Ruthlessly prioritizing and modernizing and optimizing in ways the original business owners weren't able to, and expanded on the business's success, while rebuilding and refocusing the losses? That kind of venture would be fast paced, super high impact, and might even look similar to the startup journey, fast forward a few years. Might be exactly what the ~founder~ leader-to-be is looking for.</p>
+        <p>Imagine yourself in these shoes. (Maybe you’ve even been in these shoes like I have.) You're starting the startup journey from scratch: You make a Venn diagram looking for crossover of the following areas: Where you have any expertise or an “unfair advantage,” where there’s a marketable product to sell, and where the competition hasn’t already figured everything out. If you’re VC-backed, then you’re also looking for a market that can hockey-stick, where the TAM is large enough to sustain a high-growth unicorn-to-be. It isn’t unreasonable that you may find yourself building a company around a niche you don't have much passion for - other than the fact that you can build a company around it which might be investible.</p>
       </section>
 
+      <!-- Paragraph 4 (part 1) -->
       <section class="section reveal">
-        <p>Maybe this could even be good in the greater scheme of things? What if in doing so they cut out the inefficiency loss that comes with starting everything from scratch and building everything from the ground up? Incorporating a new business, building a new website, scrappy product testing, hiring people, training and onboarding, finding an office space - the list goes on and on. There is so much waste that goes into doing this over and over again (which is why PE firms love to buy up smaller companies and consolidate). On a macroeconomic scale, reducing this overhead translates into more effort and capital that can be deployed into making the company cash-flow positive. And by the way - they could still do those parts that they want to, they would just get to do it by choice (and if it’s valuable to the business), not just because it has to be done.</p>
+        <p>What if you skipped the building part - where you build a reasonably arbitrary product which maybe doesn’t end up having wings, so you pivot to a product that is a modernized-version-of-legacy-for-X? What if you skipped the part where you try to take on the competition and win their customers over (slowly, arduously,) through hard-won sales, skipped the part where you build everything from the ground up, and driving your competitors to keep up or die out?</p>
       </section>
 
-      <!-- Pull quote 3 -->
-      <aside class="pull reveal">
-        <q>What if someone trained that leader-to-be to actually be a really good people leader?</q>
-        <div class="meta">Cash flow is fuel. People leadership is the point.</div>
-      </aside>
+      <!-- Callout 4 -->
+      <div class="callout reveal">What if you skipped the founder path and inserted yourself into that same legacy company you were trying to take down in the first place, and you instead tried to save it from the competition that will inevitably come?</div>
 
+      <!-- Paragraph 4 (part 2) -->
       <section class="section reveal">
-        <p>What if someone trained that leader-to-be to actually be a really good people leader? What if they prioritized "making great places to work" the end goal of this business succeeding? People in these jobs have likely been suffering if the company is not doing well. Translating the company’s success to the employees, and modernizing the workplace, working culture, people leadership, and benefits takes investment, but that could be *precisely* the purpose of becoming cash-flow positive. Now that sounds like a valiant goal for the new CEO of the company. It makes the entire mission feel a bit more human, doesn’t it? And because their incentives should be aligned, they would have a revenue share with the company’s profit. Huge payouts should be the goal too.</p>
+        <p>What if you were offered something different than the founder path? What if you skipped the founder path and inserted yourself into that same legacy company you were trying to take down in the first place, and you instead tried to save it from the competition that will inevitably come? What if you could choose which parts of the legacy company’s hidden gems and valuable assets you want to take advantage of, and replace or fix all the parts that were a liability? What if you really put your mind to setting this company on a fast track path to profitability? Do you think that would be any less difficult than taking the founder path? Ruthlessly prioritizing and modernizing and optimizing in ways the original business owners weren't able to, and expanding on the business's success, finding out what worked well while rebuilding and refocusing the losses? Wouldn’t that kind of venture be fast paced, super high impact, and might even look similar to the startup journey, except fast forwarded a few years? Might this not be exactly what you were looking for when you quit your job?</p>
       </section>
 
+      <!-- Paragraph 5 -->
+      <section class="section reveal">
+        <p>As interesting as this might be for the entrepreneur, here’s where we zoom out a bit -  this is where we start to see the knock-on effects we get by injecting the same blood, sweat and tears into our legacy businesses that we do to startups today.</p>
+
+        <p>There is inefficiency loss that comes with founding a company, and starting everything from scratch, building everything from the ground up. Incorporating a new business, building a new website, scrappy product testing, hiring people, training and onboarding, finding an office space - the list goes on and on. There is so much effort that goes into doing this over and over again (which is why PE firms love to buy up smaller companies and consolidate with their economies of scale). The new business leader could still rebuild what they want from the ground up, they would just get to do it by choice (and if it’s valuable to the business), not just because it has to be done. </p>
+
+        <p>Imagine we make the simplifying assumption that the new company more or less replaces the old company - certainly modernized and now profitable, but also - it’s legacy jobs lost and startup jobs gained. Legacy office space lost and startup office space gained. On a macroeconomic scale, reductions in this overhead, this frictional cost of translating old to new, can be equated to additional capital and effort that we save, and could directly be deployed into making the legacy company cash-flow positive. Every time we skip the part where old is replaced with new, (yet old still performs as if new,) we open the door to more effective economic growth with fewer frictional losses. We don’t want fewer startups - we want to additionally see legacy businesses being turned around. These savings from reduced frictional losses could be used to make the old better than the new ever could be. Imagine they were deployed specifically to make the company an excellent place to work, in addition to being a profitable venture?</p>
+      </section>
+
+      <!-- Callouts 6 & 7 -->
+      <div class="callout reveal">This is where we start to see the knock-on effects we get by injecting the same blood, sweat and tears into our legacy businesses that we do to startups today.</div>
+      <div class="callout reveal">These savings from reduced frictional losses could be used to make the old better than the new ever could be.</div>
+
+      <!-- Title 3 -->
+      <h3 class="reveal">Good people leadership is the goal. Positive cash flow is the fuel. </h3>
+
+      <!-- Callout 8 -->
+      <div class="callout reveal">“What if someone trained that leader-to-be to actually be a really good people leader?” </div>
+
+      <!-- Paragraph 6 + footnote line -->
+      <section class="section reveal">
+        <p>What if someone trained that leader-to-be to actually be a really good people leader? 
+People working for these legacy businesses, especially if they have been struggling financially, have likely been suffering in their day to day. What if this new business leader - the entrepreneur-turnaround-leader - prioritized "making great places to work" as the end goal of this business succeeding? That means: translating the company’s success back to the employees, and modernizing the workplace, working culture, people leadership, and benefits, as examples. This all takes investment, but that could be precisely the purpose of becoming cash-flow positive. 
+Now that sounds like a valiant goal for the new CEO of the company. It makes the entire mission feel a bit more human, doesn’t it? 
+Footnote: Because their incentives should be aligned, they would have a revenue share with the company’s profit. Huge payouts should be the goal too.</p>
+      </section>
+
+      <!-- Paragraph 7 (two parts provided under same label) -->
       <section class="section reveal">
         <p>And the kicker: What if someone did this whole thing in a way that was repeatable? What if they did it in the same way that a venture studio makes their founder and investment process scalable? What if we (now is when we get to the we part) built an institution that consistently set up the leader-to-be for success - in any vertical, with a funnel of high-likelihood businesses to turn around, an engine for recruiting top talent and enticing them with great terms and a powerful mission, a partnership with the local municipality and innovation/economic funding to kick-start the flywheel and help drive impact? What if we could take this turnaround studio and drag and drop it into any local municipality that wants to infuse their local economy? Now that’s the level of impact I’m hoping for.</p>
-      </section>
 
-      <!-- Footnote graphic -->
-      <section class="footnote reveal">
-        <div class="flow-graph">
-          <div class="flow-step">
-            <h4>Reduce inefficiency in new company creation</h4>
-          </div>
-          <div class="arrow">→</div>
-          <div class="flow-step">
-            <h4>Drive the economic backbone of the local economy and save jobs</h4>
-          </div>
-          <div class="arrow">→</div>
-          <div class="flow-step">
-            <h4>Make people’s jobs even better and create a wave of incredible, thoughtful managers in our communities</h4>
-          </div>
-          <div class="arrow">→</div>
-          <div class="flow-step">
-            <h4>Do this at scale, in a drag-and-drop way in any city.</h4>
-          </div>
-        </div>
+        <p>Really, I want to challenge the VCs who compete for talent to fill their accelerator cohorts. I want to give those ambitious entrepreneurs another route forward - another option - that doesn’t necessarily require making VCs a lot of money. And that’s why I’m proposing a new institution, rivaling that of early-stage venture capital. One that builds as much hype, operationalizes itself to scale, and drives as much impact as VC. Let’s be clear - I don’t think we should have fewer founders in the world. I simply want founder wannabes to have another option. One that prioritizes making the world better by turning struggling legacy businesses into amazing places to work with positive cash flow and really good bosses.</p>
       </section>
     </article>
   </main>
@@ -303,7 +288,7 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Top reading progress
+  // Reading progress
   const progress = document.getElementById('progress');
   function onProgress(){
     const h = document.documentElement;
@@ -313,7 +298,7 @@
   onProgress();
   window.addEventListener('scroll', onProgress, { passive:true });
 
-  // Reveal on scroll (IntersectionObserver)
+  // Subtle reveal on scroll
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -325,18 +310,6 @@
     });
   }, { threshold: .08, rootMargin: '0px 0px -10% 0px' });
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  // Parallax blobs (lightweight)
-  const blobs = [...document.querySelectorAll('.blob')].map(el=>({ el, depth: parseFloat(el.getAttribute('data-depth')||'0.04'), y:0 }));
-  if(!reduceMotion){
-    let lastY = window.scrollY;
-    const step = ()=>{
-      const y = window.scrollY, dy = y - lastY; lastY = y;
-      blobs.forEach(b=>{ b.y -= dy * b.depth; b.el.style.transform = `translateY(${b.y}px)`; });
-      requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
 </script>
 </body>
 </html>
