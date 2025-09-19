@@ -76,6 +76,20 @@
     .nav a.active{color:var(--primary)}
     .nav a.active::after{width:100%}
 
+    /* Mobile nav from codex branch */
+    @media (max-width: 720px){
+      .nav{flex-direction:column; align-items:flex-start; gap:var(--space-2); padding:var(--space-2) 0 var(--space-3)}
+      .brand{font-size:18px}
+      header nav{display:flex; flex-wrap:wrap; gap:10px; width:100%}
+      .nav a{margin-left:0; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,.85); box-shadow:var(--shadow-1)}
+      .nav a::after{display:none}
+      .nav a.active{color:#fff; background:linear-gradient(135deg, var(--primary), var(--cta))}
+      .container{padding:0 16px}
+      .cta-inner{flex-direction:column; align-items:stretch; gap:8px; width:calc(100% - 32px); border-radius:20px; padding:14px 16px;}
+      .cta-inner span{font-size:14px}
+      .btn{width:100%}
+    }
+
     /* Sections & type */
     section{padding:clamp(72px, 12vh, 128px) 0}
     h1,h2,h3{font-family:"Space Grotesk",sans-serif; font-weight:700; margin:0 0 var(--space-3)}
@@ -93,6 +107,98 @@
 
     /* Noise */
     .noise{position:fixed; inset:0; background-image:url("https://grainy-gradients.vercel.app/noise.png"); opacity:.06; pointer-events:none; z-index:-1}
+
+    /* Problem #1 styles from codex branch */
+    .problem{
+      position:relative;
+      padding:clamp(48px, 8vw, 88px);
+      border-radius:28px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(15,23,42,.08);
+      box-shadow:0 30px 70px rgba(15,23,42,.14);
+      overflow:hidden;
+      backdrop-filter:blur(6px);
+    }
+    .problem::before,
+    .problem::after{
+      content:"";
+      position:absolute;
+      width:380px; height:380px;
+      border-radius:50%;
+      z-index:-1;
+      filter:blur(60px);
+      opacity:.6;
+    }
+    .problem::before{background:rgba(56,189,248,.45); top:-220px; left:-140px}
+    .problem::after{background:rgba(124,58,237,.4); bottom:-240px; right:-160px}
+    .problem .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--accent);
+      font-weight:700;
+      background:rgba(56,189,248,.14);
+      padding:6px 14px;
+      border-radius:999px;
+      box-shadow:var(--shadow-1);
+    }
+    .problem h2{font-size:clamp(28px, 4vw, 40px); margin-top:var(--space-3); margin-bottom:var(--space-4); color:var(--ink)}
+    .problem-intro{max-width:720px}
+    .problem-intro p{font-size:clamp(16px, 2.6vw, 20px); color:#1f2937}
+    .problem-question{
+      margin:var(--space-5) 0 var(--space-3);
+      font-family:"Space Grotesk",sans-serif;
+      font-weight:700;
+      font-size:clamp(20px, 4vw, 28px);
+      color:var(--primary);
+      background:rgba(15,118,110,.1);
+      padding:12px 20px;
+      border-radius:18px;
+      display:inline-flex;
+      align-items:center;
+      box-shadow:var(--shadow-1);
+    }
+    .problem-grid{
+      display:grid;
+      gap:var(--space-3);
+      margin-top:var(--space-4);
+    }
+    @media(min-width:960px){
+      .problem-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+    }
+    .problem-card{
+      background:rgba(255,255,255,.9);
+      border-radius:22px;
+      border:1px solid rgba(15,118,110,.14);
+      padding:var(--space-4) var(--space-4) var(--space-4) var(--space-5);
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow-1);
+    }
+    .problem-card::before{
+      content:"";
+      position:absolute;
+      left:20px; top:24px; bottom:24px; width:4px;
+      border-radius:999px;
+      background:linear-gradient(180deg, var(--primary), var(--highlight));
+      opacity:.4;
+    }
+    .problem-card p{margin:0; color:#1f2937}
+    .problem-card + .problem-card p{margin-top:0}
+    .problem-card.accent{
+      background:linear-gradient(135deg, rgba(15,118,110,.18), rgba(124,58,237,.15));
+      border:1px solid rgba(124,58,237,.28);
+    }
+    .problem-card.accent p{color:#0b1020}
+    @media(max-width:600px){
+      .problem{padding:clamp(40px, 12vw, 64px)}
+      .problem-card{padding:var(--space-4)}
+      .problem-card::before{display:none}
+      .problem-question{width:100%; justify-content:center; text-align:center}
+    }
 
     /* What */
     .what{max-width:980px}
@@ -128,6 +234,7 @@
     .cta-bar{position:sticky; bottom:12px; z-index:35; display:flex; justify-content:center}
     .cta-inner{background:#fff; border:1px solid rgba(2,6,23,.08); border-radius:999px; padding:12px 20px; display:flex; align-items:center; gap:12px; box-shadow:var(--shadow-1)}
     .btn{
+      display:inline-flex; align-items:center; justify-content:center;
       background:var(--cta); color:#fff; border:none; border-radius:999px; padding:12px 20px; font-weight:700;
       cursor:pointer; text-decoration:none; transition:transform .2s, box-shadow .2s, filter .2s
     }
@@ -190,6 +297,35 @@
     <section id="top" class="reveal" data-theme='{"bg":"#F3F4F6","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
       <h1 id="hero-text">Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
       <p class="lede">Supporting the backbone of the local economy. Improving jobs. Making better managers.</p>
+    </section>
+
+    <!-- Problem #1 from codex branch -->
+    <section id="problem" class="problem reveal" data-theme='{"bg":"#F1F5F9","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
+      <span class="eyebrow">Problem #1</span>
+      <h2>Issue 1</h2>
+      <div class="problem-intro">
+        <p>There’s a gap in the market (this isn’t a problem in an of itself)</p>
+        <p>The problem is that we shuttle ambitious entrepreneurs into founding a new company instead of offering them to make the career switch to a legacy business</p>
+        <p>The challenge is that the hype we’ve built around the VC-backed startup world has made it seem like the only option.</p>
+      </div>
+      <p class="problem-question">Why is this a problem?</p>
+      <div class="problem-grid">
+        <article class="problem-card">
+          <p>Startups inherently create waste. Supporting a legacy business saves jobs instead of replacing them, builds off of existing product success instead of outcompeting them with new versions of the old, and drives the economic backbone of local economies.</p>
+        </article>
+        <article class="problem-card">
+          <p>The problem is that we’ve crowded out other modes of ambition and entrepreneurs who want to make an impact are shuttled down the path to founding since that’s all they know (not just that - but they would perhaps <em>prefer</em> to not have to start from scratch with <em>both</em> product and organizational foundations).</p>
+        </article>
+        <article class="problem-card">
+          <p>This is a career change - a big leap for most people who are leaving their jobs behind, taking financial risk, and putting their trust in themselves and their ability to build something valuable. Society has put a huge amount of cultural work into making this path more digestible, and there are institutions out there who are incentivized to make these people as successful as possible. Training to get off the ground, accelerators for funding, and folklore to pursue (Forbes 30U30 example).</p>
+        </article>
+        <article class="problem-card">
+          <p>Taking that leap into the legacy business route deserves as much acceleration, social praise, and institutional support as the founder route. There is a gap in the market and in large part it is due to incentives. VCs are incentivized to compete for talent and create as many startup success stories as possible since they make money off this - that is inherently their business model. (This isn’t a bad thing by the way - the number of startups and new businesses has declined rapidly since the 1980s in the US and Western Europe [citation needed]. We need more founders and we need more startups in the world. We just <em>also</em> need to not disregard legacy businesses to stimulate the local economy, and entrepreneurs need to see legacy turnarounds as a viable alternative for their ambition).</p>
+        </article>
+        <article class="problem-card accent">
+          <p>So the competition is fierce, but the goal is a worthy one. Build an institution accelerating legacy business turnarounds, fill a gap in the entrepreneurship market, and make the world better in a novel, feel good and super scalable way.</p>
+        </article>
+      </div>
     </section>
 
     <!-- What we do -->
