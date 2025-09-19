@@ -1,563 +1,357 @@
 <!doctype html>
-<!-- Sandbox copy of the production landing page served at /home/. -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Turnaround — Entrepreneurial Operators for Legacy Companies</title>
-  <meta name="description" content="Turnaround embeds vetted operators into stalled companies to lead pragmatic, employee-centered turnarounds." />
-
-  <!-- Favicon (place turnaround-favicon.png in /site/) -->
+  <meta name="description" content="Turnaround embeds vetted operators into stalled companies to lead pragmatic, employee-centered turnarounds.">
   <link rel="icon" href="../turnaround-favicon.png" type="image/png">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* === European Tech Optimism palette === */
-      --bg:#F3F4F6;         /* Cool grey */
-      --ink:#0B1020;        /* Deep ink */
-      --primary:#0F766E;    /* Dark teal */
-      --secondary:#F59E0B;  /* Muted mustard */
-      --accent:#38BDF8;     /* Sky blue */
-      --highlight:#38BDF8;  /* use accent as highlight */
-      --cta:#7C3AED;        /* Rich violet */
+      /* === Palette #2 (crisp, modern, calm) === */
+      --bg: #FAFBFC;
+      --ink: #0A0F1F;
+      --muted: #4B5563;
+      --primary: #2563EB;   /* royal blue */
+      --accent:  #14B8A6;   /* teal */
+      --cta:     #7C3AED;   /* violet */
+      --chip:    #FFFFFF;
+      --ring:    rgba(2,6,23,.08);
+      --card:    #FFFFFF;
 
-      --container:1100px;
-      --radius:16px;
+      --container: 980px;
+      --radius: 16px;
 
-      --space-1:8px; --space-2:12px; --space-3:16px; --space-4:24px;
-      --space-5:32px; --space-6:48px; --space-7:72px; --space-8:96px;
+      --s1: 8px; --s2: 12px; --s3: 16px; --s4: 20px;
+      --s5: 28px; --s6: 40px; --s7: 56px; --s8: 72px;
 
-      --shadow-1:0 1px 2px rgba(0,0,0,.05), 0 1px 1px rgba(0,0,0,.04);
-      --shadow-2:0 8px 24px rgba(0,0,0,.10);
+      --shadow-1: 0 1px 2px rgba(0,0,0,.05);
+      --shadow-2: 0 12px 28px rgba(2,6,23,.08);
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
     html,body{margin:0;padding:0}
+    html{scroll-behavior:smooth}
     body{
-      font-family:Inter, system-ui, sans-serif;
-      background:var(--bg); color:var(--ink);
-      transition: background-color .6s ease; /* smooth background tint changes */
-      line-height:1.6; overflow-x:hidden;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
-
-    /* Progress */
-    .progress{
-      position:fixed; inset:0 0 auto 0; height:3px; z-index:60;
-      background:linear-gradient(90deg, var(--accent), var(--cta));
-      transform-origin:0 50%; transform:scaleX(0);
-      box-shadow:0 1px 8px rgba(56,189,248,.22)
-    }
+    .container{max-width:var(--container); margin:0 auto; padding:0 16px}
 
     /* Header */
     header{
       position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(1.4) blur(8px);
-      background:rgba(243,244,246,.85); /* #F3F4F6 with alpha for consistency */
-      border-bottom:1px solid rgba(2,6,23,.06)
+      backdrop-filter: saturate(1.3) blur(8px);
+      background: rgba(250,251,252,.85);
+      border-bottom: 1px solid var(--ring);
     }
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:var(--space-3) 0}
-    .brand{display:flex; align-items:center; gap:12px; font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:20px; letter-spacing:.2px}
-    .brand svg{width:24px; height:24px}
-    .nav a{
-      margin-left:var(--space-4); text-decoration:none; color:var(--ink); font-weight:500; position:relative
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 10px 0;
     }
-    .nav a::after{
-      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0%;
-      background:linear-gradient(90deg, var(--primary), var(--accent));
-      transition:width .25s ease
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-family:"Space Grotesk", sans-serif; font-weight:700; letter-spacing:.2px;
     }
-    .nav a:hover::after{width:100%}
-    .nav a.active{color:var(--primary)}
-    .nav a.active::after{width:100%}
+    .brand svg{width:22px; height:22px}
+    #menu{display:flex; gap:10px; flex-wrap:wrap}
+    #menu a{
+      text-decoration:none; color:var(--ink); font-weight:600;
+      padding:8px 12px; border-radius:999px;
+    }
+    #menu a.active{background:linear-gradient(135deg, var(--primary), var(--cta)); color:#fff}
+    #menu a:hover{background:#fff; box-shadow: var(--shadow-1)}
 
-    /* Mobile nav from codex branch */
-    @media (max-width: 720px){
-      .nav{flex-direction:column; align-items:flex-start; gap:var(--space-2); padding:var(--space-2) 0 var(--space-3)}
-      .brand{font-size:18px}
-      header nav{display:flex; flex-wrap:wrap; gap:10px; width:100%}
-      .nav a{margin-left:0; padding:8px 14px; border-radius:999px; background:rgba(255,255,255,.85); box-shadow:var(--shadow-1)}
-      .nav a::after{display:none}
-      .nav a.active{color:#fff; background:linear-gradient(135deg, var(--primary), var(--cta))}
-      .container{padding:0 16px}
-      .cta-inner{flex-direction:column; align-items:stretch; gap:8px; width:calc(100% - 32px); border-radius:20px; padding:14px 16px;}
-      .cta-inner span{font-size:14px}
-      .btn{width:100%}
-    }
+    /* Sections */
+    section{padding: clamp(40px, 8vh, 80px) 0}
+    h1,h2,h3{font-family:"Space Grotesk", sans-serif; margin:0 0 var(--s3)}
+    h1{font-size:clamp(26px, 6vw, 54px); line-height:1.15; letter-spacing:-.01em}
+    h2{font-size:clamp(18px, 3.4vw, 28px); color:var(--primary)}
+    h3{font-size:clamp(16px, 2.6vw, 22px)}
+    p{margin:0 0 var(--s3); color: var(--muted)}
+    .lede{font-size:clamp(15px, 2.8vw, 20px); color:#1f2937; max-width:840px}
 
-    /* Sections & type */
-    section{padding:clamp(72px, 12vh, 128px) 0}
-    h1,h2,h3{font-family:"Space Grotesk",sans-serif; font-weight:700; margin:0 0 var(--space-3)}
-    h1{font-size:clamp(40px, 7vw, 88px); line-height:1.05; letter-spacing:-.02em}
-    h2{font-size:clamp(22px, 2.6vw, 32px); color:var(--primary)}
-    h3{font-size:clamp(18px, 2.2vw, 22px)}
-    p{margin:0 0 var(--space-3)}
-    .lede{font-size:clamp(16px, 2.4vw, 22px); color:#334155; max-width:880px}
-
-    /* Blobs */
-    .blob{position:fixed; border-radius:50%; filter:blur(120px); opacity:.5; z-index:-2; will-change:transform}
-    .blob.navy{background:var(--primary); width:640px; height:640px; top:-220px; left:-220px}
-    .blob.green{background:var(--cta); width:520px; height:520px; bottom:-160px; right:-160px}
-    .blob.blue{background:var(--accent); width:420px; height:420px; top:45%; left:58%}
-
-    /* Noise */
-    .noise{position:fixed; inset:0; background-image:url("https://grainy-gradients.vercel.app/noise.png"); opacity:.06; pointer-events:none; z-index:-1}
-
-    /* Problem #1 styles from codex branch */
-    .problem{
-      position:relative;
-      padding:clamp(48px, 8vw, 88px);
-      border-radius:28px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(15,23,42,.08);
-      box-shadow:0 30px 70px rgba(15,23,42,.14);
-      overflow:hidden;
-      backdrop-filter:blur(6px);
-    }
-    .problem::before,
-    .problem::after{
-      content:"";
-      position:absolute;
-      width:380px; height:380px;
-      border-radius:50%;
-      z-index:-1;
-      filter:blur(60px);
-      opacity:.6;
-    }
-    .problem::before{background:rgba(56,189,248,.45); top:-220px; left:-140px}
-    .problem::after{background:rgba(124,58,237,.4); bottom:-240px; right:-160px}
-    .problem .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:var(--accent);
-      font-weight:700;
-      background:rgba(56,189,248,.14);
-      padding:6px 14px;
-      border-radius:999px;
-      box-shadow:var(--shadow-1);
-    }
-    .problem h2{font-size:clamp(28px, 4vw, 40px); margin-top:var(--space-3); margin-bottom:var(--space-4); color:var(--ink)}
-    .problem-intro{max-width:720px}
-    .problem-intro p{font-size:clamp(16px, 2.6vw, 20px); color:#1f2937}
-    .problem-question{
-      margin:var(--space-5) 0 var(--space-3);
-      font-family:"Space Grotesk",sans-serif;
-      font-weight:700;
-      font-size:clamp(20px, 4vw, 28px);
-      color:var(--primary);
-      background:rgba(15,118,110,.1);
-      padding:12px 20px;
-      border-radius:18px;
-      display:inline-flex;
-      align-items:center;
-      box-shadow:var(--shadow-1);
-    }
-    .problem-grid{
-      display:grid;
-      gap:var(--space-3);
-      margin-top:var(--space-4);
-    }
-    @media(min-width:960px){
-      .problem-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
-    }
-    .problem-card{
-      background:rgba(255,255,255,.9);
-      border-radius:22px;
-      border:1px solid rgba(15,118,110,.14);
-      padding:var(--space-4) var(--space-4) var(--space-4) var(--space-5);
-      position:relative;
-      overflow:hidden;
-      box-shadow:var(--shadow-1);
-    }
-    .problem-card::before{
-      content:"";
-      position:absolute;
-      left:20px; top:24px; bottom:24px; width:4px;
-      border-radius:999px;
-      background:linear-gradient(180deg, var(--primary), var(--highlight));
-      opacity:.4;
-    }
-    .problem-card p{margin:0; color:#1f2937}
-    .problem-card + .problem-card p{margin-top:0}
-    .problem-card.accent{
-      background:linear-gradient(135deg, rgba(15,118,110,.18), rgba(124,58,237,.15));
-      border:1px solid rgba(124,58,237,.28);
-    }
-    .problem-card.accent p{color:#0b1020}
-    @media(max-width:600px){
-      .problem{padding:clamp(40px, 12vw, 64px)}
-      .problem-card{padding:var(--space-4)}
-      .problem-card::before{display:none}
-      .problem-question{width:100%; justify-content:center; text-align:center}
-    }
-
-    /* What */
-    .what{max-width:980px}
-    .what p + p{margin-top:var(--space-3)}
-
-    /* Principles */
-    .principles{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:var(--space-3); margin-top:var(--space-4)}
+    /* Chips and small UI */
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
     .chip{
-      display:flex; align-items:center; justify-content:center; gap:var(--space-2);
-      padding:12px 14px; border-radius:999px; background:#fff;
-      border:1px solid rgba(2,6,23,.10); box-shadow:var(--shadow-1);
-      font-weight:600; color:var(--ink); transition:transform .22s, box-shadow .22s
+      background:var(--chip); border:1px solid var(--ring); border-radius:999px;
+      padding:8px 12px; font-weight:600; box-shadow: var(--shadow-1); color:#111827
     }
-    .chip small{color:#475569; font-weight:500}
-    .chip:hover{transform:translateY(-3px); box-shadow:var(--shadow-2)}
 
-    /* How */
-    .grid{display:grid; gap:var(--space-4)}
-    @media(min-width:900px){.grid.cols-3{grid-template-columns:repeat(3, 1fr)}}
-    .tile{
-      background:#fff; border:1px solid rgba(2,6,23,.10); border-radius:16px; padding:var(--space-5);
-      transition:transform .25s, box-shadow .25s; box-shadow:var(--shadow-1);
-      will-change:transform; transform-style:preserve-3d; perspective:800px
+    /* Cards and grids */
+    .grid{display:grid; gap: var(--s4)}
+    @media(min-width:820px){
+      .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     }
-    .tile:hover{box-shadow:var(--shadow-2)}
-    .kicker{color:var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; margin-bottom:var(--space-2); display:block}
-
-    /* Deep dives */
-    .section-tight{padding-top:clamp(56px, 8vh, 96px); padding-bottom:clamp(56px, 8vh, 96px)}
-    .section-tight p{color:#475569}
-
-    /* CTA */
-    .cta-bar{position:sticky; bottom:12px; z-index:35; display:flex; justify-content:center}
-    .cta-inner{background:#fff; border:1px solid rgba(2,6,23,.08); border-radius:999px; padding:12px 20px; display:flex; align-items:center; gap:12px; box-shadow:var(--shadow-1)}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      background:var(--cta); color:#fff; border:none; border-radius:999px; padding:12px 20px; font-weight:700;
-      cursor:pointer; text-decoration:none; transition:transform .2s, box-shadow .2s, filter .2s
+    .card{
+      background:var(--card); border:1px solid var(--ring); border-radius:16px;
+      padding: var(--s4); box-shadow: var(--shadow-1)
     }
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 28px rgba(124,58,237,.25); filter:brightness(1.03)}
-
-    /* FAB */
-    .fab{
-      position:fixed; right:18px; bottom:18px; z-index:55; width:44px; height:44px; border-radius:999px; border:none;
-      display:grid; place-items:center; background:#fff; color:var(--ink);
-      border:1px solid rgba(2,6,23,.10); box-shadow:var(--shadow-1);
-      cursor:pointer; opacity:0; transform:translateY(10px); pointer-events:none; transition:opacity .25s, transform .25s, box-shadow .2s
+    .card p{margin:0; color:#1f2937}
+    .eyebrow{
+      font-size:12px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
+      color:var(--accent); background:rgba(20,184,166,.12);
+      border:1px solid rgba(20,184,166,.25);
+      padding:6px 10px; border-radius:999px; display:inline-flex; align-items:center; gap:8px
     }
-    .fab.show{opacity:1; transform:translateY(0); pointer-events:auto}
-    .fab:hover{box-shadow:var(--shadow-2)}
 
-    /* Reveal (base state) */
-    .reveal{opacity:0; transform:translateY(14px)}
-
-    /* Reduced motion */
-    @media (prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      .reveal{opacity:1; transform:none}
-      .chip,.tile,.btn{transition:none}
+    /* Hero */
+    .hero .buttons{display:flex; flex-wrap:wrap; gap:10px; margin-top: var(--s3)}
+    .btn, .btn-secondary{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px 16px; border-radius:12px; font-weight:700; text-decoration:none; cursor:pointer;
+      transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
     }
+    .btn{background:var(--cta); color:#fff}
+    .btn:hover{transform:translateY(-2px); box-shadow: var(--shadow-2)}
+    .btn-secondary{background:#fff; border:1px solid var(--ring); color:var(--ink)}
+    .btn-secondary:hover{transform:translateY(-1px); box-shadow: var(--shadow-1)}
+
+    /* Balanced section visuals */
+    .soft{background: linear-gradient(180deg, rgba(37,99,235,.06), transparent 60%)}
+    .soft-2{background: linear-gradient(180deg, rgba(124,58,237,.06), transparent 60%)}
+    .soft-3{background: linear-gradient(180deg, rgba(20,184,166,.07), transparent 60%)}
+
+    /* Sticky CTA on mobile only */
+    .cta-bar{
+      position:sticky; bottom:10px; z-index:35; display:none; justify-content:center; padding:0 8px
+    }
+    .cta-inner{
+      background:#fff; border:1px solid var(--ring); border-radius:999px;
+      padding:8px 10px; display:flex; align-items:center; gap:10px; box-shadow: var(--shadow-1)
+    }
+    @media(max-width:640px){
+      .cta-bar{display:flex}
+      .hero .buttons .btn-secondary{display:none}
+    }
+
+    /* Footer */
+    footer{padding:24px 0; border-top:1px solid var(--ring); color:#6B7280; font-size:14px}
   </style>
 </head>
+
 <body>
-  <!-- Progress -->
-  <div class="progress" id="progress"></div>
-
-  <!-- Blobs -->
-  <div class="blob navy"  data-depth="0.06"></div>
-  <div class="blob green" data-depth="-0.05"></div>
-  <div class="blob blue"  data-depth="0.04"></div>
-  <div class="noise"></div>
-
   <header>
-    <div class="container nav reveal">
+    <div class="container nav">
       <div class="brand">
-        <!-- Minimal animated SVG mark -->
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path id="glyph1" d="M8 36 L8 12 L22 12" />
-          <path id="glyph2" d="M26 12 L40 12 L40 36 L26 36" />
+          <path d="M8 36 L8 12 L22 12" />
+          <path d="M26 12 L40 12 L40 36 L26 36" />
         </svg>
         Turnaround
       </div>
-      <nav id="nav">
-        <a href="#about">What we do</a>
-        <a href="#principles">Principles</a>
-        <a href="#how">How</a>
-        <a href="#owner">Owner</a>
+      <nav id="menu">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#institution">Institution</a>
         <a href="#operator">Operator</a>
-        <a href="#success">Success</a>
+        <a href="#impact">Impact</a>
+        <a href="#join">Join</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero -->
-    <section id="top" class="reveal" data-theme='{"bg":"#F3F4F6","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h1 id="hero-text">Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
-      <p class="lede">Supporting the backbone of the local economy. Improving jobs. Making better managers.</p>
-    </section>
-
-    <!-- Problem #1 from codex branch -->
-    <section id="problem" class="problem reveal" data-theme='{"bg":"#F1F5F9","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <span class="eyebrow">Problem #1</span>
-      <h2>Issue 1</h2>
-      <div class="problem-intro">
-        <p>There’s a gap in the market (this isn’t a problem in an of itself)</p>
-        <p>The problem is that we shuttle ambitious entrepreneurs into founding a new company instead of offering them to make the career switch to a legacy business</p>
-        <p>The challenge is that the hype we’ve built around the VC-backed startup world has made it seem like the only option.</p>
-      </div>
-      <p class="problem-question">Why is this a problem?</p>
-      <div class="problem-grid">
-        <article class="problem-card">
-          <p>Startups inherently create waste. Supporting a legacy business saves jobs instead of replacing them, builds off of existing product success instead of outcompeting them with new versions of the old, and drives the economic backbone of local economies.</p>
-        </article>
-        <article class="problem-card">
-          <p>The problem is that we’ve crowded out other modes of ambition and entrepreneurs who want to make an impact are shuttled down the path to founding since that’s all they know (not just that - but they would perhaps <em>prefer</em> to not have to start from scratch with <em>both</em> product and organizational foundations).</p>
-        </article>
-        <article class="problem-card">
-          <p>This is a career change - a big leap for most people who are leaving their jobs behind, taking financial risk, and putting their trust in themselves and their ability to build something valuable. Society has put a huge amount of cultural work into making this path more digestible, and there are institutions out there who are incentivized to make these people as successful as possible. Training to get off the ground, accelerators for funding, and folklore to pursue (Forbes 30U30 example).</p>
-        </article>
-        <article class="problem-card">
-          <p>Taking that leap into the legacy business route deserves as much acceleration, social praise, and institutional support as the founder route. There is a gap in the market and in large part it is due to incentives. VCs are incentivized to compete for talent and create as many startup success stories as possible since they make money off this - that is inherently their business model. (This isn’t a bad thing by the way - the number of startups and new businesses has declined rapidly since the 1980s in the US and Western Europe [citation needed]. We need more founders and we need more startups in the world. We just <em>also</em> need to not disregard legacy businesses to stimulate the local economy, and entrepreneurs need to see legacy turnarounds as a viable alternative for their ambition).</p>
-        </article>
-        <article class="problem-card accent">
-          <p>So the competition is fierce, but the goal is a worthy one. Build an institution accelerating legacy business turnarounds, fill a gap in the entrepreneurship market, and make the world better in a novel, feel good and super scalable way.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- What we do -->
-    <section id="about" class="what reveal" data-theme='{"bg":"#EEF7F6","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>What we do</h2>
-      <p>We embed vetted, trained operators into stalled companies. We set them up for success with carefully crafted guardrails to reduce risk to both the business and the operator. Our purpose is intentional and laser focused, and our program is designed in the same way.</p>
-      <p><strong>The result:</strong> An interim CEO who has 1 year to turn the business around — with a mandate to translate that cash flow right back to the employees.</p>
-    </section>
-
-    <!-- Principles -->
-    <section id="principles" class="reveal" data-theme='{"bg":"#FFF7E9","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>Our Principles</h2>
-      <div class="principles">
-        <div class="chip">Pass profit back to employees</div>
-        <div class="chip">Repeatable, de-risked program</div>
-        <div class="chip">Industry agnostic</div>
-        <div class="chip">Laser focus + data tooling</div>
-        <div class="chip">Cash-flow positive is north star</div>
-        <div class="chip">Aligned incentives — <small>501(c)(3)</small></div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section id="how" class="reveal" data-theme='{"bg":"#F0F7FE","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>How it works</h2>
-      <div class="grid cols-3">
-        <div class="tile tilt reveal">
-          <span class="kicker">1 · Vet & Match</span>
-          <h3>Curate operators. Set mandate.</h3>
-          <p>We maintain a curated pool mapped by capability and references, then pair with companies that grant real authority and a clear turnaround mandate.</p>
+  <main>
+    <!-- HERO -->
+    <section class="hero soft">
+      <div class="container">
+        <h1>Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
+        <p class="lede">
+          I work on the backbone of the local economy. Vetted operators, real authority, clear guardrails. The goal is simple. Stabilize the business and pass gains back to employees.
+        </p>
+        <div class="buttons">
+          <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply as an operator</a>
+          <a class="btn-secondary" href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Read the manifesto</a>
         </div>
-        <div class="tile tilt reveal">
-          <span class="kicker">2 · Prep & Plan</span>
-          <h3>3-month cohort. First 120 days.</h3>
-          <p>Focused prep on diagnostics, cash clarity, throughput, and stakeholder alignment — all aimed at the first 30-60-90 on site.</p>
-        </div>
-        <div class="tile tilt reveal">
-          <span class="kicker">3 · Embed & Ship</span>
-          <h3>Measured execution. Visible wins.</h3>
-          <p>Weekly metrics, ruthless scope cuts, and shipping cadence to rebuild confidence and stabilize the business.</p>
+        <div class="chips" style="margin-top:14px">
+          <span class="chip">Cash flow over vanity metrics</span>
+          <span class="chip">Guardrails that de-risk</span>
+          <span class="chip">Employee centered</span>
         </div>
       </div>
     </section>
 
-    <!-- Deep-dive sections -->
-    <section id="owner" class="section-tight reveal" data-theme='{"bg":"#F4EEFF","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>No risk to the business owner</h2>
-      <p>Structured guardrails, aligned incentives, and an interim model designed to protect the core business while unlocking turnaround upside.</p>
+    <!-- PROBLEM -->
+    <section id="problem">
+      <div class="container">
+        <span class="eyebrow">Problem</span>
+        <h2>We turned ambition into a single path. Start a startup or feel behind.</h2>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>Ambition gets crowded into founding</h3>
+            <p>Talented people want impact. The default path pushes them to invent a product, raise, and build a company from scratch. That works for some. It also creates waste when the target already has a viable product and customers.</p>
+          </article>
+          <article class="card">
+            <h3>Legacy businesses are under-served</h3>
+            <p>These companies hold real jobs, real knowledge, and real assets. Many stall on execution, not vision. They need operators who can diagnose, set constraints, and ship visible wins without burning the place down.</p>
+          </article>
+          <article class="card">
+            <h3>Incentives shape the narrative</h3>
+            <p>We celebrate founders and unicorn lore. We underwrite accelerators and hero stories. We do not reward the operator who gets a stalled plant back to cash positive and shares that value with the people on the floor.</p>
+          </article>
+          <article class="card">
+            <h3>The gap</h3>
+            <p>There is no scaled, reputable path that matches ambitious operators with legacy companies and gives them the mandate and support to turn things around. That is what Turnaround exists to build.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section id="operator" class="section-tight reveal" data-theme='{"bg":"#F7F5FF","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>Why would the operator do it</h2>
-      <p>Mission-driven work with real authority, a crisp 12-month mandate, and upside tied to durable cash flow and employee outcomes.</p>
+    <!-- SOLUTION -->
+    <section id="solution" class="soft-3">
+      <div class="container">
+        <span class="eyebrow">Solution</span>
+        <h2>Embed a vetted operator with a one year mandate and strict guardrails.</h2>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Vet and match</h3>
+            <p>We maintain a curated pool of operators mapped by capabilities and references. We match them with owners who offer real authority and a clean mandate.</p>
+          </div>
+          <div class="card">
+            <h3>Prep and plan</h3>
+            <p>A three month cohort focuses on diagnostics, cash clarity, throughput, and alignment. The output is a first 30-60-90 that everyone can understand.</p>
+          </div>
+          <div class="card">
+            <h3>Execute and show wins</h3>
+            <p>Weekly metrics, ruthless scope cuts, and a shipping cadence. Confidence returns when the work is visible and useful.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="success" class="section-tight reveal" data-theme='{"bg":"#F3F4F6","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>Setting them up for success</h2>
-      <p>Cohort training, playbooks, advisor cadence, and lightweight tooling — all engineered to make the first 120 days count.</p>
+    <!-- INSTITUTION -->
+    <section id="institution">
+      <div class="container">
+        <span class="eyebrow">Institution</span>
+        <h2>A repeatable program that aligns incentives and protects the core business.</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Guardrails</h3>
+            <p>Clear decision rights. Explicit constraints. Review cadence with advisors who have shipped real programs. Owners get line of sight without micromanagement.</p>
+          </div>
+          <div class="card">
+            <h3>Aligned upside</h3>
+            <p>Operator incentives tie to durable cash flow and employee outcomes. The north star is simple. Cash positive and fair distribution of gains.</p>
+          </div>
+          <div class="card">
+            <h3>Lightweight tools</h3>
+            <p>Dashboards that track leading indicators. Operating rhythms that fit on one page. Process that helps people do their work, not fight software.</p>
+          </div>
+          <div class="card">
+            <h3>Nonprofit backbone</h3>
+            <p>We are building an institution with mission first design. The objective is healthy companies that treat people well. The model follows that truth.</p>
+          </div>
+        </div>
+        <p style="margin-top:var(--s4)">Longer argument and design principles live in the manifesto. <a href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Read it here</a>.</p>
+      </div>
+    </section>
+
+    <!-- OPERATOR VIEW -->
+    <section id="operator" class="soft-2">
+      <div class="container">
+        <span class="eyebrow">Operator</span>
+        <h2>Why an operator chooses this path</h2>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Real authority</h3>
+            <p>Interim CEO role with a clear mandate. You can set constraints, move budget, and change how work flows. No theatrics.</p>
+          </div>
+          <div class="card">
+            <h3>Structured support</h3>
+            <p>Cohort peers, advisor cadence, and playbooks that focus on the first 120 days. You are not alone in hard weeks.</p>
+          </div>
+          <div class="card">
+            <h3>Meaningful upside</h3>
+            <p>Compensation connects to cash improvement and employee outcomes. Wins that matter get rewarded.</p>
+          </div>
+        </div>
+        <div class="buttons" style="margin-top:var(--s3)">
+          <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to the operator pool</a>
+          <a class="btn-secondary" href="#join">Talk about a company</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MACRO IMPACT -->
+    <section id="impact">
+      <div class="container">
+        <span class="eyebrow">Impact</span>
+        <h2>What this does at scale</h2>
+        <div class="grid cols-2">
+          <article class="card">
+            <h3>Local economies</h3>
+            <p>Stabilized mid sized firms keep skills, apprenticeships, and supplier networks alive. These are the quiet engines of a region.</p>
+          </article>
+          <article class="card">
+            <h3>Better managers</h3>
+            <p>Programs that teach constraint setting and throughput create leaders who build teams that ship. That culture persists after the cohort ends.</p>
+          </article>
+          <article class="card">
+            <h3>Fair distribution</h3>
+            <p>When cash improves, employees benefit. That is the agreement. It is visible and simple to audit.</p>
+          </article>
+          <article class="card">
+            <h3>Less waste</h3>
+            <p>Fewer me too products. More repair and renewal of useful businesses. Capital gets more productive in the places where people work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section id="join" class="soft">
+      <div class="container">
+        <span class="eyebrow">Call to action</span>
+        <h2>Help build the institution</h2>
+        <p class="lede">
+          I am assembling the first full cohort and the advisory group that will keep us honest. If this mission fits your experience or your company, reach out. If you want the longer version with context, read the manifesto.
+        </p>
+        <div class="buttons">
+          <a class="btn" href="mailto:me@jonathantari.com?subject=Turnaround%20—%20Build%20with%20us">Partner or advise</a>
+          <a class="btn-secondary" href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Manifesto</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Sticky CTA -->
-  <div class="cta-bar">
-    <div class="cta-inner" id="cta">
-      <span>Operators:</span>
-      <a class="btn" id="magnet" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to join our operator cohort</a>
+  <!-- Mobile sticky CTA -->
+  <div class="cta-bar" aria-hidden="false">
+    <div class="cta-inner">
+      <span style="font-weight:700">Operators:</span>
+      <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply</a>
     </div>
   </div>
 
   <footer>
-    © <span id="y"></span> Turnaround
+    <div class="container">
+      © <span id="y"></span> Turnaround
+    </div>
   </footer>
-
-  <!-- FAB -->
-  <button class="fab" id="toTop" aria-label="Back to top">↑</button>
-
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
   <script>
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const progress = document.getElementById('progress');
-
-    // Progress (GSAP or fallback)
-    if (!reduceMotion) {
-      gsap.to(progress, { scaleX: 1, ease: "none", scrollTrigger: { scrub: true } });
-    } else {
-      const onScrollProgress = () => {
-        const h = document.documentElement;
-        const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
-        progress.style.transform = 'scaleX(' + scrolled + ')';
-      };
-      onScrollProgress();
-      window.addEventListener('scroll', onScrollProgress, { passive: true });
-    }
-
-    // Split hero text into words for staggered reveal
-    const hero = document.getElementById('hero-text');
-    if (!reduceMotion && hero) {
-      const words = hero.textContent.split(' ');
-      hero.innerHTML = words.map(w => `<span class="word" style="display:inline-block; opacity:0; transform:translateY(12px)">${w}&nbsp;</span>`).join('');
-      gsap.to('#top .word', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.03 });
-    }
-
-    // Scroll-spy (active nav)
-    const sections = [...document.querySelectorAll('main section[id]')];
-    const navLinks = [...document.querySelectorAll('#nav a')];
-    const spy = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const id = e.target.id;
-          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    // Tiny scroll-spy to highlight current section
+    const links = [...document.querySelectorAll('#menu a')];
+    const ids = links.map(a => a.getAttribute('href')).filter(h => h.startsWith('#'));
+    const sections = ids.map(id => document.querySelector(id));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const id = '#'+e.target.id;
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
         }
       });
-    }, { rootMargin: '-40% 0% -55% 0%', threshold: [0,1] });
-    sections.forEach(s => spy.observe(s));
-
-    // Reveal (GSAP)
-    if (!reduceMotion) {
-      gsap.utils.toArray('.reveal').forEach(el => {
-        gsap.fromTo(el, { autoAlpha: 0, y: 16 }, {
-          autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 80%' }
-        });
-      });
-      gsap.utils.toArray('#how .tile, #principles .chip').forEach((el, i) => {
-        gsap.fromTo(el, { autoAlpha: 0, y: 12 }, {
-          autoAlpha: 1, y: 0, duration: 0.6, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%' }, delay: i * 0.03
-        });
-      });
-    }
-
-    // THEME SHIFTS (including background tint)
-    function applyTheme(t){
-      if (!t) return;
-      const cssVars = {};
-      if (t.primary)   cssVars['--primary']  = t.primary;
-      if (t.highlight) cssVars['--highlight']= t.highlight;
-      if (t.cta)       cssVars['--cta']      = t.cta;
-      if (t.bg)        cssVars['--bg']       = t.bg;
-
-      if (!reduceMotion) {
-        gsap.to(document.documentElement, { duration: 0.8, ease: 'power2.out', css: cssVars });
-      } else {
-        for (const k in cssVars) document.documentElement.style.setProperty(k, cssVars[k]);
-      }
-    }
-    if (!reduceMotion) {
-      gsap.registerPlugin(ScrollTrigger);
-      sections.forEach(sec => {
-        const theme = sec.dataset.theme ? JSON.parse(sec.dataset.theme) : null;
-        if (!theme) return;
-        ScrollTrigger.create({
-          trigger: sec,
-          start: 'top 60%',
-          onEnter: () => applyTheme(theme),
-          onEnterBack: () => applyTheme(theme)
-        });
-      });
-    }
-
-    // FAB
-    const toTop = document.getElementById('toTop');
-    const toggleFab = () => {
-      if (window.scrollY > 300) toTop.classList.add('show'); else toTop.classList.remove('show');
-    };
-    toggleFab();
-    window.addEventListener('scroll', toggleFab, { passive: true });
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
-
-    // Parallax blobs (clean + accurate)
-    const blobs = [...document.querySelectorAll('.blob')].map(el => ({ el, depth: parseFloat(el.getAttribute('data-depth') || '0.04'), yOffset: 0 }));
-    if (!reduceMotion) {
-      const setters = blobs.map(({ el }) => gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power2.out' }));
-      let lastY = window.scrollY;
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY, dy = y - lastY; lastY = y;
-        blobs.forEach((b, i) => {
-          b.yOffset -= dy * b.depth;
-          setters[i](b.yOffset);
-        });
-      }, { passive: true });
-    }
-
-    // Card tilt (subtle, bounded)
-    const clamp = (v,min,max)=>Math.min(max,Math.max(min,v));
-    document.querySelectorAll('.tilt').forEach(card=>{
-      if (reduceMotion) return;
-      let raf = 0;
-      card.addEventListener('mousemove', e=>{
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(()=>{
-          const r = card.getBoundingClientRect();
-          const x = (e.clientX - r.left)/r.width;
-          const y = (e.clientY - r.top)/r.height;
-          const rx = clamp((0.5 - y)*8, -6, 6);
-          const ry = clamp((x - 0.5)*10, -8, 8);
-          card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
-        });
-      });
-      card.addEventListener('mouseleave', ()=>{ card.style.transform = 'rotateX(0) rotateY(0) translateZ(0)'; });
-    });
-
-    // Magnetic CTA
-    const magnet = document.getElementById('magnet');
-    const magnetWrap = document.getElementById('cta');
-    if (!reduceMotion && magnet && magnetWrap){
-      magnetWrap.addEventListener('mousemove', e=>{
-        const r = magnet.getBoundingClientRect(), strength = 12;
-        const dx = clamp((e.clientX - (r.left + r.width/2)) / (r.width/2), -1, 1);
-        const dy = clamp((e.clientY - (r.top + r.height/2)) / (r.height/2), -1, 1);
-        magnet.style.transform = `translate(${dx*strength}px, ${dy*strength}px)`;
-      });
-      magnetWrap.addEventListener('mouseleave', ()=>{ magnet.style.transform = 'translate(0,0)'; });
-    }
-
-    // Animate SVG mark stroke
-    if (!reduceMotion) {
-      ['glyph1','glyph2'].forEach(id=>{
-        const p = document.getElementById(id);
-        if (!p) return;
-        const len = p.getTotalLength();
-        p.style.strokeDasharray = len;
-        p.style.strokeDashoffset = len;
-        gsap.to(p, { strokeDashoffset: 0, duration: 1.2, ease: 'power2.out', delay: .2 });
-      });
-    }
+    }, {rootMargin:'-50% 0% -45% 0%', threshold:[0,1]});
+    sections.forEach(s => s && io.observe(s));
   </script>
 </body>
 </html>
