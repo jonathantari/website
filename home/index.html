@@ -3,355 +3,786 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Turnaround — Entrepreneurial Operators for Legacy Companies</title>
-  <meta name="description" content="Turnaround embeds vetted operators into stalled companies to lead pragmatic, employee-centered turnarounds.">
-  <link rel="icon" href="../turnaround-favicon.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-
+  <title>Turnaround · Placeholder Experience</title>
+  <meta name="description" content="Placeholder description for the Turnaround website experience." />
+  <link rel="icon" href="../turnaround-favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      /* === Palette #2 (crisp, modern, calm) === */
-      --bg: #FAFBFC;
-      --ink: #0A0F1F;
-      --muted: #4B5563;
-      --primary: #2563EB;   /* royal blue */
-      --accent:  #14B8A6;   /* teal */
-      --cta:     #7C3AED;   /* violet */
-      --chip:    #FFFFFF;
-      --ring:    rgba(2,6,23,.08);
-      --card:    #FFFFFF;
-
-      --container: 980px;
-      --radius: 16px;
-
-      --s1: 8px; --s2: 12px; --s3: 16px; --s4: 20px;
-      --s5: 28px; --s6: 40px; --s7: 56px; --s8: 72px;
-
-      --shadow-1: 0 1px 2px rgba(0,0,0,.05);
-      --shadow-2: 0 12px 28px rgba(2,6,23,.08);
+    :root {
+      color-scheme: dark;
+      --page: #050917;
+      --surface: rgba(16, 25, 48, 0.62);
+      --surface-strong: rgba(23, 32, 55, 0.82);
+      --accent: #8098ff;
+      --glow: rgba(122, 149, 255, 0.42);
+      --stroke: rgba(148, 163, 184, 0.32);
+      --text-primary: #f8faff;
+      --text-muted: #94a3b8;
+      --max-width: 1160px;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --shadow-soft: 0 32px 70px -40px rgba(15, 23, 42, 0.75);
+      --transition-snappy: cubic-bezier(0.38, 0.15, 0.35, 0.95);
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text-primary);
+      background-color: var(--page);
+      background-image:
+        radial-gradient(120% 140% at 20% 10%, color-mix(in srgb, var(--accent) 32%, transparent), transparent 58%),
+        radial-gradient(90% 120% at 80% 10%, color-mix(in srgb, var(--glow) 55%, transparent), transparent 62%),
+        radial-gradient(140% 160% at 50% 50%, color-mix(in srgb, var(--page) 80%, #010314 20%), color-mix(in srgb, var(--page) 98%, #020617 2%));
+      background-blend-mode: screen, screen, normal;
+      min-height: 100vh;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-    }
-    .container{max-width:var(--container); margin:0 auto; padding:0 16px}
-
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: saturate(1.3) blur(8px);
-      background: rgba(250,251,252,.85);
-      border-bottom: 1px solid var(--ring);
-    }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding: 10px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-family:"Space Grotesk", sans-serif; font-weight:700; letter-spacing:.2px;
-    }
-    .brand svg{width:22px; height:22px}
-    #menu{display:flex; gap:10px; flex-wrap:wrap}
-    #menu a{
-      text-decoration:none; color:var(--ink); font-weight:600;
-      padding:8px 12px; border-radius:999px;
-    }
-    #menu a.active{background:linear-gradient(135deg, var(--primary), var(--cta)); color:#fff}
-    #menu a:hover{background:#fff; box-shadow: var(--shadow-1)}
-
-    /* Sections */
-    section{padding: clamp(40px, 8vh, 80px) 0}
-    h1,h2,h3{font-family:"Space Grotesk", sans-serif; margin:0 0 var(--s3)}
-    h1{font-size:clamp(26px, 6vw, 54px); line-height:1.15; letter-spacing:-.01em}
-    h2{font-size:clamp(18px, 3.4vw, 28px); color:var(--primary)}
-    h3{font-size:clamp(16px, 2.6vw, 22px)}
-    p{margin:0 0 var(--s3); color: var(--muted)}
-    .lede{font-size:clamp(15px, 2.8vw, 20px); color:#1f2937; max-width:840px}
-
-    /* Chips and small UI */
-    .chips{display:flex; flex-wrap:wrap; gap:10px}
-    .chip{
-      background:var(--chip); border:1px solid var(--ring); border-radius:999px;
-      padding:8px 12px; font-weight:600; box-shadow: var(--shadow-1); color:#111827
+      overflow-x: hidden;
     }
 
-    /* Cards and grids */
-    .grid{display:grid; gap: var(--s4)}
-    @media(min-width:820px){
-      .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    }
-    .card{
-      background:var(--card); border:1px solid var(--ring); border-radius:16px;
-      padding: var(--s4); box-shadow: var(--shadow-1)
-    }
-    .card p{margin:0; color:#1f2937}
-    .eyebrow{
-      font-size:12px; letter-spacing:.18em; text-transform:uppercase; font-weight:700;
-      color:var(--accent); background:rgba(20,184,166,.12);
-      border:1px solid rgba(20,184,166,.25);
-      padding:6px 10px; border-radius:999px; display:inline-flex; align-items:center; gap:8px
+    a { color: inherit; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+    .progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 3px;
+      z-index: 80;
+      background: linear-gradient(90deg, rgba(128, 152, 255, 0.8), rgba(56, 189, 248, 0.9));
+      transform-origin: 0 50%;
+      transform: scaleX(0);
     }
 
-    /* Hero */
-    .hero .buttons{display:flex; flex-wrap:wrap; gap:10px; margin-top: var(--s3)}
-    .btn, .btn-secondary{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:12px 16px; border-radius:12px; font-weight:700; text-decoration:none; cursor:pointer;
-      transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
-    }
-    .btn{background:var(--cta); color:#fff}
-    .btn:hover{transform:translateY(-2px); box-shadow: var(--shadow-2)}
-    .btn-secondary{background:#fff; border:1px solid var(--ring); color:var(--ink)}
-    .btn-secondary:hover{transform:translateY(-1px); box-shadow: var(--shadow-1)}
-
-    /* Balanced section visuals */
-    .soft{background: linear-gradient(180deg, rgba(37,99,235,.06), transparent 60%)}
-    .soft-2{background: linear-gradient(180deg, rgba(124,58,237,.06), transparent 60%)}
-    .soft-3{background: linear-gradient(180deg, rgba(20,184,166,.07), transparent 60%)}
-
-    /* Sticky CTA on mobile only */
-    .cta-bar{
-      position:sticky; bottom:10px; z-index:35; display:none; justify-content:center; padding:0 8px
-    }
-    .cta-inner{
-      background:#fff; border:1px solid var(--ring); border-radius:999px;
-      padding:8px 10px; display:flex; align-items:center; gap:10px; box-shadow: var(--shadow-1)
-    }
-    @media(max-width:640px){
-      .cta-bar{display:flex}
-      .hero .buttons .btn-secondary{display:none}
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+      overflow: hidden;
     }
 
-    /* Footer */
-    footer{padding:24px 0; border-top:1px solid var(--ring); color:#6B7280; font-size:14px}
+    .backdrop::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: conic-gradient(from 180deg at 50% 50%, rgba(128, 152, 255, 0.25), transparent 55%, rgba(56, 189, 248, 0.18));
+      filter: blur(120px);
+      transform: rotate(8deg);
+    }
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.18;
+    }
+
+    .orb {
+      position: absolute;
+      width: clamp(220px, 32vw, 420px);
+      height: clamp(220px, 32vw, 420px);
+      border-radius: 50%;
+      filter: blur(0px);
+      opacity: 0.38;
+      animation: float 14s ease-in-out infinite;
+      mix-blend-mode: screen;
+    }
+
+    .orb.one { top: -120px; right: 12%; background: radial-gradient(circle at 30% 30%, rgba(129, 140, 248, 0.62), rgba(129, 140, 248, 0)); animation-delay: -4s; }
+    .orb.two { bottom: -140px; left: 8%; background: radial-gradient(circle at 70% 40%, rgba(56, 189, 248, 0.5), rgba(56, 189, 248, 0)); animation-duration: 18s; }
+    .orb.three { top: 35%; left: 55%; background: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.45), rgba(45, 212, 191, 0)); animation-delay: -9s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      40% { transform: translate3d(12px, -20px, 0) scale(1.04); }
+      70% { transform: translate3d(-16px, 18px, 0) scale(0.98); }
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: saturate(160%) blur(18px);
+      background: rgba(5, 9, 23, 0.72);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(16px, 3vw, 28px) 0;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .brand svg { width: 28px; height: 28px; }
+
+    nav ul { display: flex; gap: clamp(12px, 2.6vw, 28px); margin: 0; padding: 0; list-style: none; flex-wrap: wrap; }
+
+    nav a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(226, 232, 240, 0.76);
+      transition: color 0.3s var(--transition-snappy), background 0.3s var(--transition-snappy), transform 0.3s var(--transition-snappy);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(128, 152, 255, 0.28), rgba(56, 189, 248, 0.18));
+      opacity: 0;
+      transition: opacity 0.3s var(--transition-snappy);
+    }
+
+    nav a span { position: relative; z-index: 1; }
+
+    nav a:hover { color: #f8faff; transform: translateY(-1px); }
+    nav a:hover::after { opacity: 0.35; }
+    nav a.active { color: #f8faff; }
+    nav a.active::after { opacity: 0.5; }
+
+    main { position: relative; z-index: 1; }
+
+    .panel {
+      position: relative;
+      padding: clamp(88px, 14vh, 160px) 0;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: clamp(12px, 3vw, 36px);
+      border-radius: calc(var(--radius-lg) + 8px);
+      background: linear-gradient(140deg, rgba(148, 163, 184, 0.08), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .panel:nth-child(odd)::before { background: linear-gradient(160deg, rgba(129, 140, 248, 0.12), transparent 58%); }
+    .panel:nth-child(even)::before { background: linear-gradient(160deg, rgba(56, 189, 248, 0.12), transparent 58%); }
+
+    .panel-inner { position: relative; }
+
+    .hero-grid {
+      display: grid;
+      gap: clamp(28px, 4vw, 52px);
+      align-items: stretch;
+    }
+
+    @media (min-width: 960px) {
+      .hero-grid { grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.8fr); }
+    }
+
+    .hero-copy { display: grid; gap: clamp(18px, 3vw, 32px); align-content: start; }
+
+    .cta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: clamp(28px, 4vw, 48px);
+    }
+
+    .section-lead {
+      display: grid;
+      gap: clamp(16px, 3vw, 28px);
+      max-width: 760px;
+    }
+
+    .section-lead.align-center { text-align: center; margin: 0 auto; }
+
+    .section-lead.align-center .placeholder-block,
+    .section-lead.align-center .placeholder-pill { margin-left: auto; margin-right: auto; }
+
+    .column-grid {
+      display: grid;
+      gap: clamp(18px, 3vw, 32px);
+      margin-top: clamp(36px, 5vw, 56px);
+    }
+
+    @media (min-width: 960px) {
+      .column-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: clamp(20px, 3vw, 34px);
+      margin-top: clamp(40px, 6vw, 72px);
+    }
+
+    @media (min-width: 900px) {
+      .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .timeline {
+      margin: clamp(36px, 5vw, 56px) 0 0;
+      padding: 0;
+      list-style: none;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: clamp(12px, 3vw, 40px);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(128, 152, 255, 0.4), transparent);
+    }
+
+    .timeline li {
+      position: relative;
+      padding-left: clamp(48px, 8vw, 120px);
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+
+    .timeline li:last-child { margin-bottom: 0; }
+
+    .timeline li::before {
+      content: attr(data-phase);
+      position: absolute;
+      left: clamp(-2px, calc(3vw - 12px), 12px);
+      top: 8px;
+      width: clamp(34px, 4vw, 48px);
+      height: clamp(34px, 4vw, 48px);
+      border-radius: 50%;
+      background: rgba(128, 152, 255, 0.22);
+      border: 1px solid rgba(128, 152, 255, 0.4);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.7);
+    }
+
+    .stakeholder-grid {
+      display: grid;
+      gap: clamp(24px, 4vw, 40px);
+      margin-top: clamp(40px, 6vw, 68px);
+    }
+
+    @media (min-width: 960px) {
+      .stakeholder-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .stack-card {
+      display: grid;
+      gap: clamp(16px, 2.6vw, 26px);
+    }
+
+    .mosaic-grid {
+      display: grid;
+      gap: clamp(18px, 3vw, 30px);
+      margin-top: clamp(40px, 6vw, 72px);
+    }
+
+    @media (min-width: 960px) {
+      .mosaic-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .mosaic-grid .placeholder-block:nth-child(1) { grid-column: span 2; }
+    .mosaic-grid .placeholder-block:nth-child(4) { grid-column: span 2; }
+
+    .final-grid {
+      display: grid;
+      gap: clamp(20px, 3vw, 32px);
+      align-items: start;
+    }
+
+    @media (min-width: 900px) {
+      .final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); }
+    }
+
+    .cta-dock {
+      position: fixed;
+      inset: auto clamp(20px, 4vw, 48px) clamp(24px, 5vw, 60px) clamp(20px, 4vw, 48px);
+      display: flex;
+      justify-content: center;
+      z-index: 60;
+      pointer-events: none;
+    }
+
+    .cta-dock-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(10, 14, 28, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 24px 48px -28px rgba(15, 23, 42, 0.9);
+      pointer-events: auto;
+      backdrop-filter: blur(16px);
+    }
+
+    .cta-dock-inner .placeholder-pill { margin: 0; }
+
+    footer {
+      position: relative;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      padding: clamp(24px, 4vw, 48px) 0;
+      color: rgba(148, 163, 184, 0.72);
+      font-size: 14px;
+    }
+
+    footer .footer-grid {
+      display: grid;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (min-width: 720px) {
+      footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .placeholder-block,
+    .placeholder-pill,
+    .placeholder-chip {
+      position: relative;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.32);
+      background: linear-gradient(140deg, color-mix(in srgb, var(--surface) 75%, transparent), color-mix(in srgb, var(--surface-strong) 65%, transparent));
+      overflow: hidden;
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      transition: transform 0.45s var(--transition-snappy), border-color 0.45s var(--transition-snappy);
+      --pointer-x: 50%;
+      --pointer-y: 50%;
+    }
+
+    .placeholder-block::before,
+    .placeholder-pill::before,
+    .placeholder-chip::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.55);
+      pointer-events: none;
+    }
+
+    .placeholder-block::after,
+    .placeholder-pill::after,
+    .placeholder-chip::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), color-mix(in srgb, var(--accent) 60%, transparent), transparent 62%);
+      opacity: 0;
+      transition: opacity 0.45s var(--transition-snappy);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .placeholder-block:hover,
+    .placeholder-pill:hover,
+    .placeholder-chip:hover {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(129, 140, 248, 0.48);
+    }
+
+    .placeholder-block:hover::after,
+    .placeholder-pill:hover::after,
+    .placeholder-chip:hover::after { opacity: 1; }
+
+    .placeholder-block.small { min-height: 72px; }
+    .placeholder-block.medium { min-height: 120px; }
+    .placeholder-block.tall { min-height: 220px; }
+    .placeholder-block.huge { min-height: clamp(180px, 26vh, 320px); }
+    .placeholder-block.heading { min-height: 140px; }
+    .placeholder-block.visual { min-height: clamp(240px, 34vh, 360px); }
+
+    .placeholder-pill {
+      min-height: auto;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: rgba(12, 18, 35, 0.82);
+      border-style: solid;
+    }
+
+    .placeholder-pill::before { position: static; inset: auto; font-size: 11px; }
+
+    .placeholder-pill::after { inset: -20%; border-radius: inherit; }
+
+    .placeholder-pill.small { padding: 10px 18px; font-size: 12px; }
+
+    .placeholder-pill.muted { border-color: rgba(148, 163, 184, 0.24); }
+
+    .placeholder-pill.ghost { border-style: dashed; }
+
+    .placeholder-chip {
+      min-height: auto;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+    }
+
+    .placeholder-chip::before { position: static; inset: auto; }
+
+    .placeholder-chip::after { inset: -30%; border-radius: inherit; }
+
+    .placeholder-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
+      margin: clamp(24px, 3vw, 36px) 0;
+    }
+
+    .to-top {
+      position: fixed;
+      right: clamp(18px, 3.5vw, 40px);
+      bottom: clamp(18px, 3.5vw, 40px);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(6, 12, 28, 0.75);
+      color: rgba(248, 250, 255, 0.88);
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease;
+    }
+
+    .to-top:hover { background: rgba(128, 152, 255, 0.28); }
+    .to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+    @media (max-width: 720px) {
+      nav ul { gap: 6px; }
+      nav a { padding: 10px 14px; letter-spacing: 0.08em; }
+      .panel::before { inset: clamp(8px, 6vw, 28px); }
+      .timeline::before { left: 12px; }
+      .timeline li { padding-left: 64px; }
+      .timeline li::before { left: 0; }
+      .cta-dock { inset: auto 12px clamp(20px, 8vw, 40px) 12px; }
+    }
   </style>
 </head>
-
 <body>
+  <div class="progress" id="progress"></div>
+  <div class="backdrop" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+  </div>
+
   <header>
     <div class="container nav">
-      <div class="brand">
+      <div class="brand" aria-label="Turnaround">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M8 36 L8 12 L22 12" />
           <path d="M26 12 L40 12 L40 36 L26 36" />
         </svg>
-        Turnaround
+        <span>Turnaround</span>
       </div>
-      <nav id="menu">
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#institution">Institution</a>
-        <a href="#operator">Operator</a>
-        <a href="#impact">Impact</a>
-        <a href="#join">Join</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#hero"><span>Hero</span></a></li>
+          <li><a href="#story"><span>Story Arc</span></a></li>
+          <li><a href="#architecture"><span>Program Architecture</span></a></li>
+          <li><a href="#journey"><span>Journey Map</span></a></li>
+          <li><a href="#stakeholders"><span>Stakeholders</span></a></li>
+          <li><a href="#proof"><span>Evidence</span></a></li>
+          <li><a href="#cta"><span>Final CTA</span></a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero soft">
-      <div class="container">
-        <h1>Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
-        <p class="lede">
-          I work on the backbone of the local economy. Vetted operators, real authority, clear guardrails. The goal is simple. Stabilize the business and pass gains back to employees.
-        </p>
-        <div class="buttons">
-          <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply as an operator</a>
-          <a class="btn-secondary" href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Read the manifesto</a>
+    <section id="hero" class="panel" data-theme='{"page":"#060b19","surface":"rgba(38,26,62,0.58)","surfaceStrong":"rgba(53,38,92,0.82)","accent":"#b388ff","glow":"rgba(202,161,255,0.45)"}'>
+      <div class="container panel-inner">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="placeholder-block huge" data-label="Hero headline block"></div>
+            <div class="placeholder-block medium" data-label="Hero supporting copy"></div>
+            <div class="cta-grid">
+              <span class="placeholder-pill" data-label="Primary CTA"></span>
+              <span class="placeholder-pill muted" data-label="Secondary CTA"></span>
+              <span class="placeholder-pill ghost" data-label="Tertiary CTA"></span>
+            </div>
+          </div>
+          <div class="placeholder-block visual" data-label="Hero visual or media canvas"></div>
         </div>
-        <div class="chips" style="margin-top:14px">
-          <span class="chip">Cash flow over vanity metrics</span>
-          <span class="chip">Guardrails that de-risk</span>
-          <span class="chip">Employee centered</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROBLEM -->
-    <section id="problem">
-      <div class="container">
-        <span class="eyebrow">Problem</span>
-        <h2>We turned ambition into a single path. Start a startup or feel behind.</h2>
-        <div class="grid cols-2">
-          <article class="card">
-            <h3>Ambition gets crowded into founding</h3>
-            <p>Talented people want impact. The default path pushes them to invent a product, raise, and build a company from scratch. That works for some. It also creates waste when the target already has a viable product and customers.</p>
-          </article>
-          <article class="card">
-            <h3>Legacy businesses are under-served</h3>
-            <p>These companies hold real jobs, real knowledge, and real assets. Many stall on execution, not vision. They need operators who can diagnose, set constraints, and ship visible wins without burning the place down.</p>
-          </article>
-          <article class="card">
-            <h3>Incentives shape the narrative</h3>
-            <p>We celebrate founders and unicorn lore. We underwrite accelerators and hero stories. We do not reward the operator who gets a stalled plant back to cash positive and shares that value with the people on the floor.</p>
-          </article>
-          <article class="card">
-            <h3>The gap</h3>
-            <p>There is no scaled, reputable path that matches ambitious operators with legacy companies and gives them the mandate and support to turn things around. That is what Turnaround exists to build.</p>
-          </article>
+        <div class="hero-tags">
+          <span class="placeholder-chip" data-label="Key theme placeholder"></span>
+          <span class="placeholder-chip" data-label="Value pillar placeholder"></span>
+          <span class="placeholder-chip" data-label="Proof point placeholder"></span>
+          <span class="placeholder-chip" data-label="Audience tag placeholder"></span>
         </div>
       </div>
     </section>
 
-    <!-- SOLUTION -->
-    <section id="solution" class="soft-3">
-      <div class="container">
-        <span class="eyebrow">Solution</span>
-        <h2>Embed a vetted operator with a one year mandate and strict guardrails.</h2>
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Vet and match</h3>
-            <p>We maintain a curated pool of operators mapped by capabilities and references. We match them with owners who offer real authority and a clean mandate.</p>
+    <section id="story" class="panel" data-theme='{"page":"#05101f","surface":"rgba(20,48,74,0.52)","surfaceStrong":"rgba(23,60,92,0.8)","accent":"#54d6ff","glow":"rgba(84,214,255,0.38)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Section kicker"></span>
+          <div class="placeholder-block heading" data-label="Section headline block"></div>
+          <div class="placeholder-block medium" data-label="Introductory narrative block"></div>
+        </div>
+        <div class="column-grid">
+          <div class="placeholder-block medium" data-label="Narrative column one"></div>
+          <div class="placeholder-block medium" data-label="Narrative column two"></div>
+          <div class="placeholder-block medium" data-label="Narrative column three"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture" class="panel" data-theme='{"page":"#080b1d","surface":"rgba(28,33,73,0.54)","surfaceStrong":"rgba(35,42,88,0.8)","accent":"#5fe4c5","glow":"rgba(95,228,197,0.4)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead align-center">
+          <span class="placeholder-pill small" data-label="Program section kicker"></span>
+          <div class="placeholder-block heading" data-label="Program architecture headline"></div>
+          <div class="placeholder-block medium" data-label="Program introduction block"></div>
+        </div>
+        <div class="feature-grid">
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="panel" data-theme='{"page":"#070d1d","surface":"rgba(30,38,74,0.52)","surfaceStrong":"rgba(40,50,98,0.82)","accent":"#ffb454","glow":"rgba(255,180,84,0.36)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Journey section kicker"></span>
+          <div class="placeholder-block heading" data-label="Journey headline block"></div>
+          <div class="placeholder-block medium" data-label="Journey introduction block"></div>
+        </div>
+        <ol class="timeline">
+          <li data-phase="01">
+            <div class="placeholder-block medium" data-label="Journey phase one details"></div>
+          </li>
+          <li data-phase="02">
+            <div class="placeholder-block medium" data-label="Journey phase two details"></div>
+          </li>
+          <li data-phase="03">
+            <div class="placeholder-block medium" data-label="Journey phase three details"></div>
+          </li>
+          <li data-phase="04">
+            <div class="placeholder-block medium" data-label="Journey phase four details"></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="stakeholders" class="panel" data-theme='{"page":"#070b1a","surface":"rgba(35,28,64,0.52)","surfaceStrong":"rgba(44,32,86,0.8)","accent":"#87b2ff","glow":"rgba(135,178,255,0.38)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead align-center">
+          <span class="placeholder-pill small" data-label="Stakeholder section kicker"></span>
+          <div class="placeholder-block heading" data-label="Stakeholder headline block"></div>
+          <div class="placeholder-block medium" data-label="Stakeholder overview block"></div>
+        </div>
+        <div class="stakeholder-grid">
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
           </div>
-          <div class="card">
-            <h3>Prep and plan</h3>
-            <p>A three month cohort focuses on diagnostics, cash clarity, throughput, and alignment. The output is a first 30-60-90 that everyone can understand.</p>
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
           </div>
-          <div class="card">
-            <h3>Execute and show wins</h3>
-            <p>Weekly metrics, ruthless scope cuts, and a shipping cadence. Confidence returns when the work is visible and useful.</p>
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- INSTITUTION -->
-    <section id="institution">
-      <div class="container">
-        <span class="eyebrow">Institution</span>
-        <h2>A repeatable program that aligns incentives and protects the core business.</h2>
-        <div class="grid cols-2">
-          <div class="card">
-            <h3>Guardrails</h3>
-            <p>Clear decision rights. Explicit constraints. Review cadence with advisors who have shipped real programs. Owners get line of sight without micromanagement.</p>
-          </div>
-          <div class="card">
-            <h3>Aligned upside</h3>
-            <p>Operator incentives tie to durable cash flow and employee outcomes. The north star is simple. Cash positive and fair distribution of gains.</p>
-          </div>
-          <div class="card">
-            <h3>Lightweight tools</h3>
-            <p>Dashboards that track leading indicators. Operating rhythms that fit on one page. Process that helps people do their work, not fight software.</p>
-          </div>
-          <div class="card">
-            <h3>Nonprofit backbone</h3>
-            <p>We are building an institution with mission first design. The objective is healthy companies that treat people well. The model follows that truth.</p>
-          </div>
+    <section id="proof" class="panel" data-theme='{"page":"#050d16","surface":"rgba(16,40,54,0.5)","surfaceStrong":"rgba(20,56,74,0.78)","accent":"#64c7ff","glow":"rgba(100,199,255,0.34)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Evidence section kicker"></span>
+          <div class="placeholder-block heading" data-label="Evidence headline block"></div>
+          <div class="placeholder-block medium" data-label="Evidence narrative block"></div>
         </div>
-        <p style="margin-top:var(--s4)">Longer argument and design principles live in the manifesto. <a href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Read it here</a>.</p>
-      </div>
-    </section>
-
-    <!-- OPERATOR VIEW -->
-    <section id="operator" class="soft-2">
-      <div class="container">
-        <span class="eyebrow">Operator</span>
-        <h2>Why an operator chooses this path</h2>
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Real authority</h3>
-            <p>Interim CEO role with a clear mandate. You can set constraints, move budget, and change how work flows. No theatrics.</p>
-          </div>
-          <div class="card">
-            <h3>Structured support</h3>
-            <p>Cohort peers, advisor cadence, and playbooks that focus on the first 120 days. You are not alone in hard weeks.</p>
-          </div>
-          <div class="card">
-            <h3>Meaningful upside</h3>
-            <p>Compensation connects to cash improvement and employee outcomes. Wins that matter get rewarded.</p>
-          </div>
-        </div>
-        <div class="buttons" style="margin-top:var(--s3)">
-          <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to the operator pool</a>
-          <a class="btn-secondary" href="#join">Talk about a company</a>
+        <div class="mosaic-grid">
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Quote tile"></div>
+          <div class="placeholder-block medium" data-label="Reference tile"></div>
         </div>
       </div>
     </section>
 
-    <!-- MACRO IMPACT -->
-    <section id="impact">
-      <div class="container">
-        <span class="eyebrow">Impact</span>
-        <h2>What this does at scale</h2>
-        <div class="grid cols-2">
-          <article class="card">
-            <h3>Local economies</h3>
-            <p>Stabilized mid sized firms keep skills, apprenticeships, and supplier networks alive. These are the quiet engines of a region.</p>
-          </article>
-          <article class="card">
-            <h3>Better managers</h3>
-            <p>Programs that teach constraint setting and throughput create leaders who build teams that ship. That culture persists after the cohort ends.</p>
-          </article>
-          <article class="card">
-            <h3>Fair distribution</h3>
-            <p>When cash improves, employees benefit. That is the agreement. It is visible and simple to audit.</p>
-          </article>
-          <article class="card">
-            <h3>Less waste</h3>
-            <p>Fewer me too products. More repair and renewal of useful businesses. Capital gets more productive in the places where people work.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOIN -->
-    <section id="join" class="soft">
-      <div class="container">
-        <span class="eyebrow">Call to action</span>
-        <h2>Help build the institution</h2>
-        <p class="lede">
-          I am assembling the first full cohort and the advisory group that will keep us honest. If this mission fits your experience or your company, reach out. If you want the longer version with context, read the manifesto.
-        </p>
-        <div class="buttons">
-          <a class="btn" href="mailto:me@jonathantari.com?subject=Turnaround%20—%20Build%20with%20us">Partner or advise</a>
-          <a class="btn-secondary" href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Manifesto</a>
+    <section id="cta" class="panel" data-theme='{"page":"#060a19","surface":"rgba(42,24,60,0.52)","surfaceStrong":"rgba(58,34,78,0.82)","accent":"#f687ff","glow":"rgba(246,135,255,0.4)"}'>
+      <div class="container panel-inner">
+        <div class="final-grid">
+          <div class="placeholder-block huge" data-label="Final CTA headline block"></div>
+          <div class="placeholder-block medium" data-label="Final CTA narrative block"></div>
+          <div class="cta-grid">
+            <span class="placeholder-pill" data-label="Primary CTA"></span>
+            <span class="placeholder-pill muted" data-label="Secondary CTA"></span>
+            <span class="placeholder-pill ghost" data-label="Contact CTA"></span>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Mobile sticky CTA -->
-  <div class="cta-bar" aria-hidden="false">
-    <div class="cta-inner">
-      <span style="font-weight:700">Operators:</span>
-      <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply</a>
+  <div class="cta-dock" aria-hidden="false">
+    <div class="cta-dock-inner">
+      <span class="placeholder-pill small" data-label="Dock label"></span>
+      <span class="placeholder-pill" data-label="Dock CTA"></span>
     </div>
   </div>
 
   <footer>
-    <div class="container">
-      © <span id="y"></span> Turnaround
+    <div class="container footer-grid">
+      <span>© <span id="year"></span> Turnaround</span>
+      <div class="placeholder-block small" data-label="Footer utility block"></div>
     </div>
   </footer>
 
-  <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
-    // Tiny scroll-spy to highlight current section
-    const links = [...document.querySelectorAll('#menu a')];
-    const ids = links.map(a => a.getAttribute('href')).filter(h => h.startsWith('#'));
-    const sections = ids.map(id => document.querySelector(id));
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          const id = '#'+e.target.id;
-          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const progressBar = document.getElementById('progress');
+    const toTop = document.getElementById('toTop');
+
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progressBar.style.transform = `scaleX(${scrolled})`;
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    const sections = [...document.querySelectorAll('main section')];
+    const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            const target = link.getAttribute('href');
+            link.classList.toggle('active', target === `#${entry.target.id}`);
+          });
         }
       });
-    }, {rootMargin:'-50% 0% -45% 0%', threshold:[0,1]});
-    sections.forEach(s => s && io.observe(s));
+    }, { rootMargin: '-50% 0% -40% 0%', threshold: 0.25 });
+
+    sections.forEach(section => navObserver.observe(section));
+
+    const applyTheme = theme => {
+      if (!theme) return;
+      const root = document.documentElement;
+      if (theme.page) root.style.setProperty('--page', theme.page);
+      if (theme.surface) root.style.setProperty('--surface', theme.surface);
+      if (theme.surfaceStrong) root.style.setProperty('--surface-strong', theme.surfaceStrong);
+      if (theme.accent) root.style.setProperty('--accent', theme.accent);
+      if (theme.glow) root.style.setProperty('--glow', theme.glow);
+    };
+
+    const themeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const raw = entry.target.dataset.theme;
+          if (raw) {
+            try { applyTheme(JSON.parse(raw)); } catch (err) { console.error('Theme parse error', err); }
+          }
+        }
+      });
+    }, { rootMargin: '-45% 0% -45% 0%', threshold: 0.35 });
+
+    sections.forEach(section => themeObserver.observe(section));
+
+    const toggleToTop = () => {
+      if (window.scrollY > 420) {
+        toTop.classList.add('visible');
+      } else {
+        toTop.classList.remove('visible');
+      }
+    };
+
+    toggleToTop();
+    window.addEventListener('scroll', toggleToTop, { passive: true });
+
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const interactivePlaceholders = document.querySelectorAll('.placeholder-block, .placeholder-pill, .placeholder-chip');
+
+    interactivePlaceholders.forEach(el => {
+      el.addEventListener('pointermove', event => {
+        const rect = el.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty('--pointer-x', `${x}%`);
+        el.style.setProperty('--pointer-y', `${y}%`);
+      });
+
+      el.addEventListener('pointerleave', () => {
+        el.style.removeProperty('--pointer-x');
+        el.style.removeProperty('--pointer-y');
+      });
+    });
   </script>
 </body>
 </html>

@@ -3,424 +3,786 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Turnaround — Entrepreneurial Operators for Legacy Companies</title>
-  <meta name="description" content="Turnaround embeds vetted operators into stalled companies to lead pragmatic, employee-centered turnarounds." />
-
-  <!-- Favicon (place turnaround-favicon.png in /site/) -->
-  <link rel="icon" href="turnaround-favicon.png" type="image/png">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-
+  <title>Turnaround · Placeholder Experience</title>
+  <meta name="description" content="Placeholder description for the Turnaround website experience." />
+  <link rel="icon" href="turnaround-favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      /* === European Tech Optimism palette === */
-      --bg:#F3F4F6;         /* Cool grey */
-      --ink:#0B1020;        /* Deep ink */
-      --primary:#0F766E;    /* Dark teal */
-      --secondary:#F59E0B;  /* Muted mustard */
-      --accent:#38BDF8;     /* Sky blue */
-      --highlight:#38BDF8;  /* use accent as highlight */
-      --cta:#7C3AED;        /* Rich violet */
-
-      --container:1100px;
-      --radius:16px;
-
-      --space-1:8px; --space-2:12px; --space-3:16px; --space-4:24px;
-      --space-5:32px; --space-6:48px; --space-7:72px; --space-8:96px;
-
-      --shadow-1:0 1px 2px rgba(0,0,0,.05), 0 1px 1px rgba(0,0,0,.04);
-      --shadow-2:0 8px 24px rgba(0,0,0,.10);
+    :root {
+      color-scheme: dark;
+      --page: #050917;
+      --surface: rgba(16, 25, 48, 0.62);
+      --surface-strong: rgba(23, 32, 55, 0.82);
+      --accent: #8098ff;
+      --glow: rgba(122, 149, 255, 0.42);
+      --stroke: rgba(148, 163, 184, 0.32);
+      --text-primary: #f8faff;
+      --text-muted: #94a3b8;
+      --max-width: 1160px;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --shadow-soft: 0 32px 70px -40px rgba(15, 23, 42, 0.75);
+      --transition-snappy: cubic-bezier(0.38, 0.15, 0.35, 0.95);
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    html,body{margin:0;padding:0}
-    body{
-      font-family:Inter, system-ui, sans-serif;
-      background:var(--bg); color:var(--ink);
-      transition: background-color .6s ease; /* smooth background tint changes */
-      line-height:1.6; overflow-x:hidden;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text-primary);
+      background-color: var(--page);
+      background-image:
+        radial-gradient(120% 140% at 20% 10%, color-mix(in srgb, var(--accent) 32%, transparent), transparent 58%),
+        radial-gradient(90% 120% at 80% 10%, color-mix(in srgb, var(--glow) 55%, transparent), transparent 62%),
+        radial-gradient(140% 160% at 50% 50%, color-mix(in srgb, var(--page) 80%, #010314 20%), color-mix(in srgb, var(--page) 98%, #020617 2%));
+      background-blend-mode: screen, screen, normal;
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
-    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
 
-    /* Progress */
-    .progress{
-      position:fixed; inset:0 0 auto 0; height:3px; z-index:60;
-      background:linear-gradient(90deg, var(--accent), var(--cta));
-      transform-origin:0 50%; transform:scaleX(0);
-      box-shadow:0 1px 8px rgba(56,189,248,.22)
+    a { color: inherit; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+
+    .progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 3px;
+      z-index: 80;
+      background: linear-gradient(90deg, rgba(128, 152, 255, 0.8), rgba(56, 189, 248, 0.9));
+      transform-origin: 0 50%;
+      transform: scaleX(0);
     }
 
-    /* Header */
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(1.4) blur(8px);
-      background:rgba(243,244,246,.85); /* #F3F4F6 with alpha for consistency */
-      border-bottom:1px solid rgba(2,6,23,.06)
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+      overflow: hidden;
     }
-    .nav{display:flex; align-items:center; justify-content:space-between; padding:var(--space-3) 0}
-    .brand{display:flex; align-items:center; gap:12px; font-family:"Space Grotesk",sans-serif; font-weight:700; font-size:20px; letter-spacing:.2px}
-    .brand svg{width:24px; height:24px}
-    .nav a{
-      margin-left:var(--space-4); text-decoration:none; color:var(--ink); font-weight:500; position:relative
+
+    .backdrop::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: conic-gradient(from 180deg at 50% 50%, rgba(128, 152, 255, 0.25), transparent 55%, rgba(56, 189, 248, 0.18));
+      filter: blur(120px);
+      transform: rotate(8deg);
     }
-    .nav a::after{
-      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0%;
-      background:linear-gradient(90deg, var(--primary), var(--accent));
-      transition:width .25s ease
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.18;
     }
-    .nav a:hover::after{width:100%}
-    .nav a.active{color:var(--primary)}
-    .nav a.active::after{width:100%}
 
-    /* Sections & type */
-    section{padding:clamp(72px, 12vh, 128px) 0}
-    h1,h2,h3{font-family:"Space Grotesk",sans-serif; font-weight:700; margin:0 0 var(--space-3)}
-    h1{font-size:clamp(40px, 7vw, 88px); line-height:1.05; letter-spacing:-.02em}
-    h2{font-size:clamp(22px, 2.6vw, 32px); color:var(--primary)}
-    h3{font-size:clamp(18px, 2.2vw, 22px)}
-    p{margin:0 0 var(--space-3)}
-    .lede{font-size:clamp(16px, 2.4vw, 22px); color:#334155; max-width:880px}
-
-    /* Blobs */
-    .blob{position:fixed; border-radius:50%; filter:blur(120px); opacity:.5; z-index:-2; will-change:transform}
-    .blob.navy{background:var(--primary); width:640px; height:640px; top:-220px; left:-220px}
-    .blob.green{background:var(--cta); width:520px; height:520px; bottom:-160px; right:-160px}
-    .blob.blue{background:var(--accent); width:420px; height:420px; top:45%; left:58%}
-
-    /* Noise */
-    .noise{position:fixed; inset:0; background-image:url("https://grainy-gradients.vercel.app/noise.png"); opacity:.06; pointer-events:none; z-index:-1}
-
-    /* What */
-    .what{max-width:980px}
-    .what p + p{margin-top:var(--space-3)}
-
-    /* Principles */
-    .principles{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:var(--space-3); margin-top:var(--space-4)}
-    .chip{
-      display:flex; align-items:center; justify-content:center; gap:var(--space-2);
-      padding:12px 14px; border-radius:999px; background:#fff;
-      border:1px solid rgba(2,6,23,.10); box-shadow:var(--shadow-1);
-      font-weight:600; color:var(--ink); transition:transform .22s, box-shadow .22s
+    .orb {
+      position: absolute;
+      width: clamp(220px, 32vw, 420px);
+      height: clamp(220px, 32vw, 420px);
+      border-radius: 50%;
+      filter: blur(0px);
+      opacity: 0.38;
+      animation: float 14s ease-in-out infinite;
+      mix-blend-mode: screen;
     }
-    .chip small{color:#475569; font-weight:500}
-    .chip:hover{transform:translateY(-3px); box-shadow:var(--shadow-2)}
 
-    /* How */
-    .grid{display:grid; gap:var(--space-4)}
-    @media(min-width:900px){.grid.cols-3{grid-template-columns:repeat(3, 1fr)}}
-    .tile{
-      background:#fff; border:1px solid rgba(2,6,23,.10); border-radius:16px; padding:var(--space-5);
-      transition:transform .25s, box-shadow .25s; box-shadow:var(--shadow-1);
-      will-change:transform; transform-style:preserve-3d; perspective:800px
+    .orb.one { top: -120px; right: 12%; background: radial-gradient(circle at 30% 30%, rgba(129, 140, 248, 0.62), rgba(129, 140, 248, 0)); animation-delay: -4s; }
+    .orb.two { bottom: -140px; left: 8%; background: radial-gradient(circle at 70% 40%, rgba(56, 189, 248, 0.5), rgba(56, 189, 248, 0)); animation-duration: 18s; }
+    .orb.three { top: 35%; left: 55%; background: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.45), rgba(45, 212, 191, 0)); animation-delay: -9s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      40% { transform: translate3d(12px, -20px, 0) scale(1.04); }
+      70% { transform: translate3d(-16px, 18px, 0) scale(0.98); }
     }
-    .tile:hover{box-shadow:var(--shadow-2)}
-    .kicker{color:var(--accent); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; margin-bottom:var(--space-2); display:block}
 
-    /* Deep dives */
-    .section-tight{padding-top:clamp(56px, 8vh, 96px); padding-bottom:clamp(56px, 8vh, 96px)}
-    .section-tight p{color:#475569}
-
-    /* CTA */
-    .cta-bar{position:sticky; bottom:12px; z-index:35; display:flex; justify-content:center}
-    .cta-inner{background:#fff; border:1px solid rgba(2,6,23,.08); border-radius:999px; padding:12px 20px; display:flex; align-items:center; gap:12px; box-shadow:var(--shadow-1)}
-    .btn{
-      background:var(--cta); color:#fff; border:none; border-radius:999px; padding:12px 20px; font-weight:700;
-      cursor:pointer; text-decoration:none; transition:transform .2s, box-shadow .2s, filter .2s
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: saturate(160%) blur(18px);
+      background: rgba(5, 9, 23, 0.72);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
     }
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 28px rgba(124,58,237,.25); filter:brightness(1.03)}
 
-    /* FAB */
-    .fab{
-      position:fixed; right:18px; bottom:18px; z-index:55; width:44px; height:44px; border-radius:999px; border:none;
-      display:grid; place-items:center; background:#fff; color:var(--ink);
-      border:1px solid rgba(2,6,23,.10); box-shadow:var(--shadow-1);
-      cursor:pointer; opacity:0; transform:translateY(10px); pointer-events:none; transition:opacity .25s, transform .25s, box-shadow .2s
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(16px, 3vw, 28px) 0;
+      gap: 24px;
     }
-    .fab.show{opacity:1; transform:translateY(0); pointer-events:auto}
-    .fab:hover{box-shadow:var(--shadow-2)}
 
-    /* Reveal (base state) */
-    .reveal{opacity:0; transform:translateY(14px)}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+    }
 
-    /* Reduced motion */
-    @media (prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      .reveal{opacity:1; transform:none}
-      .chip,.tile,.btn{transition:none}
+    .brand svg { width: 28px; height: 28px; }
+
+    nav ul { display: flex; gap: clamp(12px, 2.6vw, 28px); margin: 0; padding: 0; list-style: none; flex-wrap: wrap; }
+
+    nav a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(226, 232, 240, 0.76);
+      transition: color 0.3s var(--transition-snappy), background 0.3s var(--transition-snappy), transform 0.3s var(--transition-snappy);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(128, 152, 255, 0.28), rgba(56, 189, 248, 0.18));
+      opacity: 0;
+      transition: opacity 0.3s var(--transition-snappy);
+    }
+
+    nav a span { position: relative; z-index: 1; }
+
+    nav a:hover { color: #f8faff; transform: translateY(-1px); }
+    nav a:hover::after { opacity: 0.35; }
+    nav a.active { color: #f8faff; }
+    nav a.active::after { opacity: 0.5; }
+
+    main { position: relative; z-index: 1; }
+
+    .panel {
+      position: relative;
+      padding: clamp(88px, 14vh, 160px) 0;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: clamp(12px, 3vw, 36px);
+      border-radius: calc(var(--radius-lg) + 8px);
+      background: linear-gradient(140deg, rgba(148, 163, 184, 0.08), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .panel:nth-child(odd)::before { background: linear-gradient(160deg, rgba(129, 140, 248, 0.12), transparent 58%); }
+    .panel:nth-child(even)::before { background: linear-gradient(160deg, rgba(56, 189, 248, 0.12), transparent 58%); }
+
+    .panel-inner { position: relative; }
+
+    .hero-grid {
+      display: grid;
+      gap: clamp(28px, 4vw, 52px);
+      align-items: stretch;
+    }
+
+    @media (min-width: 960px) {
+      .hero-grid { grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.8fr); }
+    }
+
+    .hero-copy { display: grid; gap: clamp(18px, 3vw, 32px); align-content: start; }
+
+    .cta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: clamp(28px, 4vw, 48px);
+    }
+
+    .section-lead {
+      display: grid;
+      gap: clamp(16px, 3vw, 28px);
+      max-width: 760px;
+    }
+
+    .section-lead.align-center { text-align: center; margin: 0 auto; }
+
+    .section-lead.align-center .placeholder-block,
+    .section-lead.align-center .placeholder-pill { margin-left: auto; margin-right: auto; }
+
+    .column-grid {
+      display: grid;
+      gap: clamp(18px, 3vw, 32px);
+      margin-top: clamp(36px, 5vw, 56px);
+    }
+
+    @media (min-width: 960px) {
+      .column-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: clamp(20px, 3vw, 34px);
+      margin-top: clamp(40px, 6vw, 72px);
+    }
+
+    @media (min-width: 900px) {
+      .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .timeline {
+      margin: clamp(36px, 5vw, 56px) 0 0;
+      padding: 0;
+      list-style: none;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: clamp(12px, 3vw, 40px);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(128, 152, 255, 0.4), transparent);
+    }
+
+    .timeline li {
+      position: relative;
+      padding-left: clamp(48px, 8vw, 120px);
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+
+    .timeline li:last-child { margin-bottom: 0; }
+
+    .timeline li::before {
+      content: attr(data-phase);
+      position: absolute;
+      left: clamp(-2px, calc(3vw - 12px), 12px);
+      top: 8px;
+      width: clamp(34px, 4vw, 48px);
+      height: clamp(34px, 4vw, 48px);
+      border-radius: 50%;
+      background: rgba(128, 152, 255, 0.22);
+      border: 1px solid rgba(128, 152, 255, 0.4);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.7);
+    }
+
+    .stakeholder-grid {
+      display: grid;
+      gap: clamp(24px, 4vw, 40px);
+      margin-top: clamp(40px, 6vw, 68px);
+    }
+
+    @media (min-width: 960px) {
+      .stakeholder-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .stack-card {
+      display: grid;
+      gap: clamp(16px, 2.6vw, 26px);
+    }
+
+    .mosaic-grid {
+      display: grid;
+      gap: clamp(18px, 3vw, 30px);
+      margin-top: clamp(40px, 6vw, 72px);
+    }
+
+    @media (min-width: 960px) {
+      .mosaic-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .mosaic-grid .placeholder-block:nth-child(1) { grid-column: span 2; }
+    .mosaic-grid .placeholder-block:nth-child(4) { grid-column: span 2; }
+
+    .final-grid {
+      display: grid;
+      gap: clamp(20px, 3vw, 32px);
+      align-items: start;
+    }
+
+    @media (min-width: 900px) {
+      .final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); }
+    }
+
+    .cta-dock {
+      position: fixed;
+      inset: auto clamp(20px, 4vw, 48px) clamp(24px, 5vw, 60px) clamp(20px, 4vw, 48px);
+      display: flex;
+      justify-content: center;
+      z-index: 60;
+      pointer-events: none;
+    }
+
+    .cta-dock-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(10, 14, 28, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 24px 48px -28px rgba(15, 23, 42, 0.9);
+      pointer-events: auto;
+      backdrop-filter: blur(16px);
+    }
+
+    .cta-dock-inner .placeholder-pill { margin: 0; }
+
+    footer {
+      position: relative;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      padding: clamp(24px, 4vw, 48px) 0;
+      color: rgba(148, 163, 184, 0.72);
+      font-size: 14px;
+    }
+
+    footer .footer-grid {
+      display: grid;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (min-width: 720px) {
+      footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .placeholder-block,
+    .placeholder-pill,
+    .placeholder-chip {
+      position: relative;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.32);
+      background: linear-gradient(140deg, color-mix(in srgb, var(--surface) 75%, transparent), color-mix(in srgb, var(--surface-strong) 65%, transparent));
+      overflow: hidden;
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      transition: transform 0.45s var(--transition-snappy), border-color 0.45s var(--transition-snappy);
+      --pointer-x: 50%;
+      --pointer-y: 50%;
+    }
+
+    .placeholder-block::before,
+    .placeholder-pill::before,
+    .placeholder-chip::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.55);
+      pointer-events: none;
+    }
+
+    .placeholder-block::after,
+    .placeholder-pill::after,
+    .placeholder-chip::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), color-mix(in srgb, var(--accent) 60%, transparent), transparent 62%);
+      opacity: 0;
+      transition: opacity 0.45s var(--transition-snappy);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .placeholder-block:hover,
+    .placeholder-pill:hover,
+    .placeholder-chip:hover {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(129, 140, 248, 0.48);
+    }
+
+    .placeholder-block:hover::after,
+    .placeholder-pill:hover::after,
+    .placeholder-chip:hover::after { opacity: 1; }
+
+    .placeholder-block.small { min-height: 72px; }
+    .placeholder-block.medium { min-height: 120px; }
+    .placeholder-block.tall { min-height: 220px; }
+    .placeholder-block.huge { min-height: clamp(180px, 26vh, 320px); }
+    .placeholder-block.heading { min-height: 140px; }
+    .placeholder-block.visual { min-height: clamp(240px, 34vh, 360px); }
+
+    .placeholder-pill {
+      min-height: auto;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: rgba(12, 18, 35, 0.82);
+      border-style: solid;
+    }
+
+    .placeholder-pill::before { position: static; inset: auto; font-size: 11px; }
+
+    .placeholder-pill::after { inset: -20%; border-radius: inherit; }
+
+    .placeholder-pill.small { padding: 10px 18px; font-size: 12px; }
+
+    .placeholder-pill.muted { border-color: rgba(148, 163, 184, 0.24); }
+
+    .placeholder-pill.ghost { border-style: dashed; }
+
+    .placeholder-chip {
+      min-height: auto;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+    }
+
+    .placeholder-chip::before { position: static; inset: auto; }
+
+    .placeholder-chip::after { inset: -30%; border-radius: inherit; }
+
+    .placeholder-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
+      margin: clamp(24px, 3vw, 36px) 0;
+    }
+
+    .to-top {
+      position: fixed;
+      right: clamp(18px, 3.5vw, 40px);
+      bottom: clamp(18px, 3.5vw, 40px);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(6, 12, 28, 0.75);
+      color: rgba(248, 250, 255, 0.88);
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease;
+    }
+
+    .to-top:hover { background: rgba(128, 152, 255, 0.28); }
+    .to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+    @media (max-width: 720px) {
+      nav ul { gap: 6px; }
+      nav a { padding: 10px 14px; letter-spacing: 0.08em; }
+      .panel::before { inset: clamp(8px, 6vw, 28px); }
+      .timeline::before { left: 12px; }
+      .timeline li { padding-left: 64px; }
+      .timeline li::before { left: 0; }
+      .cta-dock { inset: auto 12px clamp(20px, 8vw, 40px) 12px; }
     }
   </style>
 </head>
 <body>
-  <!-- Progress -->
   <div class="progress" id="progress"></div>
-
-  <!-- Blobs -->
-  <div class="blob navy"  data-depth="0.06"></div>
-  <div class="blob green" data-depth="-0.05"></div>
-  <div class="blob blue"  data-depth="0.04"></div>
-  <div class="noise"></div>
+  <div class="backdrop" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+  </div>
 
   <header>
-    <div class="container nav reveal">
-      <div class="brand">
-        <!-- Minimal animated SVG mark -->
+    <div class="container nav">
+      <div class="brand" aria-label="Turnaround">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path id="glyph1" d="M8 36 L8 12 L22 12" />
-          <path id="glyph2" d="M26 12 L40 12 L40 36 L26 36" />
+          <path d="M8 36 L8 12 L22 12" />
+          <path d="M26 12 L40 12 L40 36 L26 36" />
         </svg>
-        Turnaround
+        <span>Turnaround</span>
       </div>
-      <nav id="nav">
-        <a href="#about">What we do</a>
-        <a href="#principles">Principles</a>
-        <a href="#how">How</a>
-        <a href="#owner">Owner</a>
-        <a href="#operator">Operator</a>
-        <a href="#success">Success</a>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#hero"><span>Hero</span></a></li>
+          <li><a href="#story"><span>Story Arc</span></a></li>
+          <li><a href="#architecture"><span>Program Architecture</span></a></li>
+          <li><a href="#journey"><span>Journey Map</span></a></li>
+          <li><a href="#stakeholders"><span>Stakeholders</span></a></li>
+          <li><a href="#proof"><span>Evidence</span></a></li>
+          <li><a href="#cta"><span>Final CTA</span></a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Hero -->
-    <section id="top" class="reveal" data-theme='{"bg":"#F3F4F6","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h1 id="hero-text">Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
-      <p class="lede">Supporting the backbone of the local economy. Improving jobs. Making better managers.</p>
-    </section>
-
-    <!-- What we do -->
-    <section id="about" class="what reveal" data-theme='{"bg":"#EEF7F6","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>What we do</h2>
-      <p>We embed vetted, trained operators into stalled companies. We set them up for success with carefully crafted guardrails to reduce risk to both the business and the operator. Our purpose is intentional and laser focused, and our program is designed in the same way.</p>
-      <p><strong>The result:</strong> An interim CEO who has 1 year to turn the business around — with a mandate to translate that cash flow right back to the employees.</p>
-    </section>
-
-    <!-- Principles -->
-    <section id="principles" class="reveal" data-theme='{"bg":"#FFF7E9","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>Our Principles</h2>
-      <div class="principles">
-        <div class="chip">Pass profit back to employees</div>
-        <div class="chip">Repeatable, de-risked program</div>
-        <div class="chip">Industry agnostic</div>
-        <div class="chip">Laser focus + data tooling</div>
-        <div class="chip">Cash-flow positive is north star</div>
-        <div class="chip">Aligned incentives — <small>501(c)(3)</small></div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section id="how" class="reveal" data-theme='{"bg":"#F0F7FE","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>How it works</h2>
-      <div class="grid cols-3">
-        <div class="tile tilt reveal">
-          <span class="kicker">1 · Vet & Match</span>
-          <h3>Curate operators. Set mandate.</h3>
-          <p>We maintain a curated pool mapped by capability and references, then pair with companies that grant real authority and a clear turnaround mandate.</p>
+  <main>
+    <section id="hero" class="panel" data-theme='{"page":"#060b19","surface":"rgba(38,26,62,0.58)","surfaceStrong":"rgba(53,38,92,0.82)","accent":"#b388ff","glow":"rgba(202,161,255,0.45)"}'>
+      <div class="container panel-inner">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="placeholder-block huge" data-label="Hero headline block"></div>
+            <div class="placeholder-block medium" data-label="Hero supporting copy"></div>
+            <div class="cta-grid">
+              <span class="placeholder-pill" data-label="Primary CTA"></span>
+              <span class="placeholder-pill muted" data-label="Secondary CTA"></span>
+              <span class="placeholder-pill ghost" data-label="Tertiary CTA"></span>
+            </div>
+          </div>
+          <div class="placeholder-block visual" data-label="Hero visual or media canvas"></div>
         </div>
-        <div class="tile tilt reveal">
-          <span class="kicker">2 · Prep & Plan</span>
-          <h3>3-month cohort. First 120 days.</h3>
-          <p>Focused prep on diagnostics, cash clarity, throughput, and stakeholder alignment — all aimed at the first 30-60-90 on site.</p>
-        </div>
-        <div class="tile tilt reveal">
-          <span class="kicker">3 · Embed & Ship</span>
-          <h3>Measured execution. Visible wins.</h3>
-          <p>Weekly metrics, ruthless scope cuts, and shipping cadence to rebuild confidence and stabilize the business.</p>
+        <div class="hero-tags">
+          <span class="placeholder-chip" data-label="Key theme placeholder"></span>
+          <span class="placeholder-chip" data-label="Value pillar placeholder"></span>
+          <span class="placeholder-chip" data-label="Proof point placeholder"></span>
+          <span class="placeholder-chip" data-label="Audience tag placeholder"></span>
         </div>
       </div>
     </section>
 
-    <!-- Deep-dive sections -->
-    <section id="owner" class="section-tight reveal" data-theme='{"bg":"#F4EEFF","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>No risk to the business owner</h2>
-      <p>Structured guardrails, aligned incentives, and an interim model designed to protect the core business while unlocking turnaround upside.</p>
+    <section id="story" class="panel" data-theme='{"page":"#05101f","surface":"rgba(20,48,74,0.52)","surfaceStrong":"rgba(23,60,92,0.8)","accent":"#54d6ff","glow":"rgba(84,214,255,0.38)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Section kicker"></span>
+          <div class="placeholder-block heading" data-label="Section headline block"></div>
+          <div class="placeholder-block medium" data-label="Introductory narrative block"></div>
+        </div>
+        <div class="column-grid">
+          <div class="placeholder-block medium" data-label="Narrative column one"></div>
+          <div class="placeholder-block medium" data-label="Narrative column two"></div>
+          <div class="placeholder-block medium" data-label="Narrative column three"></div>
+        </div>
+      </div>
     </section>
 
-    <section id="operator" class="section-tight reveal" data-theme='{"bg":"#F7F5FF","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>Why would the operator do it</h2>
-      <p>Mission-driven work with real authority, a crisp 12-month mandate, and upside tied to durable cash flow and employee outcomes.</p>
+    <section id="architecture" class="panel" data-theme='{"page":"#080b1d","surface":"rgba(28,33,73,0.54)","surfaceStrong":"rgba(35,42,88,0.8)","accent":"#5fe4c5","glow":"rgba(95,228,197,0.4)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead align-center">
+          <span class="placeholder-pill small" data-label="Program section kicker"></span>
+          <div class="placeholder-block heading" data-label="Program architecture headline"></div>
+          <div class="placeholder-block medium" data-label="Program introduction block"></div>
+        </div>
+        <div class="feature-grid">
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+        </div>
+      </div>
     </section>
 
-    <section id="success" class="section-tight reveal" data-theme='{"bg":"#F3F4F6","primary":"#0F766E","highlight":"#38BDF8","cta":"#7C3AED"}'>
-      <h2>Setting them up for success</h2>
-      <p>Cohort training, playbooks, advisor cadence, and lightweight tooling — all engineered to make the first 120 days count.</p>
+    <section id="journey" class="panel" data-theme='{"page":"#070d1d","surface":"rgba(30,38,74,0.52)","surfaceStrong":"rgba(40,50,98,0.82)","accent":"#ffb454","glow":"rgba(255,180,84,0.36)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Journey section kicker"></span>
+          <div class="placeholder-block heading" data-label="Journey headline block"></div>
+          <div class="placeholder-block medium" data-label="Journey introduction block"></div>
+        </div>
+        <ol class="timeline">
+          <li data-phase="01">
+            <div class="placeholder-block medium" data-label="Journey phase one details"></div>
+          </li>
+          <li data-phase="02">
+            <div class="placeholder-block medium" data-label="Journey phase two details"></div>
+          </li>
+          <li data-phase="03">
+            <div class="placeholder-block medium" data-label="Journey phase three details"></div>
+          </li>
+          <li data-phase="04">
+            <div class="placeholder-block medium" data-label="Journey phase four details"></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="stakeholders" class="panel" data-theme='{"page":"#070b1a","surface":"rgba(35,28,64,0.52)","surfaceStrong":"rgba(44,32,86,0.8)","accent":"#87b2ff","glow":"rgba(135,178,255,0.38)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead align-center">
+          <span class="placeholder-pill small" data-label="Stakeholder section kicker"></span>
+          <div class="placeholder-block heading" data-label="Stakeholder headline block"></div>
+          <div class="placeholder-block medium" data-label="Stakeholder overview block"></div>
+        </div>
+        <div class="stakeholder-grid">
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
+          </div>
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
+          </div>
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof" class="panel" data-theme='{"page":"#050d16","surface":"rgba(16,40,54,0.5)","surfaceStrong":"rgba(20,56,74,0.78)","accent":"#64c7ff","glow":"rgba(100,199,255,0.34)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Evidence section kicker"></span>
+          <div class="placeholder-block heading" data-label="Evidence headline block"></div>
+          <div class="placeholder-block medium" data-label="Evidence narrative block"></div>
+        </div>
+        <div class="mosaic-grid">
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Quote tile"></div>
+          <div class="placeholder-block medium" data-label="Reference tile"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="panel" data-theme='{"page":"#060a19","surface":"rgba(42,24,60,0.52)","surfaceStrong":"rgba(58,34,78,0.82)","accent":"#f687ff","glow":"rgba(246,135,255,0.4)"}'>
+      <div class="container panel-inner">
+        <div class="final-grid">
+          <div class="placeholder-block huge" data-label="Final CTA headline block"></div>
+          <div class="placeholder-block medium" data-label="Final CTA narrative block"></div>
+          <div class="cta-grid">
+            <span class="placeholder-pill" data-label="Primary CTA"></span>
+            <span class="placeholder-pill muted" data-label="Secondary CTA"></span>
+            <span class="placeholder-pill ghost" data-label="Contact CTA"></span>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Sticky CTA -->
-  <div class="cta-bar">
-    <div class="cta-inner" id="cta">
-      <span>Operators:</span>
-      <a class="btn" id="magnet" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to join our operator cohort</a>
+  <div class="cta-dock" aria-hidden="false">
+    <div class="cta-dock-inner">
+      <span class="placeholder-pill small" data-label="Dock label"></span>
+      <span class="placeholder-pill" data-label="Dock CTA"></span>
     </div>
   </div>
 
   <footer>
-    © <span id="y"></span> Turnaround
+    <div class="container footer-grid">
+      <span>© <span id="year"></span> Turnaround</span>
+      <div class="placeholder-block small" data-label="Footer utility block"></div>
+    </div>
   </footer>
 
-  <!-- FAB -->
-  <button class="fab" id="toTop" aria-label="Back to top">↑</button>
-
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
   <script>
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const progress = document.getElementById('progress');
+    const progressBar = document.getElementById('progress');
+    const toTop = document.getElementById('toTop');
 
-    // Progress (GSAP or fallback)
-    if (!reduceMotion) {
-      gsap.to(progress, { scaleX: 1, ease: "none", scrollTrigger: { scrub: true } });
-    } else {
-      const onScrollProgress = () => {
-        const h = document.documentElement;
-        const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
-        progress.style.transform = 'scaleX(' + scrolled + ')';
-      };
-      onScrollProgress();
-      window.addEventListener('scroll', onScrollProgress, { passive: true });
-    }
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progressBar.style.transform = `scaleX(${scrolled})`;
+    };
 
-    // Split hero text into words for staggered reveal
-    const hero = document.getElementById('hero-text');
-    if (!reduceMotion && hero) {
-      const words = hero.textContent.split(' ');
-      hero.innerHTML = words.map(w => `<span class="word" style="display:inline-block; opacity:0; transform:translateY(12px)">${w}&nbsp;</span>`).join('');
-      gsap.to('#top .word', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.03 });
-    }
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
 
-    // Scroll-spy (active nav)
-    const sections = [...document.querySelectorAll('main section[id]')];
-    const navLinks = [...document.querySelectorAll('#nav a')];
-    const spy = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const id = e.target.id;
-          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    const sections = [...document.querySelectorAll('main section')];
+    const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            const target = link.getAttribute('href');
+            link.classList.toggle('active', target === `#${entry.target.id}`);
+          });
         }
       });
-    }, { rootMargin: '-40% 0% -55% 0%', threshold: [0,1] });
-    sections.forEach(s => spy.observe(s));
+    }, { rootMargin: '-50% 0% -40% 0%', threshold: 0.25 });
 
-    // Reveal (GSAP)
-    if (!reduceMotion) {
-      gsap.utils.toArray('.reveal').forEach(el => {
-        gsap.fromTo(el, { autoAlpha: 0, y: 16 }, {
-          autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 80%' }
-        });
-      });
-      gsap.utils.toArray('#how .tile, #principles .chip').forEach((el, i) => {
-        gsap.fromTo(el, { autoAlpha: 0, y: 12 }, {
-          autoAlpha: 1, y: 0, duration: 0.6, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%' }, delay: i * 0.03
-        });
-      });
-    }
+    sections.forEach(section => navObserver.observe(section));
 
-    // THEME SHIFTS (including background tint)
-    function applyTheme(t){
-      if (!t) return;
-      const cssVars = {};
-      if (t.primary)   cssVars['--primary']  = t.primary;
-      if (t.highlight) cssVars['--highlight']= t.highlight;
-      if (t.cta)       cssVars['--cta']      = t.cta;
-      if (t.bg)        cssVars['--bg']       = t.bg;
-
-      if (!reduceMotion) {
-        gsap.to(document.documentElement, { duration: 0.8, ease: 'power2.out', css: cssVars });
-      } else {
-        for (const k in cssVars) document.documentElement.style.setProperty(k, cssVars[k]);
-      }
-    }
-    if (!reduceMotion) {
-      gsap.registerPlugin(ScrollTrigger);
-      sections.forEach(sec => {
-        const theme = sec.dataset.theme ? JSON.parse(sec.dataset.theme) : null;
-        if (!theme) return;
-        ScrollTrigger.create({
-          trigger: sec,
-          start: 'top 60%',
-          onEnter: () => applyTheme(theme),
-          onEnterBack: () => applyTheme(theme)
-        });
-      });
-    }
-
-    // FAB
-    const toTop = document.getElementById('toTop');
-    const toggleFab = () => {
-      if (window.scrollY > 300) toTop.classList.add('show'); else toTop.classList.remove('show');
+    const applyTheme = theme => {
+      if (!theme) return;
+      const root = document.documentElement;
+      if (theme.page) root.style.setProperty('--page', theme.page);
+      if (theme.surface) root.style.setProperty('--surface', theme.surface);
+      if (theme.surfaceStrong) root.style.setProperty('--surface-strong', theme.surfaceStrong);
+      if (theme.accent) root.style.setProperty('--accent', theme.accent);
+      if (theme.glow) root.style.setProperty('--glow', theme.glow);
     };
-    toggleFab();
-    window.addEventListener('scroll', toggleFab, { passive: true });
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }));
 
-    // Parallax blobs (clean + accurate)
-    const blobs = [...document.querySelectorAll('.blob')].map(el => ({ el, depth: parseFloat(el.getAttribute('data-depth') || '0.04'), yOffset: 0 }));
-    if (!reduceMotion) {
-      const setters = blobs.map(({ el }) => gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power2.out' }));
-      let lastY = window.scrollY;
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY, dy = y - lastY; lastY = y;
-        blobs.forEach((b, i) => {
-          b.yOffset -= dy * b.depth;
-          setters[i](b.yOffset);
-        });
-      }, { passive: true });
-    }
-
-    // Card tilt (subtle, bounded)
-    const clamp = (v,min,max)=>Math.min(max,Math.max(min,v));
-    document.querySelectorAll('.tilt').forEach(card=>{
-      if (reduceMotion) return;
-      let raf = 0;
-      card.addEventListener('mousemove', e=>{
-        cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(()=>{
-          const r = card.getBoundingClientRect();
-          const x = (e.clientX - r.left)/r.width;
-          const y = (e.clientY - r.top)/r.height;
-          const rx = clamp((0.5 - y)*8, -6, 6);
-          const ry = clamp((x - 0.5)*10, -8, 8);
-          card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
-        });
+    const themeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const raw = entry.target.dataset.theme;
+          if (raw) {
+            try { applyTheme(JSON.parse(raw)); } catch (err) { console.error('Theme parse error', err); }
+          }
+        }
       });
-      card.addEventListener('mouseleave', ()=>{ card.style.transform = 'rotateX(0) rotateY(0) translateZ(0)'; });
+    }, { rootMargin: '-45% 0% -45% 0%', threshold: 0.35 });
+
+    sections.forEach(section => themeObserver.observe(section));
+
+    const toggleToTop = () => {
+      if (window.scrollY > 420) {
+        toTop.classList.add('visible');
+      } else {
+        toTop.classList.remove('visible');
+      }
+    };
+
+    toggleToTop();
+    window.addEventListener('scroll', toggleToTop, { passive: true });
+
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
 
-    // Magnetic CTA
-    const magnet = document.getElementById('magnet');
-    const magnetWrap = document.getElementById('cta');
-    if (!reduceMotion && magnet && magnetWrap){
-      magnetWrap.addEventListener('mousemove', e=>{
-        const r = magnet.getBoundingClientRect(), strength = 12;
-        const dx = clamp((e.clientX - (r.left + r.width/2)) / (r.width/2), -1, 1);
-        const dy = clamp((e.clientY - (r.top + r.height/2)) / (r.height/2), -1, 1);
-        magnet.style.transform = `translate(${dx*strength}px, ${dy*strength}px)`;
-      });
-      magnetWrap.addEventListener('mouseleave', ()=>{ magnet.style.transform = 'translate(0,0)'; });
-    }
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Animate SVG mark stroke
-    if (!reduceMotion) {
-      ['glyph1','glyph2'].forEach(id=>{
-        const p = document.getElementById(id);
-        if (!p) return;
-        const len = p.getTotalLength();
-        p.style.strokeDasharray = len;
-        p.style.strokeDashoffset = len;
-        gsap.to(p, { strokeDashoffset: 0, duration: 1.2, ease: 'power2.out', delay: .2 });
+    const interactivePlaceholders = document.querySelectorAll('.placeholder-block, .placeholder-pill, .placeholder-chip');
+
+    interactivePlaceholders.forEach(el => {
+      el.addEventListener('pointermove', event => {
+        const rect = el.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty('--pointer-x', `${x}%`);
+        el.style.setProperty('--pointer-y', `${y}%`);
       });
-    }
+
+      el.addEventListener('pointerleave', () => {
+        el.style.removeProperty('--pointer-x');
+        el.style.removeProperty('--pointer-y');
+      });
+    });
   </script>
 </body>
 </html>
