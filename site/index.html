@@ -1,331 +1,973 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Turnaround · Manifesto</title>
-<meta name="description" content="A manifesto for ambitious entrepreneurs: a second path to big, human impact that modernizes the real economy." />
-<link rel="icon" href="turnaround-favicon.png" type="image/png" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Turnaround · Placeholder Experience</title>
+  <meta name="description" content="Placeholder description for the Turnaround website experience." />
+  <link rel="icon" href="turnaround-favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --page: #050917;
+      --surface: rgba(16, 25, 48, 0.62);
+      --surface-strong: rgba(23, 32, 55, 0.82);
+      --accent: #8098ff;
+      --glow: rgba(122, 149, 255, 0.42);
+      --stroke: rgba(148, 163, 184, 0.32);
+      --text-primary: #f8faff;
+      --text-muted: #94a3b8;
+      --max-width: 1160px;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --shadow-soft: 0 32px 70px -40px rgba(15, 23, 42, 0.75);
+      --transition-snappy: cubic-bezier(0.38, 0.15, 0.35, 0.95);
+    }
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    *, *::before, *::after { box-sizing: border-box; }
 
-<style>
-  :root{
-    /* === Palette === */
-    --bg: #FAFAF9;          /* Warm white */
-    --ink: #111827;         /* Charcoal black */
-    --primary: #111827;     /* Heading ink */
-    --accent: #A78BFA;      /* Soft lilac */
-    --highlight: #F87171;   /* Vivid coral */
-    --secondary: #3B82F6;   /* Slate blue */
-    --cta: #7C3AED;         /* Rich violet (reserved) */
+    html { scroll-behavior: smooth; }
 
-    /* Layout / rhythm */
-    --container: 900px;
-    --maxwide: 1180px;
-    --radius: 14px;
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text-primary);
+      background-color: var(--page);
+      background-image:
+        radial-gradient(120% 140% at 20% 10%, color-mix(in srgb, var(--accent) 32%, transparent), transparent 58%),
+        radial-gradient(90% 120% at 80% 10%, color-mix(in srgb, var(--glow) 55%, transparent), transparent 62%),
+        radial-gradient(140% 160% at 50% 50%, color-mix(in srgb, var(--page) 80%, #010314 20%), color-mix(in srgb, var(--page) 98%, #020617 2%));
+      background-blend-mode: screen, screen, normal;
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
 
-    --s1: 8px; --s2: 12px; --s3: 16px; --s4: 24px;
-    --s5: 32px; --s6: 48px; --s7: 72px; --s8: 96px;
+    a { color: inherit; }
 
-    --shadow-1: 0 1px 2px rgba(0,0,0,.06), 0 1px 1px rgba(0,0,0,.04);
-    --shadow-2: 0 10px 30px rgba(0,0,0,.10);
-  }
+    body.nav-open { overflow: hidden; }
 
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  html, body { margin:0; padding:0 }
-  body{
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-    color: var(--ink);
-    line-height: 1.8;
-    /* Sleek gradient background (no blobs) */
-    background:
-      radial-gradient(1200px 600px at 75% -10%, rgba(167,139,250,.10), transparent 60%),
-      radial-gradient(1000px 500px at 10% 110%, rgba(59,130,246,.08), transparent 60%),
-      linear-gradient(180deg, #FFFFFF 0%, var(--bg) 100%);
-    background-attachment: fixed, fixed, scroll;
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-  }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
 
-  .wrap { max-width: var(--maxwide); margin: 0 auto; padding: 0 20px; }
-  .container { max-width: var(--container); margin: 0 auto; }
+    .progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 3px;
+      z-index: 80;
+      background: linear-gradient(90deg, rgba(128, 152, 255, 0.8), rgba(56, 189, 248, 0.9));
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+    }
 
-  /* Top progress (subtle) */
-  .progress {
-    position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 50;
-    transform-origin: 0 50%; transform: scaleX(0);
-    background: linear-gradient(90deg, var(--secondary), var(--accent));
-    box-shadow: 0 1px 8px rgba(59,130,246,.22);
-  }
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -3;
+      overflow: hidden;
+    }
 
-  /* Header */
-  header {
-    position: sticky; top: 0; z-index: 40;
-    backdrop-filter: saturate(1.2) blur(8px);
-    background: color-mix(in srgb, var(--bg) 85%, transparent);
-    border-bottom: 1px solid rgba(17,24,39,.06);
-  }
-  .nav {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: var(--s3) 0;
-  }
-  .brand {
-    display:flex; align-items:center; gap: 10px;
-    font-family: "Space Grotesk", Inter, system-ui;
-    font-weight: 700; letter-spacing: .2px; color: var(--primary);
-  }
-  .brand-mark {
-    width: 26px; height: 26px; display:grid; place-items:center;
-    border-radius: 8px; background: var(--primary); color: #fff;
-    box-shadow: var(--shadow-1); font-size: 12px;
-  }
-  .nav a { color: var(--ink); text-decoration: none; margin-left: var(--s4); font-weight: 500; }
-  .nav a:hover { color: var(--secondary); }
+    .backdrop::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: conic-gradient(from 180deg at 50% 50%, rgba(128, 152, 255, 0.25), transparent 55%, rgba(56, 189, 248, 0.18));
+      filter: blur(120px);
+      transform: rotate(8deg);
+    }
 
-  /* Hero */
-  .hero {
-    padding: clamp(36px, 8vh, 80px) 0 var(--s4); /* tighter bottom so P1 sits nicely */
-  }
-  .kicker {
-    color: var(--highlight); text-transform: uppercase; font-weight: 700; letter-spacing: .12em;
-    font-size: 12px; margin-bottom: var(--s2);
-  }
-  h1 {
-    font-family: "Space Grotesk", Inter, system-ui;
-    font-size: clamp(34px, 6.5vw, 68px);
-    line-height: 1.08; letter-spacing: -0.02em;
-    margin: 0; /* no extra margin; we control spacing via .hero padding */
-  }
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.18;
+    }
 
-  /* Article typography (bigger + comfy; mobile-first) */
-  article { padding: var(--s4) 0 var(--s8); } /* slight top padding for breathing room */
-  article p {
-    margin: 0 0 var(--s4);
-    font-size: clamp(18px, 3.2vw, 20px);
-    letter-spacing: .003em;
-  }
-  .section { margin: var(--s6) 0; } /* slightly tighter than before */
+    .orb {
+      position: absolute;
+      width: clamp(220px, 32vw, 420px);
+      height: clamp(220px, 32vw, 420px);
+      border-radius: 50%;
+      filter: blur(0px);
+      opacity: 0.38;
+      animation: float 14s ease-in-out infinite;
+      mix-blend-mode: screen;
+    }
 
-  /* TITLES (smaller than callouts, clearly different) */
-  h2, h3 {
-    font-family: "Space Grotesk", Inter, system-ui;
-    line-height: 1.25;
-    font-weight: 700;
-    color: var(--primary);
-    margin: var(--s6) 0 var(--s3);
-  }
-  h2 {
-    font-size: clamp(20px, 3vw, 28px);
-    letter-spacing: .02em;
-    padding-top: var(--s2);
-    border-top: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
-  }
-  /* FIX: underline style for h3 (no stray tiny line issues) */
-  h3 {
-    font-size: clamp(18px, 2.6vw, 24px);
-    letter-spacing: .015em;
-    padding-bottom: var(--s2);
-    border-bottom: 2px solid color-mix(in srgb, var(--secondary) 60%, transparent);
-    display: inline-block;
-  }
+    .orb.one { top: -120px; right: 12%; background: radial-gradient(circle at 30% 30%, rgba(129, 140, 248, 0.62), rgba(129, 140, 248, 0)); animation-delay: -4s; }
+    .orb.two { bottom: -140px; left: 8%; background: radial-gradient(circle at 70% 40%, rgba(56, 189, 248, 0.5), rgba(56, 189, 248, 0)); animation-duration: 18s; }
+    .orb.three { top: 35%; left: 55%; background: radial-gradient(circle at 50% 50%, rgba(45, 212, 191, 0.45), rgba(45, 212, 191, 0)); animation-delay: -9s; }
 
-  /* CALLOUTS (oversized emphasis blocks, no captions) */
-  .callout {
-    position: relative;
-    margin: var(--s5) auto;
-    padding: clamp(18px, 4vw, 28px) clamp(18px, 4vw, 28px);
-    border-radius: 14px;
-    background: #fff;
-    border: 1px solid rgba(17,24,39,.10);             /* a touch stronger */
-    box-shadow: 0 8px 26px rgba(17,24,39,.06);        /* slightly bolder pop */
-    font-family: "Space Grotesk", Inter, system-ui;
-    font-weight: 700;
-    color: var(--ink);
-    font-size: clamp(22px, 3.6vw, 34px);
-    line-height: 1.25;
-  }
-  .callout:before {
-    content: "";
-    position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
-    background: linear-gradient(180deg, var(--secondary), var(--accent)); /* swapped per your 'yes' */
-    border-top-left-radius: 14px; border-bottom-left-radius: 14px;
-  }
+    @keyframes float {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      40% { transform: translate3d(12px, -20px, 0) scale(1.04); }
+      70% { transform: translate3d(-16px, 18px, 0) scale(0.98); }
+    }
 
-  /* Reveal on scroll (light) */
-  .reveal { opacity: 0; transform: translateY(14px); }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: saturate(160%) blur(18px);
+      background: rgba(5, 9, 23, 0.72);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      transition: transform 0.35s var(--transition-snappy), background 0.35s var(--transition-snappy);
+    }
 
-  /* Footer */
-  footer { padding: var(--s6) 0 var(--s5); color: #6B7280; font-size: 14px; border-top: 1px solid rgba(17,24,39,.06); }
+    .nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: clamp(16px, 3vw, 28px) 0;
+      gap: 24px;
+    }
 
-  /* Mobile spacing touch-ups */
-  @media (max-width: 480px) {
-    .nav a { margin-left: var(--s3); }
-    .brand-mark { display:none; }
-    .section { margin: var(--s5) 0; }
-  }
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(10, 14, 28, 0.82);
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.3s var(--transition-snappy), border-color 0.3s var(--transition-snappy), background 0.3s var(--transition-snappy);
+    }
 
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto}
-    .reveal{opacity:1; transform:none}
-  }
-</style>
+    .nav-toggle:hover { transform: translateY(-1px); border-color: rgba(129, 140, 248, 0.5); }
+    .nav-toggle:active { transform: scale(0.96); }
+
+    .nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: rgba(226, 232, 240, 0.85);
+      border-radius: 999px;
+      transition: transform 0.3s var(--transition-snappy), opacity 0.3s var(--transition-snappy);
+    }
+
+    .nav-toggle span + span { margin-top: 5px; }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+    }
+
+    .brand svg { width: 28px; height: 28px; }
+
+    nav ul { display: flex; gap: clamp(12px, 2.6vw, 28px); margin: 0; padding: 0; list-style: none; flex-wrap: wrap; }
+
+    nav a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(226, 232, 240, 0.76);
+      transition: color 0.3s var(--transition-snappy), background 0.3s var(--transition-snappy), transform 0.3s var(--transition-snappy);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(120deg, rgba(128, 152, 255, 0.28), rgba(56, 189, 248, 0.18));
+      opacity: 0;
+      transition: opacity 0.3s var(--transition-snappy);
+    }
+
+    nav a span { position: relative; z-index: 1; }
+
+    nav a:hover { color: #f8faff; transform: translateY(-1px); }
+    nav a:hover::after { opacity: 0.35; }
+    nav a.active { color: #f8faff; }
+    nav a.active::after { opacity: 0.5; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    main { position: relative; z-index: 1; }
+
+    .panel {
+      position: relative;
+      padding: clamp(88px, 14vh, 160px) 0;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: clamp(12px, 3vw, 36px);
+      border-radius: calc(var(--radius-lg) + 8px);
+      background: linear-gradient(140deg, rgba(148, 163, 184, 0.08), transparent 55%);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .panel:nth-child(odd)::before { background: linear-gradient(160deg, rgba(129, 140, 248, 0.12), transparent 58%); }
+    .panel:nth-child(even)::before { background: linear-gradient(160deg, rgba(56, 189, 248, 0.12), transparent 58%); }
+
+    .panel-inner { position: relative; }
+
+    .hero-grid {
+      display: grid;
+      gap: clamp(28px, 4vw, 52px);
+      align-items: stretch;
+    }
+
+    @media (min-width: 960px) {
+      .hero-grid { grid-template-columns: minmax(0, 0.95fr) minmax(0, 0.8fr); }
+    }
+
+    .hero-copy { display: grid; gap: clamp(18px, 3vw, 32px); align-content: start; }
+
+    .cta-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: clamp(28px, 4vw, 48px);
+    }
+
+    .section-lead {
+      display: grid;
+      gap: clamp(16px, 3vw, 28px);
+      max-width: 760px;
+    }
+
+    .section-lead.align-center { text-align: center; margin: 0 auto; }
+
+    .section-lead.align-center .placeholder-block,
+    .section-lead.align-center .placeholder-pill { margin-left: auto; margin-right: auto; }
+
+    .column-grid {
+      display: grid;
+      gap: clamp(18px, 3vw, 32px);
+      margin-top: clamp(36px, 5vw, 56px);
+    }
+
+    @media (min-width: 960px) {
+      .column-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .feature-grid {
+      display: grid;
+      gap: clamp(20px, 3vw, 34px);
+      margin-top: clamp(40px, 6vw, 72px);
+    }
+
+    @media (min-width: 900px) {
+      .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .timeline {
+      margin: clamp(36px, 5vw, 56px) 0 0;
+      padding: 0;
+      list-style: none;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: clamp(12px, 3vw, 40px);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(128, 152, 255, 0.4), transparent);
+    }
+
+    .timeline li {
+      position: relative;
+      padding-left: clamp(48px, 8vw, 120px);
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+
+    .timeline li:last-child { margin-bottom: 0; }
+
+    .timeline li::before {
+      content: attr(data-phase);
+      position: absolute;
+      left: clamp(-2px, calc(3vw - 12px), 12px);
+      top: 8px;
+      width: clamp(34px, 4vw, 48px);
+      height: clamp(34px, 4vw, 48px);
+      border-radius: 50%;
+      background: rgba(128, 152, 255, 0.22);
+      border: 1px solid rgba(128, 152, 255, 0.4);
+      display: grid;
+      place-items: center;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.7);
+    }
+
+    .stakeholder-grid {
+      display: grid;
+      gap: clamp(24px, 4vw, 40px);
+      margin-top: clamp(40px, 6vw, 68px);
+    }
+
+    @media (min-width: 960px) {
+      .stakeholder-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .stack-card {
+      display: grid;
+      gap: clamp(16px, 2.6vw, 26px);
+    }
+
+    .mosaic-grid {
+      display: grid;
+      gap: clamp(18px, 3vw, 30px);
+      margin-top: clamp(40px, 6vw, 72px);
+    }
+
+    @media (min-width: 960px) {
+      .mosaic-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    .mosaic-grid .placeholder-block:nth-child(1) { grid-column: span 2; }
+    .mosaic-grid .placeholder-block:nth-child(4) { grid-column: span 2; }
+
+    .final-grid {
+      display: grid;
+      gap: clamp(20px, 3vw, 32px);
+      align-items: start;
+    }
+
+    @media (min-width: 900px) {
+      .final-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); }
+    }
+
+    .cta-dock {
+      position: fixed;
+      inset: auto clamp(20px, 4vw, 48px) clamp(24px, 5vw, 60px) clamp(20px, 4vw, 48px);
+      display: flex;
+      justify-content: center;
+      z-index: 60;
+      pointer-events: none;
+      transition: transform 0.35s var(--transition-snappy), opacity 0.35s ease;
+      will-change: transform, opacity;
+    }
+
+    .cta-dock-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(10, 14, 28, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      box-shadow: 0 24px 48px -28px rgba(15, 23, 42, 0.9);
+      pointer-events: auto;
+      backdrop-filter: blur(16px);
+    }
+
+    .cta-dock-inner .placeholder-pill { margin: 0; }
+
+    .cta-dock.is-hidden { transform: translateY(110%); opacity: 0; }
+
+    footer {
+      position: relative;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      padding: clamp(24px, 4vw, 48px) 0;
+      color: rgba(148, 163, 184, 0.72);
+      font-size: 14px;
+    }
+
+    footer .footer-grid {
+      display: grid;
+      gap: 18px;
+      align-items: center;
+    }
+
+    @media (min-width: 720px) {
+      footer .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .placeholder-block,
+    .placeholder-pill,
+    .placeholder-chip {
+      position: relative;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.32);
+      background: linear-gradient(140deg, color-mix(in srgb, var(--surface) 75%, transparent), color-mix(in srgb, var(--surface-strong) 65%, transparent));
+      overflow: hidden;
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      transition: transform 0.45s var(--transition-snappy), border-color 0.45s var(--transition-snappy);
+      --pointer-x: 50%;
+      --pointer-y: 50%;
+    }
+
+    .placeholder-block::before,
+    .placeholder-pill::before,
+    .placeholder-chip::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 16px;
+      left: 18px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.55);
+      pointer-events: none;
+    }
+
+    .placeholder-block::after,
+    .placeholder-pill::after,
+    .placeholder-chip::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), color-mix(in srgb, var(--accent) 60%, transparent), transparent 62%);
+      opacity: 0;
+      transition: opacity 0.45s var(--transition-snappy);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .placeholder-block:hover,
+    .placeholder-pill:hover,
+    .placeholder-chip:hover {
+      transform: translateY(-2px) scale(1.01);
+      border-color: rgba(129, 140, 248, 0.48);
+    }
+
+    .placeholder-block:hover::after,
+    .placeholder-pill:hover::after,
+    .placeholder-chip:hover::after { opacity: 1; }
+
+    .placeholder-block.small { min-height: 72px; }
+    .placeholder-block.medium { min-height: 120px; }
+    .placeholder-block.tall { min-height: 220px; }
+    .placeholder-block.huge { min-height: clamp(180px, 26vh, 320px); }
+    .placeholder-block.heading { min-height: 140px; }
+    .placeholder-block.visual { min-height: clamp(240px, 34vh, 360px); }
+
+    .placeholder-pill {
+      min-height: auto;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: rgba(12, 18, 35, 0.82);
+      border-style: solid;
+    }
+
+    .placeholder-pill::before { position: static; inset: auto; font-size: 11px; }
+
+    .placeholder-pill::after { inset: -20%; border-radius: inherit; }
+
+    .placeholder-pill.small { padding: 10px 18px; font-size: 12px; }
+
+    .placeholder-pill.muted { border-color: rgba(148, 163, 184, 0.24); }
+
+    .placeholder-pill.ghost { border-style: dashed; }
+
+    .placeholder-chip {
+      min-height: auto;
+      padding: 10px 14px;
+      border-radius: 16px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+    }
+
+    .placeholder-chip::before { position: static; inset: auto; }
+
+    .placeholder-chip::after { inset: -30%; border-radius: inherit; }
+
+    .placeholder-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
+      margin: clamp(24px, 3vw, 36px) 0;
+    }
+
+    .to-top {
+      position: fixed;
+      right: clamp(18px, 3.5vw, 40px);
+      bottom: clamp(18px, 3.5vw, 40px);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(6, 12, 28, 0.75);
+      color: rgba(248, 250, 255, 0.88);
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease;
+    }
+
+    .to-top:hover { background: rgba(128, 152, 255, 0.28); }
+    .to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+    @media (max-width: 720px) {
+      header { background: rgba(5, 9, 23, 0.86); }
+      .nav { gap: 16px; padding: 12px 0; }
+      .brand { font-size: 17px; }
+      .brand svg { width: 24px; height: 24px; }
+      .nav-toggle { display: inline-flex; }
+      nav {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        right: 0;
+        padding: 18px;
+        border-radius: var(--radius-md);
+        background: rgba(8, 12, 26, 0.92);
+        border: 1px solid rgba(148, 163, 184, 0.26);
+        box-shadow: 0 28px 68px -42px rgba(15, 23, 42, 0.88);
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+        pointer-events: none;
+        transition: opacity 0.3s var(--transition-snappy), transform 0.3s var(--transition-snappy);
+        z-index: 10;
+      }
+      nav[data-open="true"] {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
+      nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      nav a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 12px 16px;
+        letter-spacing: 0.06em;
+        font-size: 13px;
+      }
+      .panel { padding: clamp(56px, 18vh, 120px) 0; }
+      .panel::before { inset: clamp(8px, 6vw, 28px); }
+      .hero-tags { margin-top: clamp(24px, 12vw, 36px); }
+      .placeholder-block.huge { min-height: 140px; }
+      .placeholder-block.heading { min-height: 120px; }
+      .placeholder-block.visual { min-height: 220px; }
+      .cta-grid { flex-direction: column; align-items: stretch; }
+      .timeline::before { left: 12px; }
+      .timeline li { padding-left: 64px; }
+      .timeline li::before { left: 0; }
+      .cta-dock { inset: auto 12px clamp(20px, 8vw, 40px) 12px; }
+      .cta-dock-inner {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 16px;
+      }
+      .cta-dock-inner .placeholder-pill { flex: 1; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 clamp(16px, 6vw, 28px); }
+      .hero-tags { gap: 8px; }
+      .placeholder-block.visual { min-height: 200px; }
+      .placeholder-block.huge { min-height: 130px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- progress -->
   <div class="progress" id="progress"></div>
+  <div class="backdrop" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+  </div>
 
   <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <span class="brand-mark">TA</span> Turnaround
+    <div class="container nav">
+      <div class="brand" aria-label="Turnaround">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 36 L8 12 L22 12" />
+          <path d="M26 12 L40 12 L40 36 L26 36" />
+        </svg>
+        <span>Turnaround</span>
       </div>
-      <nav>
-        <a href="../">Home</a>
-        <a href="#top">Manifesto</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="primaryNav" aria-label="Primary" data-open="false">
+        <ul>
+          <li><a href="#hero"><span>Hero</span></a></li>
+          <li><a href="#story"><span>Story Arc</span></a></li>
+          <li><a href="#architecture"><span>Program Architecture</span></a></li>
+          <li><a href="#journey"><span>Journey Map</span></a></li>
+          <li><a href="#stakeholders"><span>Stakeholders</span></a></li>
+          <li><a href="#proof"><span>Evidence</span></a></li>
+          <li><a href="#cta"><span>Final CTA</span></a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-  <main id="top" class="wrap">
-    <section class="hero container reveal">
-      <div class="kicker">Manifesto</div>
-      <h1>Another path to big, human impact</h1>
-      <!-- lede removed per request -->
+  <main>
+    <section id="hero" class="panel" data-theme='{"page":"#060b19","surface":"rgba(38,26,62,0.58)","surfaceStrong":"rgba(53,38,92,0.82)","accent":"#b388ff","glow":"rgba(202,161,255,0.45)"}'>
+      <div class="container panel-inner">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="placeholder-block huge" data-label="Hero headline block"></div>
+            <div class="placeholder-block medium" data-label="Hero supporting copy"></div>
+            <div class="cta-grid">
+              <span class="placeholder-pill" data-label="Primary CTA"></span>
+              <span class="placeholder-pill muted" data-label="Secondary CTA"></span>
+              <span class="placeholder-pill ghost" data-label="Tertiary CTA"></span>
+            </div>
+          </div>
+          <div class="placeholder-block visual" data-label="Hero visual or media canvas"></div>
+        </div>
+        <div class="hero-tags">
+          <span class="placeholder-chip" data-label="Key theme placeholder"></span>
+          <span class="placeholder-chip" data-label="Value pillar placeholder"></span>
+          <span class="placeholder-chip" data-label="Proof point placeholder"></span>
+          <span class="placeholder-chip" data-label="Audience tag placeholder"></span>
+        </div>
+      </div>
     </section>
 
-    <article class="container">
-      <!-- P1 -->
-      <section class="section reveal">
-        <p>I’ve got a bone to pick with venture capitalists: They’ve done their jobs too well. Around the world, ambitious people - entrepreneurs, founder-wannabes, inspired creatives and operators who want to <strong>take the leap</strong> from their day jobs and become their own boss - those people's best option is to <strong>start a startup</strong>. There doesn’t seem to be any similarly ambitious way to use our brain cells to their fullest and get rewarded for making impact in the business world.</p>
+    <section id="story" class="panel" data-theme='{"page":"#05101f","surface":"rgba(20,48,74,0.52)","surfaceStrong":"rgba(23,60,92,0.8)","accent":"#54d6ff","glow":"rgba(84,214,255,0.38)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Section kicker"></span>
+          <div class="placeholder-block heading" data-label="Section headline block"></div>
+          <div class="placeholder-block medium" data-label="Introductory narrative block"></div>
+        </div>
+        <div class="column-grid">
+          <div class="placeholder-block medium" data-label="Narrative column one"></div>
+          <div class="placeholder-block medium" data-label="Narrative column two"></div>
+          <div class="placeholder-block medium" data-label="Narrative column three"></div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Callout 1: show sentence above + callout block -->
-        <p>We’ve created so much startup folklore: founding a unicorn, inventing a cornerstone product, and making boatloads of money</p>
-        <div class="callout">We’ve created so much startup folklore: founding a unicorn, inventing a cornerstone product, and making boatloads of money</div>
+    <section id="architecture" class="panel" data-theme='{"page":"#080b1d","surface":"rgba(28,33,73,0.54)","surfaceStrong":"rgba(35,42,88,0.8)","accent":"#5fe4c5","glow":"rgba(95,228,197,0.4)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead align-center">
+          <span class="placeholder-pill small" data-label="Program section kicker"></span>
+          <div class="placeholder-block heading" data-label="Program architecture headline"></div>
+          <div class="placeholder-block medium" data-label="Program introduction block"></div>
+        </div>
+        <div class="feature-grid">
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+          <div class="placeholder-block medium" data-label="Program pillar card"></div>
+        </div>
+      </div>
+    </section>
 
-        <p>The founder path is a rewarding one - and I’ve followed it myself. I quit my job to sign up for more than one startup accelerator; I even did the pilgrimage to Silicon Valley and pushed hard on the founder journey alongside other lovely ambitious people. I don’t regret any of it for a second. Did I make it big? Not really. Did I learn a ton? Absolutely. So - I’m all for startups and accelerators, but my bone to pick is as follows: shouldn't there be even <em>one other</em> enticing path for ambitious entrepreneurs to follow who are seeking impact?</p>
+    <section id="journey" class="panel" data-theme='{"page":"#070d1d","surface":"rgba(30,38,74,0.52)","surfaceStrong":"rgba(40,50,98,0.82)","accent":"#ffb454","glow":"rgba(255,180,84,0.36)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Journey section kicker"></span>
+          <div class="placeholder-block heading" data-label="Journey headline block"></div>
+          <div class="placeholder-block medium" data-label="Journey introduction block"></div>
+        </div>
+        <ol class="timeline">
+          <li data-phase="01">
+            <div class="placeholder-block medium" data-label="Journey phase one details"></div>
+          </li>
+          <li data-phase="02">
+            <div class="placeholder-block medium" data-label="Journey phase two details"></div>
+          </li>
+          <li data-phase="03">
+            <div class="placeholder-block medium" data-label="Journey phase three details"></div>
+          </li>
+          <li data-phase="04">
+            <div class="placeholder-block medium" data-label="Journey phase four details"></div>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-        <p><em>My issue is</em> that we’ve created a single-track system in the VC-fueled, hockey-stick-seeking, silicon-valley adoring Western world. There doesn't seem to be an alternative to the founder path that isn't less ambitious. It shouldn’t be “founder vs normie” - and I want to challenge the mindset that starting a company is fundamentally more impactful, or difficult, or sexy than turning around an existing business and making it an incredibly meaningful place to work.</p>
-      </section>
+    <section id="stakeholders" class="panel" data-theme='{"page":"#070b1a","surface":"rgba(35,28,64,0.52)","surfaceStrong":"rgba(44,32,86,0.8)","accent":"#87b2ff","glow":"rgba(135,178,255,0.38)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead align-center">
+          <span class="placeholder-pill small" data-label="Stakeholder section kicker"></span>
+          <div class="placeholder-block heading" data-label="Stakeholder headline block"></div>
+          <div class="placeholder-block medium" data-label="Stakeholder overview block"></div>
+        </div>
+        <div class="stakeholder-grid">
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
+          </div>
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
+          </div>
+          <div class="stack-card">
+            <span class="placeholder-pill small" data-label="Stakeholder label"></span>
+            <div class="placeholder-block medium" data-label="Stakeholder promise block"></div>
+            <div class="placeholder-block small" data-label="Key bullet group"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Title 2 -->
-      <h2 class="reveal">The world doesn’t need more bad bosses</h2>
+    <section id="proof" class="panel" data-theme='{"page":"#050d16","surface":"rgba(16,40,54,0.5)","surfaceStrong":"rgba(20,56,74,0.78)","accent":"#64c7ff","glow":"rgba(100,199,255,0.34)"}'>
+      <div class="container panel-inner">
+        <div class="section-lead">
+          <span class="placeholder-pill small" data-label="Evidence section kicker"></span>
+          <div class="placeholder-block heading" data-label="Evidence headline block"></div>
+          <div class="placeholder-block medium" data-label="Evidence narrative block"></div>
+        </div>
+        <div class="mosaic-grid">
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Metric tile"></div>
+          <div class="placeholder-block medium" data-label="Quote tile"></div>
+          <div class="placeholder-block medium" data-label="Reference tile"></div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Paragraph 1b with inline Callout 2 (text above + callout) -->
-      <section class="section reveal">
-        <p>I’ve seen (and had) a lot of bad managers in my career. I’ve also had a few great bosses, and I’ve tried to be a great boss myself, although I haven’t always heard that I’ve succeeded 😅 Importantly - I’ve seen how little the startup world prioritizes good people leadership, the proper empowerment and delegation and trust it requires in setting up teams for success. “The end justifies the means” when it comes to leading a team and building an org. In some ways bad management is even incentivized - valuation of the next round holds more weight than anything else, and getting there might require a tough working environment. Bad managers rewarded because the next round mattered more than the team’s health. It comes with the job, right? I’m not talking about long hours here, or high intensity, emotional decisions. I’m not even talking about low pay. <strong>I’m talking about not setting up teams for success - defining a team’s goal and enabling your direct report to flourish in their role because they know what they can do to move the needle.</strong> </p>
-
-        <p>Sure, this might be reasonably straightforward when it’s a CEO and a few specialist direct reports. But when those people start to lead teams (and we hope that they do, or else there will be no hockey stick, right?) time and time again we see the lacking in leadership spreading like a virus. And my point is: <strong>this is normal</strong>. Good leadership is hard, and it takes prioritization. The VC’s goal is to get their returns, so effective leadership is a hopeful byproduct of a growing company, not the other way around.</p>
-
-        <p>So it’s no surprise that we don’t see growth-seeking, venture-backed startups systematically creating great workplaces.</p>
-        <div class="callout">So it’s no surprise that we don’t see growth-seeking, venture-backed startups systematically creating great workplaces.</div>
-      </section>
-
-      <!-- This sentence is now NORMAL TEXT (not a callout) -->
-      <section class="section reveal" style="margin-top: var(--s4);">
-        <p>We are doing these CEOs-to-be (and the world!) a disservice by not giving them any other option. </p>
-      </section>
-
-      <!-- Rest of Paragraph 2 -->
-      <section class="section reveal" style="margin-top: calc(var(--s4) * -0.5);">
-        <p>For those who want to take on the founder path - do it. Full steam ahead. We have so many institutions in place to help them (and profit from their success). The founder path (coming up with a product, trying to be competitive in the market, and then ultimately building and leading the company around that venture) however, may not really be what the entrepreneur-in-question is excited about. It might be that they want to <strong>lead a company they feel ownership over</strong> and drive enormous impact in the world. It might be that the founding of the startup is simply the path of them getting there. They should at least consider an alternative to the founder route that can get them there. Don’t get me wrong - so much of today’s innovation and amazing products have come from the founder route. But not every ambitious CEO-to-be needs to build a new product from scratch in order to have the impact that they are seeking. And - equally important - probably not every startup-to-be should exist in the world. For the CEO-to-be who wants to try her hand building something new, get at it. Power to you. But building within a VC-backed founder framework can be constraining, and seeking ambition and impact shouldn’t have to fall within those constraints.</p>
-      </section>
-
-      <!-- Title 2 -->
-      <h2 class="reveal">An alternative to the founder path</h2>
-
-      <!-- Paragraph 3 -->
-      <section class="section reveal">
-        <p>Imagine yourself in these shoes. (Maybe you’ve even been in these shoes like I have.) You're starting the startup journey from scratch: You make a Venn diagram looking for crossover of the following areas: Where you have any expertise or an “unfair advantage,” where there’s a marketable product to sell, and where the competition hasn’t already figured everything out. If you’re VC-backed, then you’re also looking for a market that can hockey-stick, where the TAM is large enough to sustain a high-growth unicorn-to-be. It isn’t unreasonable that you may find yourself building a company around a niche you don't have much passion for - other than the fact that you can build a company around it which might be investible.</p>
-      </section>
-
-      <!-- Paragraph 4 (part 1) -->
-      <section class="section reveal">
-        <p>What if you skipped the building part - where you build a reasonably arbitrary product which maybe doesn’t end up having wings, so you pivot to a product that is a modernized-version-of-legacy-for-X? What if you skipped the part where you try to take on the competition and win their customers over (slowly, arduously,) through hard-won sales, skipped the part where you build everything from the ground up, and driving your competitors to keep up or die out?</p>
-      </section>
-
-      <!-- Callout 4: show sentence above + callout block -->
-      <section class="section reveal" style="margin-top: var(--s4);">
-        <p>What if you skipped the founder path and inserted yourself into that same legacy company you were trying to take down in the first place, and you instead tried to save it from the competition that will inevitably come?</p>
-        <div class="callout">What if you skipped the founder path and inserted yourself into that same legacy company you were trying to take down in the first place, and you instead tried to save it from the competition that will inevitably come?</div>
-      </section>
-
-      <!-- Paragraph 4 (part 2) - fixed single sentence & no duplication -->
-      <section class="section reveal" style="margin-top: calc(var(--s4) * -0.25);">
-        <p>What if you were offered something different than the founder path, and instead tried to save it from the competition that will inevitably come? What if you could choose which parts of the legacy company’s hidden gems and valuable assets you want to take advantage of, and replace or fix all the parts that were a liability? What if you really put your mind to setting this company on a fast track path to profitability? Do you think that would be any less difficult than taking the founder path? Ruthlessly prioritizing and modernizing and optimizing in ways the original business owners weren't able to, and expanding on the business's success, finding out what worked well while rebuilding and refocusing the losses? Wouldn’t that kind of venture be fast paced, super high impact, and might even look similar to the startup journey, except fast forwarded a few years? <strong>Might this not be exactly what you were looking for when you quit your job?</strong></p>
-      </section>
-
-      <!-- Paragraph 5 (with callouts 6 & 7 in correct locations) -->
-      <section class="section reveal">
-        <!-- Callout 6: text above + callout at start of section -->
-        <p>This is where we start to see the knock-on effects we get by injecting the same blood, sweat and tears into our legacy businesses that we do to startups today.</p>
-        <div class="callout">This is where we start to see the knock-on effects we get by injecting the same blood, sweat and tears into our legacy businesses that we do to startups today.</div>
-
-        <p>There is inefficiency loss that comes with founding a company, and starting everything from scratch, building everything from the ground up. Incorporating a new business, building a new website, scrappy product testing, hiring people, training and onboarding, finding an office space - the list goes on and on. There is so much effort that goes into doing this over and over again (which is why PE firms love to buy up smaller companies and consolidate with their economies of scale). The new business leader could still rebuild what they want from the ground up, they would just get to do it by choice (and if it’s valuable to the business), not just because it has to be done. </p>
-
-        <p>Imagine we make the simplifying assumption that the new company more or less replaces the old company - certainly modernized and now profitable, but also - it’s legacy jobs lost and startup jobs gained. Legacy office space lost and startup office space gained. On a macroeconomic scale, reductions in this overhead, this frictional cost of translating old to new, can be equated to additional capital and effort that we save, and could directly be deployed into making the legacy company cash-flow positive. Every time we skip the part where old is replaced with new, (yet old still performs as if new,) we open the door to more effective economic growth with fewer frictional losses. We don’t want fewer startups - we want to <em>additionally</em> see legacy businesses being turned around.</p>
-
-        <!-- Callout 7: moved BEFORE the last sentence; text above + callout -->
-        <p>These savings from reduced frictional losses could be used to make the old better than the new ever could be.</p>
-        <div class="callout">These savings from reduced frictional losses could be used to make the old better than the new ever could be.</div>
-
-        <!-- Final sentence of the section follows after callout 7 -->
-        <p>Imagine they were deployed specifically to make the company an excellent place to work, in addition to being a profitable venture?</p>
-      </section>
-
-      <!-- Title 3 -->
-      <h3 class="reveal">Good people leadership is the goal. Positive cash flow is the fuel. </h3>
-
-      <!-- Paragraph 6 (callout 8 removed entirely) -->
-      <section class="section reveal">
-        <p>People working for these legacy businesses, especially if they have been struggling financially, have likely been suffering in their day to day. What if this new business leader - the entrepreneur-turnaround-leader - prioritized "making great places to work" as the end goal of this business succeeding? That means: translating the company’s success back to the employees, and modernizing the workplace, working culture, people leadership, and benefits, as examples. This all takes investment, but that could be <strong>precisely</strong> the purpose of becoming cash-flow positive. 
-Now <strong>that</strong> sounds like a valiant goal for the new CEO of the company. It makes the entire mission feel a bit more human, doesn’t it? 
-Footnote: Because their incentives should be aligned, they would have a revenue share with the company’s profit. Huge payouts should be the goal too.</p>
-      </section>
-
-      <!-- Paragraph 7 (both parts; opener changed to 'Finally, the kicker:') -->
-      <section class="section reveal">
-        <p>Finally, the kicker: What if someone did this whole thing in a way that was repeatable? What if they did it in the same way that a venture studio makes their founder and investment process scalable? What if we (now is when we get to the we part) built an institution that consistently set up the leader-to-be for success - in any vertical, with a funnel of high-likelihood businesses to turn around, an engine for recruiting top talent and enticing them with great terms and a powerful mission, a partnership with the local municipality and innovation/economic funding to kick-start the flywheel and help drive impact? What if we could take this turnaround studio and drag and drop it into any local municipality that wants to infuse their local economy? Now that’s the level of impact I’m hoping for.</p>
-
-        <p>Really, <strong>I want to challenge the VCs</strong> who compete for talent to fill their accelerator cohorts. I want to give those ambitious entrepreneurs another route forward - another option - that doesn’t necessarily require making VCs a lot of money. And that’s why I’m proposing a new institution, rivaling that of early-stage venture capital. One that builds as much hype, operationalizes itself to scale, and drives as much impact as VC. Let’s be clear - I don’t think we should have fewer founders in the world. I simply want founder wannabes to have another option. One that prioritizes making the world better by turning struggling legacy businesses into amazing places to work, with positive cash flow and really good bosses.</p>
-      </section>
-    </article>
+    <section id="cta" class="panel" data-theme='{"page":"#060a19","surface":"rgba(42,24,60,0.52)","surfaceStrong":"rgba(58,34,78,0.82)","accent":"#f687ff","glow":"rgba(246,135,255,0.4)"}'>
+      <div class="container panel-inner">
+        <div class="final-grid">
+          <div class="placeholder-block huge" data-label="Final CTA headline block"></div>
+          <div class="placeholder-block medium" data-label="Final CTA narrative block"></div>
+          <div class="cta-grid">
+            <span class="placeholder-pill" data-label="Primary CTA"></span>
+            <span class="placeholder-pill muted" data-label="Secondary CTA"></span>
+            <span class="placeholder-pill ghost" data-label="Contact CTA"></span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <div class="cta-dock" aria-hidden="false">
+    <div class="cta-dock-inner">
+      <span class="placeholder-pill small" data-label="Dock label"></span>
+      <span class="placeholder-pill" data-label="Dock CTA"></span>
+    </div>
+  </div>
+
   <footer>
-    <div class="wrap container">© <span id="y"></span> Turnaround · Manifesto</div>
+    <div class="container footer-grid">
+      <span>© <span id="year"></span> Turnaround</span>
+      <div class="placeholder-block small" data-label="Footer utility block"></div>
+    </div>
   </footer>
 
-<script>
-  // Year
-  document.getElementById('y').textContent = new Date().getFullYear();
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const progressBar = document.getElementById('progress');
+    const toTop = document.getElementById('toTop');
 
-  // Reading progress
-  const progress = document.getElementById('progress');
-  function onProgress(){
-    const h = document.documentElement;
-    const sc = h.scrollTop / (h.scrollHeight - h.clientHeight);
-    progress.style.transform = 'scaleX(' + sc + ')';
-  }
-  onProgress();
-  window.addEventListener('scroll', onProgress, { passive:true });
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progressBar.style.transform = `scaleX(${scrolled})`;
+    };
 
-  // Subtle reveal on scroll
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.style.transition = reduceMotion ? 'none' : 'opacity .7s ease, transform .7s cubic-bezier(.2,.6,.2,1)';
-        e.target.style.opacity = 1;
-        e.target.style.transform = 'translateY(0)';
-        io.unobserve(e.target);
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    const sections = [...document.querySelectorAll('main section')];
+    const navLinks = [...document.querySelectorAll('nav a[href^="#"]')];
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    const ctaDock = document.querySelector('.cta-dock');
+    const mobileQuery = window.matchMedia('(max-width: 720px)');
+
+    if (navToggle && primaryNav) {
+      const closeNav = () => {
+        navToggle.setAttribute('aria-expanded', 'false');
+        primaryNav.dataset.open = 'false';
+        document.body.classList.remove('nav-open');
+      };
+
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        const nextState = !expanded;
+        navToggle.setAttribute('aria-expanded', String(nextState));
+        primaryNav.dataset.open = String(nextState);
+        document.body.classList.toggle('nav-open', nextState);
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (mobileQuery.matches) {
+            closeNav();
+          }
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        if (!mobileQuery.matches) {
+          closeNav();
+        }
+      });
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          closeNav();
+        }
+      });
+    }
+
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            const target = link.getAttribute('href');
+            link.classList.toggle('active', target === `#${entry.target.id}`);
+          });
+        }
+      });
+    }, { rootMargin: '-50% 0% -40% 0%', threshold: 0.25 });
+
+    sections.forEach(section => navObserver.observe(section));
+
+    const applyTheme = theme => {
+      if (!theme) return;
+      const root = document.documentElement;
+      if (theme.page) root.style.setProperty('--page', theme.page);
+      if (theme.surface) root.style.setProperty('--surface', theme.surface);
+      if (theme.surfaceStrong) root.style.setProperty('--surface-strong', theme.surfaceStrong);
+      if (theme.accent) root.style.setProperty('--accent', theme.accent);
+      if (theme.glow) root.style.setProperty('--glow', theme.glow);
+    };
+
+    const themeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const raw = entry.target.dataset.theme;
+          if (raw) {
+            try { applyTheme(JSON.parse(raw)); } catch (err) { console.error('Theme parse error', err); }
+          }
+        }
+      });
+    }, { rootMargin: '-45% 0% -45% 0%', threshold: 0.35 });
+
+    sections.forEach(section => themeObserver.observe(section));
+
+    let lastScrollY = window.scrollY;
+
+    const manageDockVisibility = () => {
+      if (!ctaDock) return;
+      if (!mobileQuery.matches) {
+        ctaDock.classList.remove('is-hidden');
+        lastScrollY = window.scrollY;
+        return;
       }
+
+      const currentY = window.scrollY;
+
+      if (currentY <= 120) {
+        ctaDock.classList.remove('is-hidden');
+      } else if (currentY > lastScrollY + 6) {
+        ctaDock.classList.add('is-hidden');
+      } else if (currentY < lastScrollY - 6) {
+        ctaDock.classList.remove('is-hidden');
+      }
+
+      lastScrollY = currentY;
+    };
+
+    manageDockVisibility();
+    window.addEventListener('scroll', manageDockVisibility, { passive: true });
+    if (typeof mobileQuery.addEventListener === 'function') {
+      mobileQuery.addEventListener('change', manageDockVisibility);
+    } else if (typeof mobileQuery.addListener === 'function') {
+      mobileQuery.addListener(manageDockVisibility);
+    }
+
+    const toggleToTop = () => {
+      if (window.scrollY > 420) {
+        toTop.classList.add('visible');
+      } else {
+        toTop.classList.remove('visible');
+      }
+    };
+
+    toggleToTop();
+    window.addEventListener('scroll', toggleToTop, { passive: true });
+
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
-  }, { threshold: .08, rootMargin: '0px 0px -10% 0px' });
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const interactivePlaceholders = document.querySelectorAll('.placeholder-block, .placeholder-pill, .placeholder-chip');
+
+    interactivePlaceholders.forEach(el => {
+      el.addEventListener('pointermove', event => {
+        const rect = el.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty('--pointer-x', `${x}%`);
+        el.style.setProperty('--pointer-y', `${y}%`);
+      });
+
+      el.addEventListener('pointerleave', () => {
+        el.style.removeProperty('--pointer-x');
+        el.style.removeProperty('--pointer-y');
+      });
+    });
+  </script>
 </body>
 </html>
