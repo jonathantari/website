@@ -4,9 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Turnaround - Entrepreneurial Operators for Legacy Companies</title>
-  <meta name="description" content="Turnaround embeds vetted operators into stalled companies to lead pragmatic, employee-centered turnarounds.">
+  <meta name="description" content="Help build an institution that gives entrepreneurs another path to fame by reviving legacy businesses with modern operators.">
   <link rel="icon" href="../turnaround-favicon.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "tmwo4fh50q");
+  </script>
 
   <style>
     :root{
@@ -37,16 +44,18 @@
 
     /* Typography and layout */
     section{padding:clamp(40px,8vh,80px) 0}
-    h1,h2,h3{font-family:"Space Grotesk",sans-serif;margin:0 0 16px}
-    h1{font-size:clamp(28px,6vw,54px);line-height:1.15}
-    h2{font-size:clamp(20px,4vw,32px);color:var(--primary)}
-    h3{font-size:clamp(16px,3vw,24px)}
+    h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif;margin:0 0 16px}
+    h1{font-size:clamp(32px,6vw,56px);line-height:1.15}
+    h2{font-size:clamp(24px,5vw,40px);line-height:1.2}
+    h3{font-size:clamp(18px,3.5vw,26px)}
+    h4{font-size:clamp(16px,3vw,22px);color:var(--primary)}
     p{margin:0 0 16px;color:var(--muted)}
+    .headline{font-size:clamp(30px,5.5vw,52px);line-height:1.15}
     .lede{font-size:clamp(16px,2.8vw,20px);color:#1f2937;max-width:820px}
-
-    /* Subhead line (no boxes) */
     .hero-line{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;color:#111827;font-weight:700;text-transform:uppercase;font-size:14px}
     .hero-line .sep{opacity:.4;padding:0 6px}
+    .section-label{text-transform:uppercase;font-size:13px;letter-spacing:.12em;font-weight:600;color:var(--primary);margin-bottom:20px;display:inline-flex;align-items:center;gap:10px}
+    .section-label::before{content:"";width:32px;height:1px;background:var(--primary);display:inline-block}
 
     /* Background accents */
     .soft{background: linear-gradient(180deg, rgba(37,99,235,.06), transparent 60%)}
@@ -59,7 +68,7 @@
       .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
       .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     }
-    .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:20px;box-shadow:var(--shadow-1)}
+    .card{background:var(--card);border:1px solid var(--ring);border-radius:16px;padding:24px;box-shadow:var(--shadow-1)}
     .card p{margin:0;color:#1f2937}
 
     /* Buttons */
@@ -69,6 +78,14 @@
     .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-2)}
     .btn-secondary{background:#fff;border:1px solid var(--ring);color:var(--ink)}
     .btn-secondary:hover{transform:translateY(-1px);box-shadow:var(--shadow-1)}
+
+    /* Lists */
+    .link-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+    .link-list a{display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--primary);text-decoration:none}
+    .link-list a::after{content:"→";font-family:"Space Grotesk",sans-serif;font-weight:700;transition:transform .2s ease}
+    .link-list a:hover::after{transform:translateX(2px)}
+    .link-list a[aria-disabled="true"]{cursor:not-allowed;color:#9ca3af}
+    .link-list a[aria-disabled="true"]::after{display:none}
 
     /* Mobile sticky CTA */
     .cta-bar{position:sticky;bottom:10px;z-index:35;display:none;justify-content:center;padding:0 8px}
@@ -93,12 +110,12 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero soft">
       <div class="container">
-        <h1>Entrepreneurial operators inside legacy companies. Turnarounds that last.</h1>
-        <p class="lede">Entrepreneurs leading turnarounds of local, legacy businesses driving the economy at scale.</p>
-        <p class="hero-line"><span>Sustainable profitability</span><span class="sep">|</span><span>Supported by public financing</span><span class="sep">|</span><span>Building great workplaces</span></p>
+        <h1>Help build an institution that gives entrepreneurs another path to fame.</h1>
+        <p class="lede">An accelerator that turns around local, legacy businesses at scale.</p>
+        <p>Prioritizing profitability. Supported by public funds. Building great workplaces and training excellent leaders.</p>
+        <p class="hero-line"><span>Sustainable profitability</span><span class="sep">|</span><span>Supported by public funds</span><span class="sep">|</span><span>Great workplaces</span></p>
         <div class="buttons">
           <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply as an operator</a>
           <a class="btn-secondary" href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Read the manifesto</a>
@@ -106,149 +123,103 @@
       </div>
     </section>
 
-    <!-- WHY LINE -->
     <section id="why">
       <div class="container">
-        <h1>Why do startups get all the love?</h1>
-        <p class="lede">We only give ambitious entrepreneurs one path: start a startup.</p>
-      </div>
-    </section>
-
-    <!-- PROBLEM: four boxes like earlier iteration -->
-    <section id="problem">
-      <div class="container">
+        <div class="section-label">The problem</div>
+        <h2 class="headline">Why do startups get all the love?</h2>
+        <p class="lede">There should be more than one career path for ambitious entrepreneurs.</p>
         <div class="grid cols-2">
           <article class="card">
-            <h3>One track mind</h3>
-            <p>Unicorn folklore and venture capital hype make founder mode feel like the only way to be your own boss. Not everyone wants to build a product. Many want huge impact and autonomy.</p>
-          </article>
-          <article class="card">
-            <h3>Legacy businesses are dying</h3>
-            <p>Owner operators are retiring. Many firms could be saved, yet they are replaced by new startups that adopt modern tools. Save the jobs and cut switching costs.</p>
-          </article>
-          <article class="card">
-            <h3>Career switches are hard</h3>
-            <p>Future founders get a sea of support from accelerators and courses. The quit your job leap is high risk and high reward. Entrepreneurs who want to lead turnarounds deserve the same pathway.</p>
+            <h3>The startup myth became a monopoly</h3>
+            <p>Western society glorifies founders (rightfully so).</p>
+            <p>But unicorn folklore and venture capital hype make it seem like founder mode is the only way to be your own boss.</p>
           </article>
           <article class="card">
             <h3>Sustainable profit is not sexy</h3>
-            <p>Venture funding seeks hockey sticks by design. Sustainable profit often clashes with that model. Entrepreneurs can build real wealth by fixing service firms. We need a new model to finance it.</p>
+            <p>Venture funding seeks hockey sticks.</p>
+            <p>The venture model is driven by valuation and funding rounds. Sustainable, linear profit doesn’t make limited partners rich - so it isn’t interesting through the lens of VC.</p>
+            <p>Yet most of the world’s successful entrepreneurs aren’t running unicorns. We’ve over-indexed for rocketships.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SOLUTION -->
-    <section id="solution" class="soft-3">
+    <section id="opportunity" class="soft-3">
       <div class="container">
-        <h2>Embed a vetted operator with a one year mandate and clear guardrails.</h2>
+        <div class="section-label">The opportunity</div>
         <div class="grid cols-3">
-          <div class="card">
-            <h3>Vet and match</h3>
-            <p>A curated pool of operators matched to owners who offer real authority and a clean mandate.</p>
-          </div>
-          <div class="card">
-            <h3>Prep and plan</h3>
-            <p>A three month cohort focuses on diagnostics, cash clarity, throughput, and alignment. The output is a first 30-60-90 everyone can understand.</p>
-          </div>
-          <div class="card">
-            <h3>Execute and show wins</h3>
-            <p>Weekly metrics, tight scope, and a shipping cadence. Confidence returns when work is visible and useful.</p>
-          </div>
+          <article class="card">
+            <h3>Legacy businesses are dying</h3>
+            <p>Local small and medium sized businesses are disappearing at an alarming rate. Owner-operators are retiring without anyone to take over. Corporate giants, startups operating at a loss, and private equity-infused consolidation mean it’s a fight to stay alive as an SME.</p>
+          </article>
+          <article class="card">
+            <h3>These businesses could be saved</h3>
+            <p>Many firms could be saved - they have a working product, paying customers and a lot of knowledge. Reviving a legacy business creates impact that lasts: stable jobs, real cash flow, and stronger local economies.</p>
+          </article>
+          <article class="card">
+            <h3>Set up new leaders for success</h3>
+            <p>Just like startup accelerators give founders with the tools they need to build a new company, operators could be given tools and training to improve their chances of turning around the business.</p>
+            <p>It’s a risky decision to quit your day job and take the leap - why not help these operators with training and a salary from day one?</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- INSTITUTION -->
-    <section id="institution">
+    <section id="institution" class="soft-2">
       <div class="container">
-        <h2>A repeatable program that aligns incentives and protects the core business.</h2>
-        <div class="grid cols-2">
-          <div class="card">
+        <div class="section-label">The solution</div>
+        <h2 class="headline">A new institution</h2>
+        <p class="lede">A program that selects, trains and injects ambitious entrepreneurs into local, legacy businesses to become profitable using modern tools and tried and tested methods. Infusing the local economy. Improving people’s jobs and financial security. Supporting the next generation of business leaders.</p>
+        <p>Turnarounds that last.</p>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <h2 class="headline">How could this work?</h2>
+        <div class="grid cols-3">
+          <article class="card">
+            <h3>Public Support</h3>
+            <p>Partnering with public economic revitalization programs. Funding a single operator for a year is pocket change compared to the millions already spent on innovation grants, but here impacts the local economy directly.</p>
+          </article>
+          <article class="card">
             <h3>Guardrails</h3>
-            <p>Clear decision rights. Explicit constraints. Review cadence with advisors who have shipped real programs. Owners get line of sight without micromanagement.</p>
-          </div>
-          <div class="card">
-            <h3>Aligned upside</h3>
-            <p>Operator incentives tie to durable cash flow and employee outcomes. The north star is simple. Cash positive and fair distribution of gains.</p>
-          </div>
-          <div class="card">
-            <h3>Lightweight tools</h3>
-            <p>Dashboards that track leading indicators. Operating rhythms that fit on one page. Process that helps people do their work, not fight software.</p>
-          </div>
-          <div class="card">
-            <h3>Nonprofit backbone</h3>
-            <p>We are building an institution with mission first design. The objective is healthy companies that treat people well. The model follows that truth.</p>
-          </div>
+            <p>De-risking both the operator’s likelihood of turning around the business, and ensuring it’s salvageable to start with. A mandatory training program that enables any ambitious enough operator to turn around a business in any vertical. Using best practice frameworks and custom-built ops tools that are industry agnostic. Operators take a revenue share of new profit generated by the business (after year 1).</p>
+          </article>
+          <article class="card">
+            <h3>Core Principles</h3>
+            <p>Laser focus on becoming cash flow positive. But doing so in a kind, human way that <strong>saves</strong> jobs wherever possible. Profit is generated in order to make the employee’s jobs better. Upskilling managers, creating an empowering workplace, and passing back those benefits to the employees is what sets this apart from PE firms and search funds.</p>
+          </article>
         </div>
-        <p style="margin-top:16px">Longer argument and design principles live in the manifesto. <a href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Read it here</a>.</p>
+        <h4>See more on how this works</h4>
+        <ul class="link-list">
+          <li><a href="#" aria-disabled="true">Operators as CEO without changing ownership of business</a></li>
+          <li><a href="#" aria-disabled="true">Training and Curriculum</a></li>
+          <li><a href="#" aria-disabled="true">Vetting</a></li>
+          <li><a href="#" aria-disabled="true">Contractual Commitment for the Business</a></li>
+          <li><a href="#" aria-disabled="true">Sourcing and Auditing Turnaround Businesses</a></li>
+          <li><a href="#" aria-disabled="true">Guardrails Minimizing Business Owner Risk</a></li>
+        </ul>
       </div>
     </section>
 
-    <!-- OPERATOR VIEW -->
-    <section id="operator" class="soft-2">
-      <div class="container">
-        <h2>Why an operator chooses this path</h2>
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Real authority</h3>
-            <p>Interim CEO role with a clear mandate. Set constraints, move budget, and change how work flows.</p>
-          </div>
-          <div class="card">
-            <h3>Structured support</h3>
-            <p>Cohort peers, advisor cadence, and playbooks focused on the first 120 days. Hard weeks do not happen alone.</p>
-          </div>
-          <div class="card">
-            <h3>Meaningful upside</h3>
-            <p>Compensation connects to cash improvement and employee outcomes. Wins that matter get rewarded.</p>
-          </div>
-        </div>
-        <div class="buttons">
-          <a class="btn" href="mailto:me@jonathantari.com?subject=Operator%20Cohort%20Application">Apply to the operator pool</a>
-          <a class="btn-secondary" href="#join">Talk about a company</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- MACRO IMPACT -->
-    <section id="impact">
-      <div class="container">
-        <h2>What this does at scale</h2>
-        <div class="grid cols-2">
-          <article class="card">
-            <h3>Local economies</h3>
-            <p>Stabilized mid sized firms keep skills, apprenticeships, and supplier networks alive. These are the quiet engines of a region.</p>
-          </article>
-          <article class="card">
-            <h3>Better managers</h3>
-            <p>Programs that teach constraint setting and throughput create leaders who build teams that ship. That culture persists after the cohort ends.</p>
-          </article>
-          <article class="card">
-            <h3>Fair distribution</h3>
-            <p>When cash improves, employees benefit. That is the agreement. It is visible and simple to audit.</p>
-          </article>
-          <article class="card">
-            <h3>Less waste</h3>
-            <p>Fewer me too products. More repair and renewal of useful businesses. Capital gets more productive in the places where people work.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOIN -->
     <section id="join" class="soft">
       <div class="container">
-        <h2>Help build the institution</h2>
-        <p class="lede">I am assembling the first full cohort and the advisory group that will keep us honest. If this mission fits your experience or your company, reach out. If you want the longer version with context, read the manifesto.</p>
+        <div class="section-label">About me</div>
+        <h2 class="headline">Join me</h2>
+        <p>My name is Jonathan. I think we can build an institution that does a lot for the public good, and make a lot of people’s jobs a lot better.</p>
+        <p>I also think that local governments and economic revitalization programs would partner in a heartbeat, they just haven’t seen it done before at scale.</p>
+        <p>I’m also passionate about what this curriculum should contain - what can turn any ambitious entrepreneur into a drag-and-drop, industry agnostic turnaround pro in 6 months or less.</p>
+        <p>Read more about it in my manifesto, or just add me on LinkedIn. If you have any interest in joining me to build an entrepreneurial institution that’s rooted in value, not valuation, reach out.</p>
         <div class="buttons">
           <a class="btn" href="mailto:me@jonathantari.com?subject=Turnaround%20-%20Build%20with%20us">Partner or advise</a>
-          <a class="btn-secondary" href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Manifesto</a>
+          <a class="btn-secondary" href="https://jonathantari.github.io/website/site/" target="_blank" rel="noopener">Read the manifesto</a>
+          <a class="btn-secondary" href="https://www.linkedin.com/in/jtari/" target="_blank" rel="noopener">Add me on LinkedIn</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Mobile sticky CTA -->
   <div class="cta-bar" aria-hidden="false">
     <div class="cta-inner">
       <span style="font-weight:700">Operators:</span>
