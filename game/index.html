@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Labyrinth of Quiet Weather</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="top-bar">
+      <a href="../" class="home-link">Return to main site</a>
+      <div class="session-info">
+        <span class="session-duration">Approximate duration: 5 to 15 minutes</span>
+        <span class="session-status" aria-live="polite">Arriving</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="stage" aria-labelledby="scene-title">
+        <div class="viewport" role="presentation">
+          <div class="camera">
+            <div class="world">
+              <div class="path"></div>
+              <div class="artifacts" aria-hidden="true"></div>
+              <div class="character" aria-hidden="true">
+                <div class="pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <article class="scene-panel">
+          <h1 id="scene-title">A soft hallway awakens.</h1>
+          <p class="scene-description">Enter the labyrinth when ready. Your companion waits just ahead.</p>
+
+          <form class="prompt-form" autocomplete="off">
+            <label for="player-response" class="prompt-text">What should the quiet guide call you?</label>
+            <div class="input-row">
+              <input id="player-response" name="response" type="text" maxlength="280" placeholder="Type your reply">
+              <button type="submit">Answer</button>
+            </div>
+          </form>
+
+          <div class="progress" role="progressbar" aria-label="Journey progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="progress-fill"></div>
+          </div>
+        </article>
+      </section>
+
+      <aside class="chat" aria-live="polite" aria-label="Conversation log">
+        <div class="chat-log"></div>
+      </aside>
+    </main>
+
+    <footer class="foot-note">
+      <p>The labyrinth learns from what you share. You can leave anytime by closing the tab or returning home.</p>
+    </footer>
+
+    <template id="chat-bubble">
+      <div class="bubble" data-speaker="">
+        <p></p>
+      </div>
+    </template>
+
+    <script src="game.js" type="module"></script>
+  </body>
+</html>
